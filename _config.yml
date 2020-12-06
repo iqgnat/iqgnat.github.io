@@ -20,14 +20,15 @@ text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
-title   : Your Site Title
+title   : iqgnat 在路上
 description: > # this means to ignore newlines until "Language & timezone"
-  Your Site Description
+  Brain, Techniques and Finance
 
 theme: jekyll-text-theme
 ## => Language and Timezone
 ##############################
-lang: # the language of your site, default as "en"
+#lang: # the language of your site, default as "en"
+lang: zh-Hans
 timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
 
 
@@ -35,10 +36,10 @@ timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for
 ##############################
 author:
   type      : # "person" (default), "organization"
-  name      : Your Name
+  name      : Tang Qi
   url       :
   avatar    : # path or url of avatar image (square)
-  bio       : I am an amazing person.
+  bio       : 
   email     :
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
   twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
@@ -55,7 +56,7 @@ author:
 
 ## => GitHub Repository (if the site is hosted by GitHub)
 ##############################
-repository: user_name/repo_name
+repository: iqgnat/iqgnat.github.io
 repository_tree: master
 
 
@@ -70,6 +71,17 @@ paths:
 
 ## => Post
 ##############################
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: article
+      license: true
+      aside:
+        toc: true
+      show_edit_on_github: true
+      pageview: true
 ## excerpt
 excerpt_separator: <!--more-->
 

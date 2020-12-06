@@ -48,3 +48,40 @@ header:
       fr-LU   : *FR
       # @end locale config
     url: /about.html
+
+# 侧边导航栏
+docs-en:
+  - title:      Start
+    children:
+      - title:  Quick Start
+        url:    /docs/en/quick-start
+      - title:  Structure
+        url:    /docs/en/structure
+
+  - title:      Customization
+    children:
+      - title:  Configuration
+        url:    /docs/en/configuration
+      - title:  Navigation
+        url:    /docs/en/navigation
+        
+docs-cn:
+  - title:      随笔
+    children:
+      - title:  课堂笔记
+        url:    /docs/en/quick-start
+      - title:  科研工具
+        url:    /docs/en/structure
+      - title:  编程随笔
+        url:    /docs/en/structure      
+      - title:  人间草木
+        url:    /docs/en/structure
+
+
+  - title:      板块
+    children:
+      - title:  Configuration
+        url:    /docs/en/configuration
+      - title:  Navigation
+        url:    /docs/en/navigation
+  
