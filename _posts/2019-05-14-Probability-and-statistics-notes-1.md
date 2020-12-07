@@ -57,20 +57,20 @@ ECEN 2007_Probability and Statistics
 
 **Chapter 2: 集合，贝叶斯定理， Subset Permutation Rule**
 
-1. 关于集合的概念 (Distributive law[交的补等于补的并，并的补等于补的交 ], Associative law, Permutation Rule [高中时的A，有序排序】, Combination Rule[高中时的C，无序排序】);
-2. Subset Permutation Rule (图a例题，一本经典中文教材上摘抄的，但是竟然把书名漏了）; 
+1. 关于集合的概念 (Distributive law [交的补等于补的并，并的补等于补的交 ] , Associative law, Permutation Rule [高中时的A，有序排序】, Combination Rule [高中时的C，无序排序】);
+2. Subset Permutation Rule (图a例题）; 
 3. 事件独立性的判断, 以下三点任一成立:
 
 - P(A | B) = P(A) P(B | A) = P(B) P(A U B) = P(A)·P(B)
 
-​       \4. 条件概率 与贝叶斯定理:
+4. 条件概率 与贝叶斯定理:
 
 - P(B | A) = P(A U B) / P(A) for P(A) > 0; P(A | B)= P(B | A) * P(A)/P(B); 
 
 - If E1, E2, …, EK are k mutually exclusive and exhaustive events and B is any   event: 
 - P (E1|B) =P (B|𝐸1)*P(𝐸1) / {P (B|𝐸1)*P(𝐸1)+P(B|𝐸2)*P(𝐸2)+⋯+P(B|𝐸𝑘)*P(𝐸𝑘)} for P(B) > 0
 
-​       \5. 古典概率(Equally likely outcomes; Sample space limited)和几何概率(Equally likely outcomes; Sample space unlimited)的理解, 图b例题。
+   5. 古典概率(Equally likely outcomes; Sample space limited)和几何概率(Equally likely outcomes; Sample space unlimited)的理解, 图b例题。
 
 
 
@@ -85,7 +85,7 @@ ECEN 2007_Probability and Statistics
 5. Binomial Distribution (二项分布,例题：邮局窗口问题)  
 6. Geometric(几何分布，伯努利试验第n次尝试才第一次成功) and Negative Binomial Distributions(负二项分布,  伯努利试验第k次尝试才第r次成功 )  
 7. Hypergeometric Distribution(超几何分布,有N个样本，其中K个是不及格的。超几何分布描述了在该N个样本中抽出n个，其中k个是不及格的概率; 大润发抽乒乓球问题)  
-8. Poisson Distribution(无线sample space， 一小时内断网次数的例子）
+8. Poisson Distribution(无限 sample space， 一小时内断网次数的例子）
 
 
 
@@ -115,7 +115,7 @@ ECEN 2007_Probability and Statistics
 
 **Chapter 6:  数据的描述性分析(MATLAB, SPSS,Python,R 等皆可)**
 
-MATLAB有关描述分析的小程序[点我下载](http://tangqinotes.me/wp-content/uploads/2019/05/DescriptiveAnalysis_code.zip)。SPSS的相关操作，在SPSS章节记录。
+MATLAB有关描述分析的小程序 [点我下载](http://tangqinotes.me/wp-content/uploads/2019/05/DescriptiveAnalysis_code.zip)。SPSS的相关操作，在SPSS章节记录。
 
 
 
@@ -124,22 +124,21 @@ MATLAB有关描述分析的小程序[点我下载](http://tangqinotes.me/wp-cont
 1. 样本的均值对整体的均值属于无偏估计，而样本的方差对整体方差的估计是有偏估计。矫正项是 1/(n-1）。推导公式见 图a.
 2. 两个样本均值差的分布估计, 图b. 
 3. mean squared error: MSE(theta head)=E(theta head -theta)^2.
-4. 动量估计 (基于大数法则）， 贝叶斯估计 （Prior probability ->amend with samples->posterior probability ） 和最大似然估计：The maximum likelihood estimator (MLE) of θ is the value of θ that maximizes the likelihood function L(θ), 可以用于训练模型系数 (weight), 流程：  
+4. 动量估计 (基于大数法则)， 贝叶斯估计 (Prior probability ->amend with samples->posterior probability) 和最大似然估计：The maximum likelihood estimator (MLE) of θ is the value of θ that maximizes the likelihood function L(θ), 可以用于训练模型系数 (weight), 流程：  
 
-- 1.Establish   Combination of probabilities of n random variates from a random sample. 
-- \2. Take the natural logarithm   a. Many products, sometimes exponents in L(θ). To find the global maximum value, differentiation is frequently applied. Use logarithm rule to simplify the calculation.   b. Natural logarithm is a strict increase function, will not hinder to find the maximum value of continuous L(θ). 
-- \3. First derivative of L(θ)  Make the first derivative of L(θ),in other words L’(θ), equal to zero to find all possible θ at local maximum or local minimum. 
-- \4. Take the second derivative of L(θ)   To judge whether the θ we find in step 3 is the position of maximum likelihood.  
+- 1. Establish   Combination of probabilities of n random variates from a random sample. 
+- 2. Take the natural logarithm   a. Many products, sometimes exponents in L(θ). To find the global maximum value, differentiation is frequently applied. Use logarithm rule to simplify the calculation.   b. Natural logarithm is a strict increase function, will not hinder to find the maximum value of continuous L(θ). 
+- 3. First derivative of L(θ)  Make the first derivative of L(θ),in other words L’(θ), equal to zero to find all possible θ at local maximum or local minimum. 
+- 4. Take the second derivative of L(θ)   To judge whether the θ we find in step 3 is the position of maximum likelihood.  
 
 
 
-**Chapter 8: 通过样本对整体的均值，方差进行** 
-**区间估计** 
+**Chapter 8: 通过样本对整体的均值，方差进行** **区间估计** 
 
 主要分为3个大类：通过样本信息对整体的均值估计，方差估计和分布近似。
 
 1. 整体分布是正态分布，方差已知。对整体的均值做区间估计, sample size n的计算。单边，双边的区间估计。
-2. 大样本(一般情况下>50）时整体均值的区间估计（Z分布，variance known，因为是大样本，n/n-1 接近1，样本方差对整体方差的估计近似于无偏 , 标准差收敛)。小样本(一般情况下<50)时整体均值的区间估计（t分布，注意查表时需要对应自由度，df=n-1，类似于Chap 7的矫正项）
+2. 大样本(一般情况下>50）时整体均值的区间估计（Z 分布，variance known，因为是大样本，n/n-1 接近1，样本方差对整体方差的估计近似于无偏 , 标准差收敛)。小样本(一般情况下<50)时整体均值的区间估计（t分布，注意查表时需要对应自由度，*df* = n - 1，类似于Chap 7的矫正项）
 3. 通过样本对整体做卡方检验，估计整体的方差。
 4. 比较prediction level 和 normal distribution confidence interval的区别（宽度）。
 
@@ -147,12 +146,12 @@ MATLAB有关描述分析的小程序[点我下载](http://tangqinotes.me/wp-cont
 
 **Chapter 9: 对单整体进行假设检定**
 
-承接Chap 8 的知识点， 对整体均值、方差和比例，做假设检验。通过样本所获统计量，判断整体是否符合假设，并对假设作出决策。涉及到的概念有:
+承接 Chap 8 的知识点， 对整体均值、方差和比例，做假设检验。通过样本所获统计量，判断整体是否符合假设，并对假设作出决策。涉及到的概念有:
 
-- **Type I Error**(alpha, significance level): Rejecting the null hypothesis H­0 when it is true is defined as a type I error.（错杀好人型） 
-- **Type II Error**(beta):  Failing to reject the null hypothesis when it is false is defined as a type II error.（认贼作父型） 
-- **Power (sensitivity):** (power=1-beta) The power of a statistical test is the probability of rejecting the null hypothesis H­0 when the alternative hypothesis is true. 
-- **P-Value:** The P-value is the smallest level of significance that would lead to rejection of the null hypothesis H­0 with the given data. （最终用查表或计算出来的P值和 significance level (alpha) 作比较）
+- **Type I Error (alpha, significance level)**: Rejecting the null hypothesis H­0 when it is true is defined as a type I error.（错杀好人型） 
+- **Type II Error (beta)**:  Failing to reject the null hypothesis when it is false is defined as a type II error.（认贼作父型） 
+- **Power (sensitivity):** ( *power = 1 - beta*) The power of a statistical test is the probability of rejecting the null hypothesis H­0 when the alternative hypothesis is true. 
+- **P-Value:** The P-value is the smallest level of significance that would lead to rejection of the null hypothesis H­0 with the given data. （最终用查表或计算出来的 *p* 值和 significance level (*alpha*) 作比较）
 
 
 
@@ -162,5 +161,5 @@ MATLAB有关描述分析的小程序[点我下载](http://tangqinotes.me/wp-cont
 
 1. 确定虚无假设（Null hypothesis）和备选假设（Alternative Hypothesis） 
 2. 确定统计量 （单尾，双尾？significance level？） 
-3. 归一化，查表(或计算)，比较计算出来的P值和预先定好的significance level (alpha）的值，查看P值是否落在拒绝域。 
+3. 归一化，查表(或计算)，比较计算出来的 *p*值和预先定好的 significance level (*alpha*）的值，查看 *p* 值是否落在拒绝域。 
 4. 验证检验并得出结论。
