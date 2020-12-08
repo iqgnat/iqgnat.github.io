@@ -43,9 +43,10 @@ key: page-about
 ## 更多关于我
 
 - 研究方向：
-  1) 人机交互(EEG, Brain-computer interaction) 的波形信号分析;
-  2) 神经反馈(Neurofeedback), 与稳态视觉诱发电位(SSVEP);
-  3) 脑网络分析。
+
+  1. 人机交互(EEG, Brain-computer interaction) 的波形信号分析;
+  2. 神经反馈(Neurofeedback), 与稳态视觉诱发电位(SSVEP);
+  3. 脑网络分析。
 
 - 工作方向：
 

@@ -13,7 +13,7 @@ ECEN 2007_Probability and Statistics
 
 <!--more-->
 
-在学期结束之际，记录一下课程的主要知识点和例题。**[下一篇](http://tangqinotes.me/psii-spss-matlab-excel/)**记录我常用到的统计应用，包括：正态分布检验，配对t检验，相关性分析（Pearson & Spearman), ANOVA，主要用 SPSS statistics, Excel 和 MATLAB 实现。
+在学期结束之际，记录一下课程的主要知识点和例题。**[下一篇](http://tangqinotes.me/psii-spss-matlab-excel/)**记录常用到的统计应用，包括：正态分布检验，配对t检验，相关性分析（Pearson & Spearman), ANOVA，主要用 SPSS statistics, Excel 和 MATLAB 实现。
 
 <table><tr><td bgcolor=#D3D3D3>
 <p><b>相关性检验:</b><br><p style="text-indent:2em">
@@ -30,7 +30,6 @@ ECEN 2007_Probability and Statistics
 	<p style="text-indent:2em">b. two-way ANOVA without replication.<br>
 </p></p> 
     <b>注意： 差异性检验，涉及到方差的有偏估计 (的矫正), 需要在检验结果中，描述 degree of freedom。</b></td></tr></table>
-
 
 
 **课本章节的概括:**  
@@ -68,9 +67,12 @@ ECEN 2007_Probability and Statistics
 - If E1, E2, …, EK are k mutually exclusive and exhaustive events and B is any   event: 
 - P (E1|B) =P (B|𝐸1)*P(𝐸1) / {P (B|𝐸1)*P(𝐸1)+P(B|𝐸2)*P(𝐸2)+⋯+P(B|𝐸𝑘)*P(𝐸𝑘)} for P(B) > 0
 
-   5. 古典概率(Equally likely outcomes; Sample space limited)和几何概率(Equally likely outcomes; Sample space unlimited)的理解, 图b例题。
 
+5. 古典概率(Equally likely outcomes; Sample space limited)和几何概率(Equally likely outcomes; Sample space unlimited)的理解, 图b例题。
 
+![subset permutation rule](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS1.jpg)
+
+![古典概率和几何概率](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS21.webp)
 
 
 
@@ -85,18 +87,51 @@ ECEN 2007_Probability and Statistics
 7. Hypergeometric Distribution(超几何分布,有N个样本，其中K个是不及格的。超几何分布描述了在该N个样本中抽出n个，其中k个是不及格的概率; 大润发抽乒乓球问题)  
 8. Poisson Distribution(无限 sample space， 一小时内断网次数的例子）
 
+![CDF属性](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS3.webp)
 
+![方差标准差公式](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS4_1-1.webp)
+
+![离散连续自然数均值方差公式](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS4.webp)
+
+![二项分布性质](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS5-1.webp)
+
+![其他离散分布性质](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS6.webp)
+
+![离散分布性质的比较](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS7-1024x775.webp)
 
 **Chapter 4:  连续概率分布**
 
 1. 连续概率分布均值和方差的性质 （与离散性质的比较）; 
+
 2. Continuous Uniform Distribution; 
+
 3. 中心极限定理，3 sigma, 正态分布的归一化； 
+
 4. 正态分布去逼近二项分布和泊松分布（成立的条件,正态计算量小）,图a、b; 
+
 5. Exponential Distribution, 图c  
+
 6. Erlang and Gamma Distributions, 图d  
+
 7. Weibull Distribution, 图e   
+
 8. Lognormal Distribution，图f  连续分布一般题目中会暗示会给定分布类型，因为不像离散分布(第三章)一样可以通过条件判断。所以做题时，可以按图索骥，根据公式（套路）来.
+
+   ![正态拟合二项](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS8-1024x740.webp)
+
+![正态拟合泊松](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS20-752x1024.webp)
+
+![指数分布](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS9-1.webp)
+
+![指数分布的一般形式](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS10.webp)
+
+
+
+![Weibull分布](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS11.webp)
+
+![Weibull分布](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS11.webp)
+
+![Lognormal分布](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS12.webp)
 
 
 
@@ -109,11 +144,17 @@ ECEN 2007_Probability and Statistics
 5. General Functions of Random Variables 
 6. Moment Generating Functions (图b，目的：降低计算量) 功课中涉及到其他知识点：分部积分，洛必达法则，指数函数积分等
 
+![协方差与相关性的计算公式](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS13.webp)
+
+![Moment-Generating Function](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS14-1024x467.webp)
+
 
 
 **Chapter 6:  数据的描述性分析(MATLAB, SPSS,Python,R 等皆可)**
 
-MATLAB有关描述分析的小程序 [点我下载](http://tangqinotes.me/wp-content/uploads/2019/05/DescriptiveAnalysis_code.zip)。SPSS的相关操作，在SPSS章节记录。
+MATLAB有关描述分析的 [小程序](http://tangqinotes.me/wp-content/uploads/2019/05/DescriptiveAnalysis_code.zip)。SPSS的相关操作，在SPSS章节记录。
+
+![chap6作业题](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS17.webp)
 
 
 
@@ -129,7 +170,11 @@ MATLAB有关描述分析的小程序 [点我下载](http://tangqinotes.me/wp-con
 - 3. First derivative of L(θ)  Make the first derivative of L(θ),in other words L’(θ), equal to zero to find all possible θ at local maximum or local minimum. 
 - 4. Take the second derivative of L(θ)   To judge whether the θ we find in step 3 is the position of maximum likelihood.  
 
+![样本对整体的均值,方差估计](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS18-1-729x1024.webp)
 
+![两个样本均值差的分布估计](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS19.webpp)
+
+![最大似然估计，估计几何分布和泊松分布的概率、期望](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS21.webp)
 
 **Chapter 8: 通过样本对整体的均值，方差进行** **区间估计** 
 
@@ -139,6 +184,10 @@ MATLAB有关描述分析的小程序 [点我下载](http://tangqinotes.me/wp-con
 2. 大样本(一般情况下>50）时整体均值的区间估计（Z 分布，variance known，因为是大样本，n/n-1 接近1，样本方差对整体方差的估计近似于无偏 , 标准差收敛)。小样本(一般情况下<50)时整体均值的区间估计（t分布，注意查表时需要对应自由度，*df* = n - 1，类似于Chap 7的矫正项）
 3. 通过样本对整体做卡方检验，估计整体的方差。
 4. 比较prediction level 和 normal distribution confidence interval的区别（宽度）。
+
+![区间分布公式](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS22-771x1024.webp)
+
+![区间分布公式2](https://https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS23-928x1024.webp)
 
 
 
@@ -151,11 +200,13 @@ MATLAB有关描述分析的小程序 [点我下载](http://tangqinotes.me/wp-con
 - **Power (sensitivity):** ( *power = 1 - beta*) The power of a statistical test is the probability of rejecting the null hypothesis H­0 when the alternative hypothesis is true. 
 - **P-Value:** The P-value is the smallest level of significance that would lead to rejection of the null hypothesis H­0 with the given data. （最终用查表或计算出来的 *p* 值和 significance level (*alpha*) 作比较）
 
+![单整体假设检定公式](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS24-3.webp)
 
+![单整体假设检定公式2](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS25.webp)
 
 **Chapter 10: 对双整体关系进行假设检定**
 
-第九、十章，是可以根据课本融会贯通的套路章节。根据条件，根据假设检验的步骤: 
+根据条件，根据假设检验的步骤: 
 
 1. 确定虚无假设（Null hypothesis）和备选假设（Alternative Hypothesis） 
 2. 确定统计量 （单尾，双尾？significance level？） 
