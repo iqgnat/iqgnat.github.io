@@ -1,5 +1,5 @@
 ---
-title: 概率统计笔记2：实操
+title: 概率统计笔记2:实操
 tags: 理论基础
 author: Tang Qi
 sidebar:
