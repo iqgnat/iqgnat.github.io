@@ -11,11 +11,9 @@ ECEN 2007_Probability and Statistics
 课本：Applied Statistics and Probability for Engineers,  6th Ed;
 章节：Chapter 1 到 Chapter 10;
 
-推荐的网络资源:  **[李伯坚](https://www.youtube.com/playlist?list=PL1AElnNtwabmdR5CZab98Yxr-MsQ8ON2N)**教授的课程
-
 <!--more-->
 
-在学期结束之际，记录一下课程的主要**知识点和例题**。**[下一篇](http://tangqinotes.me/psii-spss-matlab-excel/)**将记录我常用的统计应用，包括：正态分布检验，配对t检验，相关性分析（Pearson & Spearman), ANOVA，主要用 SPSS statistics, Excel 和 MATLAB 实现。
+在学期结束之际，记录一下课程的主要知识点和例题。**[下一篇](http://tangqinotes.me/psii-spss-matlab-excel/)**记录我常用到的统计应用，包括：正态分布检验，配对t检验，相关性分析（Pearson & Spearman), ANOVA，主要用 SPSS statistics, Excel 和 MATLAB 实现。
 
 <table><tr><td bgcolor=#D3D3D3>
 <p><b>相关性检验:</b><br><p style="text-indent:2em">
@@ -163,3 +161,7 @@ MATLAB有关描述分析的小程序 [点我下载](http://tangqinotes.me/wp-con
 2. 确定统计量 （单尾，双尾？significance level？） 
 3. 归一化，查表(或计算)，比较计算出来的 *p*值和预先定好的 significance level (*alpha*）的值，查看 *p* 值是否落在拒绝域。 
 4. 验证检验并得出结论。
+
+
+
+ **[李伯坚](https://www.youtube.com/playlist?list=PL1AElnNtwabmdR5CZab98Yxr-MsQ8ON2N)**教授的课程
