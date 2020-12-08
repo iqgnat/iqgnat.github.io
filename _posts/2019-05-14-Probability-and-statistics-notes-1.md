@@ -31,7 +31,7 @@ ECEN 2007_Probability and Statistics
 </p></p> 
     <b>注意： 差异性检验，涉及到方差的有偏估计 (的矫正), 需要在检验结果中，描述 degree of freedom。</b></td></tr></table>
 
- 
+
 
 **课本章节的概括:**  
 
