@@ -70,10 +70,16 @@ docs-cn:
     children:
       - title:  课堂笔记
         url:    /docs/en/quick-start
+        
       - title:  科研工具
         url:    /docs/en/structure
+       
+        
+        
       - title:  编程随笔
-        url:    /docs/en/structure      
+        url:    /docs/en/structure  
+        
+        
       - title:  人间草木
         url:    /docs/en/structure
 
@@ -82,6 +88,7 @@ docs-cn:
     children:
       - title:  脑电(EEG)/脑机接口
         url:    /docs/en/navigation
+        
       - title:  计算机
         url:    /docs/en/configuration
       - title:  金融分析

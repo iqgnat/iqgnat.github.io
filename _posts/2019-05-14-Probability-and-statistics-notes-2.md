@@ -10,21 +10,29 @@ sidebar:
 
 <!--more-->
 
-<table><tr><td bgcolor=#D3D3D3>
-<p><b>相关性检验:</b><br><p style="text-indent:2em">
-	<p style="text-indent:2em">a. Pearson【 前提：正态性；样本数量大（n>30 或者 n>50）】；<br>
-	<p style="text-indent:2em">b. Spearman（非参数性检验）；<br>
-    <p style="text-indent:2em">c. Kendall（非参数性检验） ;</p>
-    <br><b>单因素的差异性检验：</b> <br>
-	<p style="text-indent:2em">a. 独立 t 检验【 前提：正态性，方差其次性】; <br>
-	<p style="text-indent:2em">b.  ANOVA【前提： 正态性，方差其次性】。<br>
-	<p style="text-indent:2em">c. 配对t检验【前提：样本数量相同，且一一配对; 配对数据的差值满足正态分布】。 <br>
-     如果数据满足一一配对，首选配对t检验。如果不配对，数量不同，选 ANOVA。 独立 t 检验和 one-way ANOVA 检验的区别： 独立t检验纯粹看两组样本有没有区别， 而 ANOVA 还除了看是否有区别，还会看是组间因素造成的还是组内因素造成的。
-</p><p><br><b>双因素差异性检验:</b> <br>
-	<p style="text-indent:2em">a. two-way repeated ANOVA;<br>
-	<p style="text-indent:2em">b. two-way ANOVA without replication.<br>
-</p></p> 
-    <b>注意： 差异性检验，涉及到方差的有偏估计 (的矫正), 需要在检验结果中，描述 degree of freedom。</b></td></tr></table>
+===================================================================
+
+**1. 相关性检验:**
+
+1. Pearson【 前提：正态性；样本数量大（n>30 或者 n>50）】；
+
+ 2. Spearman（非参数性检验）；
+ 3. Kendall（非参数性检验） ;
+
+**2. 单因素的差异性检验：** 
+
+ 	1. 独立 t 检验【 前提：正态性，方差其次性】; 
+ 	2. ANOVA【前提： 正态性，方差其次性】。
+ 	3. 配对t检验【前提：样本数量相同，且一一配对; 配对数据的差值满足正态分布】。 如果数据满足一一配对，首选配对t检验。如果不配对，数量不同，选ANOVA。 独立 t 检验和one-way ANOVA检验的区别： 独立t检验纯粹看两组样本有没有区别， 而 ANOVA 还除了看是否有区别，还会看是组间因素造成的还是组内因素造成的。
+
+**3. 双因素差异性检验:** 
+
+ 	1. two-way repeated ANOVA;
+ 	2. two-way ANOVA without replication.
+
+ ***注意： 差异性检验，涉及到方差的有偏估计 (的矫正), 需要在检验结果中，描述 degree of freedom。**
+
+===================================================================
 
 用 Excel 的 Data Analysis （数据分析） 可以完成的操作在此：
 如何在Excel中加入Data Analysis 插件？博主neweastsun给出了教程：[链接](https://blog.csdn.net/neweastsun/article/details/39317449)
