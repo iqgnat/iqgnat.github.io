@@ -37,9 +37,7 @@ Texstudio 是一个够方便的编辑器，装不同的宏包, 是通过 **mpm**
 
 ![判断MiKTex是否存在](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/01.jpg)
 
-
-
-<font face="黑体" color=green size=5>Step 2：能否成功安装宏包（packages） </font>
+# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 2：能否成功安装宏包（packages） </font> </font>
 
 安装宏包时，在开始菜单 (或者通过cmd打开终端) 输入 **mpm**并回车运行。 在打开的 MiKtex Console，点击“Switch to administrator mode” （若弹出"用户账户控制", 选择"允许")， 在左侧边栏选择“Package”, 输入包名 按加号。
 
@@ -51,7 +49,7 @@ Texstudio 是一个够方便的编辑器，装不同的宏包, 是通过 **mpm**
 
 
 
-<font face="黑体" color=green size=5>Step 3：设置Texstudio的编译器和默认文献工具 </font>
+# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 3：设置Texstudio的编译器和默认文献工具 </font> </font>
 
 写IOP期刊论文时用的是IOP template，规定用的编译器是PdfLatex，文献工具是：BibTex。当写学校毕业论文的时候，因为对字体有些特别规定，所以用的XeLatex编译器。（不少高校的毕业论文，在github上已经有模板了）。具体用哪个编译器，还取决于文章需求。用下来觉得PdfLatex编译的速度比较快。
 
@@ -59,7 +57,7 @@ Texstudio 是一个够方便的编辑器，装不同的宏包, 是通过 **mpm**
 
 
 
-<font face="黑体" color=green size=5>Step 4：按.tex template，插入公式, table, 和 figure </font>
+# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 4：按.tex template，插入公式, table, 和 figure  </font> </font>
 
 找到期刊提供的 Latex template，用texstudio打开".tex", 文本中的数学符号 （$...$）、公式、表格 、图片（等， 根据template中的描述（或google），把自己的文章内容替换进去。
 
@@ -80,9 +78,7 @@ Put the following two lines before just before `\usepackage{amsmath}`
 \expandafter\let\csname endequation*\endcsname\relax 
 ```
 
-
-
-以下是table， figure ，equation 格式举例:
+table， figure ，equation 格式举例:
 
 ```
 \begin{table} 
@@ -133,7 +129,7 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 
 
 
-<font face="黑体" color=green size=5>Step 5: 参考文献的添加</font>
+# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 5: 参考文献的添加 </font> </font>
 
 核心：用 BibTeX 工具，生成参考文献。
 
@@ -151,7 +147,9 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 
 ![google scholar 403 error](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/08.png)
 
-<font face="黑体" color=green size=5>Step 6: 检查 .bib 中的参考文献是否重复添加</font>
+
+
+# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 6: 检查 .bib 中的参考文献是否重复添加</font> </font>
 
 因为涉及的参考文献众多（ 而且google给的bibtex标签不是关键词抓取 ，为了自己更好理解，有时复制bibtex时候会改 @article 后面的标签），这样如果我们重复复制了bibtex并在正文引用，在Bibliography处就会生成两个相同的reference. 因此我们需要 一个自动查验 bibtex中的文章是否重复。已经有stackovernet的网友[Martin](https://tex.stackexchange.com/users/32082/martin)解决了，原创回答请点击[这里](https://tex.stackovernet.com/cn/q/93352)。
 
@@ -175,7 +173,7 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 
 
 
-<font face="黑体" color=green size=5>Step 7: 生成pdf，并保存.tex版本 </font>
+# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 7: 生成pdf，并保存.tex版本</font> </font>
 
 编译，生成并保存pdf文件，保存 .tex 文件（建议根据日期或版本命名）。
 
@@ -183,7 +181,7 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 
 
 
-<font face="黑体" color=green size=5>Step 8: 用 latexdiff 比较 不同 .tex 版本之间的差异，并自动标注</font>
+# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 8: 用 latexdiff 比较 不同 .tex 版本之间的差异，并自动标注</font> </font>
 
 安装 latexdiff 的宏包。 保证两个版本的 .tex 与其引用文件在同一文件夹下。 在空白处按住shift+右击鼠标，在弹出的快捷菜单选择 “在此处打开powershell窗口”。 在powershell 窗口中输入: latexdiff 旧的版本.tex 新的版本.tex> diff.tex 。
 
@@ -193,7 +191,7 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 
 
 
-<font face="黑体" color=green size=5>Step 9: latex的 .tex 格式如何转换成word格式</font>
+# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 9: latex的 .tex 格式如何转换成word格式</font> </font>
 
 在写journal的同时，有可能同时在写毕业thesis。而学校提供的模板可能只有MSword，这是就有了将.tex文件转换成.doc/.docx格式的需求。
 
@@ -202,7 +200,7 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 
 
 
-<font face="黑体" color=green size=5>Step 10: 将截图的公式，转换成word格式</font>
+# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 10: 将截图的公式，转换成word格式</font> </font>
 
 在写毕业论文的时候，经常会引用到公式，往往我们有的都不是 word格式的。**Mathpix snipping tool** 可以将截图里的公式输出 .tex code, 把code 复制到 .tex。用.tex格式当成一个中转。 然后通过安装[GrindEQ](https://www.grindeq.com/) 插件，就在 word 打开 .tex的文档，并且，打开以后，tex的公式都是已word公式显示。
 
