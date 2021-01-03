@@ -79,17 +79,26 @@ EEGLAB toolbox 可能有函数（或者plugin）与 fieldtrip toolbox 有重复�
 
 EEGLAB toolbox 的 GUI 操作流程， up主 AlvinLu4016 的教学非常详细。以减少EEG中的EOG为例，我用了大约10个步骤：
 
-步骤1： select data (sampling rate =256)
-步骤2： load event trigger ( 在channel 18记录着 trigger的上升下降沿 )
-步骤3:    set event value (这里我选的0和1）
-步骤4:    filter (0.5-30Hz, 避开工频，暂时只看低频信号）
-步骤5:    extract epochs (-0.5 – 60.5 秒), 因为我们的信号每个epoch是1分钟，一共3个一分钟
-步骤6:    plot spectrum (scroll), 看通道的时域图
-步骤7:   channel selection (2:17), 我们的channel 1 是时间轴
-步骤8： import channel location (导入 .loc 文档）
+步骤1： select data (sampling rate =256)；
+
+步骤2： load event trigger ( 在channel 18记录着 trigger的上升下降沿 )；
+
+步骤3:    set event value (这里我选的0和1）；
+
+步骤4:    filter (0.5-30Hz, 避开工频，暂时只看低频信号）；
+
+步骤5:    extract epochs (-0.5 – 60.5 秒), 因为我们的信号每个epoch是1分钟，一共3个一分钟；
+
+步骤6:    plot spectrum (scroll), 看通道的时域图；
+
+步骤7:   channel selection (2:17), 我们的channel 1 是时间轴；
+
+步骤8： import channel location (导入 .loc 文档）；
+
 步骤 9：run ICA (这里有4中提取方法， SOBI效果总是比较好），然后 select component, plot
-preprocessing (normalize）
-步骤10：preprocessing (normalize）
+preprocessing (normalize）；
+
+步骤10：preprocessing (normalize）。
 
 
 
