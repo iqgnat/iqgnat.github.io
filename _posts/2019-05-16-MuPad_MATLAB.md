@@ -33,3 +33,22 @@ end
 figure
 stem(a)
 ```
+
+![Mupad](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-16-MuPad_MATLAB/01.jpg)
+
+
+
+其中涉及的最常用MuPAD函数, 引用 [winner245](https://www.ilovematlab.cn/home.php?mod=space&uid=161646&s_tid=ReputationProfileLink) ：
+
+:= （带冒号的等号）：给符号变量指定特定的数值（这是与matlab语言最大的区别），例如：将x赋值为2用x:=2 而非x=2
+[symengine](http://www.mathworks.com/help/symbolic/symengine.html?searchHighlight=symengine)： 查看你的Matlab符号计算引擎，查看你的版本是否支持MuPAD
+[mupad](http://www.mathworks.com/help/symbolic/mupad.html?searchHighlight=mupad): 开启一个MuPAD notebook界面，在该界面上可以用纯符号计算语言，语法跟Maple极其相似，例如，不需要事先定义任何符号（像syms这些就不需要了），该引擎直接将任何符号当作符号变量使用
+[mupadwelcome](http://www.mathworks.com/help/symbolic/mupadwelcome.html): 开启MuPAD欢迎界面，可以选择打开一个notebook（MuPAD界面）、启动M file editor，或者打开最近的文件
+[evalin](http://www.mathworks.com/help/symbolic/evalin.html?searchHighlight=evalin)：在不打开MuPAD notebook界面的情况下，在matlab command window或M file editor中直接调用MuPAD引擎，无需指定输入参数
+[feval](http://www.mathworks.com/help/symbolic/feval.html?searchHighlight=feval)： 在不打开MuPAD notebook界面的情况下，在matlab command window或M file editor中直接调用MuPAD引擎，需要指定输入参数
+
+**WolframAlpha的在线实现：**
+
+MuPAD 已经足够方便了，不过用Wolfram Alpha完成这一切，一句足矣。
+
+![WOLFRAM](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-16-MuPad_MATLAB/02.png)
