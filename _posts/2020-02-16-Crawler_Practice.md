@@ -19,8 +19,7 @@ aside:
 包括品牌、型号、配置（CPU、内存、存储）、制式（电信、联通、移动）、4G/5G、图片（1张主界面即可）。
 
 
-
-# lxml 和 element tree 解析，综合三种方式获取网页元素:
+lxml 和 element tree 解析，综合三种方式获取网页元素:
 
 1.xpath
 
