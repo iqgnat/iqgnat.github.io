@@ -1,5 +1,5 @@
 ---
-title: 非侵入性脑机接口（BCI）现状概述
+title: 无创脑机接口（BCI）现状概述
 tags: 脑机接口
 author: Tang Qi
 sidebar:
@@ -55,9 +55,7 @@ $$
 $$
 *其中LTF表示从 IAPF - 4 Hz到 IAPF的低过渡频率 , HTF的表示从 IAPF Hz到 IAPF + 2 Hz的高过渡频率。
 
-<p align="center"><img src="https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-07-07-Literature_review_on_EEG_BCI/02_The-illustration-of-individual-alpha-frequency-band.png" style="zoom:50%"/></p>
-
-​	
+	<p align="center"><img src="https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-07-07-Literature_review_on_EEG_BCI/02_The-illustration-of-individual-alpha-frequency-band.png" style="zoom:50%"/></p>
 
 ​	除了Alpha频段外，其他频段的活动也被证明与不同的行为或状态有关，并且因受试者的年龄，疾病等方面的不同而不同。Delta频段是与慢波睡眠（SMS）相关的高振幅但慢速的波段。Theta频段与潜意识有关，在深度睡眠和深度冥想中增强。Beta频段可细分为 低程Beta（12.5-16 Hz），中程Beta（16.5-20 Hz）和高程Beta（20.5-28 Hz）。低程Beta出现在放松和注意力集中的过程中; 中程Beta出现在思考或脑部信号处理过程中，高程Beta在受试者感到紧张和兴奋时出现。一些神经科学家认为，Gamma波可以帮助解决、整合问题，是意识的关键[50]。
 
@@ -66,7 +64,7 @@ $$
 # <font face="黑体" color=green size=5>3. 脑机接口现状和优化方向</font>
 
 ​	BCI是一个提供人脑与计算机之间直接连接的系统或电子设备。 BCI系统主要是基于三个BCI开发的
-范例：运动想象 (MI)，事件相关电位 (ERP) 和 稳态视觉诱发电位(SSVEP) [51]。当受试者在脑中想象或打算做单边运动时，大脑发出MI信号，例如打算举起左手或右手，而手实际上并没有移动。心梗期间，感觉区域的能量脑对侧的阻抗会降低，μ（8-12 Hz）节律和 β节律（13-30 Hz）相互削弱，同侧运动感觉区的功率会增加（与事件相关的去同步，ERD）和脑神经元的突触后电位（与事件相关的同步，ERS）增强 [52-54]。ERP是一种基于EEG的脑机接口系统中非常受到关注的范式。经典ERP的主要包括P1，N1，P2，N2，和P3这几个峰谷，如图 [1] 所示。前三者被称为外生成分，后两者称为内源性成分，与认知过程密切相关。根据刺激方式的不同，可以单独划分为-- 视觉，听觉和体感等不同范式[55]。SSVEP 是在当视网膜接受从3.5 Hz - 75Hz的视觉刺激时，大脑在视觉刺激的相同频率或谐波频率下产生电活动  [56]。通过对人脑的经闪光信号刺激产生的EEG信号, 经放大器放大和模拟/数字转换后提取电势最高的频率，与闪光灯刺激器的闪烁频率比较，进而应用在脑机接口。
+范例：运动想象 (MI)，事件相关电位 (ERP) 和 稳态视觉诱发电位(SSVEP) [51]。当受试者在脑中想象或打算做单边运动时，大脑发出MI信号，例如打算举起左手或右手，而手实际上并没有移动。运动想象期间，感觉区域的能量脑对侧的阻抗会降低，μ（8-12 Hz）节律和 β节律（13-30 Hz）相互削弱，同侧运动感觉区的功率会增加（与事件相关的去同步，ERD）和脑神经元的突触后电位（与事件相关的同步，ERS）增强 [52-54]。ERP是一种基于EEG的脑机接口系统中非常受到关注的范式。经典ERP的主要包括P1，N1，P2，N2，和P3这几个峰谷，如图 [1] 所示。前三者被称为外生成分，后两者称为内源性成分，与认知过程密切相关。根据刺激方式的不同，可以单独划分为-- 视觉，听觉和体感等不同范式[55]。SSVEP 是在当视网膜接受从3.5 Hz - 75Hz的视觉刺激时，大脑在视觉刺激的相同频率或谐波频率下产生电活动  [56]。通过对人脑的经闪光信号刺激产生的EEG信号, 经放大器放大和模拟/数字转换后提取电势最高的频率，与闪光灯刺激器的闪烁频率比较，进而应用在脑机接口。
 
 <img src="https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-07-07-Literature_review_on_EEG_BCI/03_ERPsample.png" style="zoom:50%" />
 
