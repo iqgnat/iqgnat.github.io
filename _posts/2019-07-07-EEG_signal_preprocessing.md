@@ -102,3 +102,15 @@ preprocessing (normalize）；
 
 
 
+<img src="https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-07-07-EEG_signal_preprocessing/EEGLAB_1.JPG" style="zoom:100%" />
+
+
+
+<img src="https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-07-07-EEG_signal_preprocessing/EEGLAB_2.JPG" style="zoom:50%" />
+
+
+
+<img src="https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-07-07-EEG_signal_preprocessing/EEGLAB_3.JPG" style="zoom:50%" />
+
+
+

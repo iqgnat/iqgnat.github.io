@@ -190,3 +190,7 @@ https://chrome.google.com/webstore/detail/latex2word-equation/oicdodhdflfciojjhb
 将.tex公式（比如从 **Mathpix snipping tool** copy得到）复制到以下网址文本框:
 http://bandicoot.maths.adelaide.edu.au/MathJax/test/sample-dynamic-2.html
 右击 LaTeX2Word-Equation，自动复制，然后在word打开（在powerpoint打开不行），然后才可以复制到office的其他产品。
+
+
+
+<img src="https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-07-07-EEG_signal_preprocessing/EEGLAB_4.JPG" style="zoom:80%" />
