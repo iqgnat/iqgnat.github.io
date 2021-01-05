@@ -24,22 +24,22 @@ aside:
 -  **Step 6 :  检查 .bib 中的参考文献是否重复添加** 
 -  **Step 7:   生成pdf，并保存.tex版本**;
 -  **Step 8:   用 latexdiff 比较 不同 .tex 版本之间的差异，并自动标注**
--  **Step 9:   latex的 .tex 格式如何转换成word格式** 
+-  **Step 9:   latex的 .tex 格式转换成word格式** 
 -  **Step 10:   截图的公式，转换成word格式** 
 
 # <font face="黑体" color=green size=5>Step 1:  Windows环境下的安装--latex的, 先MiKTeX [(官网)](https://miktex.org/download) ，后Texstudio[(官网)](https://www.texstudio.org/) </font>
 
-Texstudio 是一个够方便的编辑器，装不同的宏包, 是通过 **mpm** (*MiKTeX* Package Manager) 在线安装 。 我们在安装完Miktex后，可以通过 **cmd** 在终端中输入 **mpm** 字符，来查看 MiKtex Console是否存在并打开。
+Texstudio 是编辑器，通过 **mpm** (*MiKTeX* Package Manager) 在线安装包。 安装完Miktex后，可以终端中输入 **mpm** 字符，来查看 MiKtex Console 是否存在并打开。
 
 ![判断MiKTex是否存在](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/01.jpg)
 
 # <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 2：安装包（packages） </font> </font>
 
-安装宏包时，在开始菜单 (或者通过cmd打开终端) 输入 **mpm**并回车运行。 在打开的 MiKtex Console，点击“Switch to administrator mode” （若弹出"用户账户控制", 选择"允许")， 在左侧边栏选择“Package”, 输入包名 按加号。
+安装包时，在开始菜单 (或者通过cmd打开终端) 输入 **mpm**并回车运行。 在打开的 MiKtex Console，点击“Switch to administrator mode” （若弹出"用户账户控制", 选择"允许")， 在左侧边栏选择“Package”, 输入包名 按加号。
 
 ![安装宏包](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/02.jpg)
 
- “ Package Manager ” 和 MiKtex Console 的Package编辑界面很像。 但我在 “ Package Manager ”添加包报 " MiKTeX Problem Report：The operation could not be completed because a required file does not exist. "。 尝试添加镜像，手动增加包文件等，都以报“No data”告终。 或许这种添加方式，只适用于Texlive。 
+ “ Package Manager ” 和 MiKtex Console 的Package编辑界面很像。 但我在 “ Package Manager ”添加包报 " MiKTeX Problem Report：The operation could not be completed because a required file does not exist. "。 
 
 ![安装宏包2](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/03.jpg)
 
@@ -47,7 +47,7 @@ Texstudio 是一个够方便的编辑器，装不同的宏包, 是通过 **mpm**
 
 # <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 3：设置Texstudio的编译器和默认文献工具 </font> </font>
 
-写IOP期刊论文时用的是IOP template，规定用的编译器是PdfLatex，文献工具是：BibTex。当写毕业论文的时候，学院对字体有要求，用的XeLatex编译器。用下来觉得PdfLatex编译的速度比较快。
+写IOP期刊论文时用的是IOP template，规定用的编译器是PdfLatex，文献工具是：BibTex。当写毕业论文的时候，学院对字体有要求，用的XeLatex编译器。PdfLatex编译的速度比较快。
 
 ![编译器选择](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/04.jpg)
 
@@ -55,14 +55,13 @@ Texstudio 是一个够方便的编辑器，装不同的宏包, 是通过 **mpm**
 
 # <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 4：.tex template 插入公式, 表格和图片</font> </font>
 
-找到期刊提供的 Latex template，用 texstudio打开".tex", 文本中的数学符号 （$...$）、公式、表格 、图片（等， 根据template中的描述（或google），把文章内容替换进去。比如 IOP 定义了如下命令，分别引用section，figure，table 等，自动加上对应的前缀：
+期刊提供的 Latex template，通过 texstudio打开".tex", 文本中的数学符号 （$...$）、公式、表格 、图片（等， 根据template中的描述（或google），把文章内容替换进去。 IOP 定义了如下命令，分别引用section，figure，table 等，自动加上对应的前缀：
 
 ```
 \newcommand{\eref}[1]{(\ref{#1})} \newcommand{\sref}[1]{section~\ref{#1}} \newcommand{\fref}[1]{figure~\ref{#1}} \newcommand{\tref}[1]{table~\ref{#1}} \newcommand{\Eref}[1]{Equation (\ref{#1})} \newcommand{\Sref}[1]{Section~\ref{#1}} \newcommand{\Fref}[1]{Figure~\ref{#1}} \newcommand{\Tref}[1]{Table~\ref{#1}}
 ```
 
-用 [IOPLatexGuidelines (官网下载) ](https://publishingsupport.iopscience.iop.org/questions/latex-template/)模板对格式的要求和示例很详细，
-然而，IOP提供的 iopart (\documentclass[12pt]{iopart}) 与常用的用于公式的宏包 [`**amsmath**`](https://www.ctan.org/pkg/amsmath) 不兼容。在 github已经有了解决方法：
+用 [IOPLatexGuidelines ](https://publishingsupport.iopscience.iop.org/questions/latex-template/)模板， iopart (\documentclass[12pt]{iopart}) 与常用的用于公式的宏包 [`**amsmath**`](https://www.ctan.org/pkg/amsmath) 不兼容。在 github已经有了解决方法：
 
 Put the following two lines before just before `\usepackage{amsmath}` 
 （ [祝曹祥](https://zhucaoxiang.github.io/latex/2017/08/16/Use-amsmath-together-with-iopart-in-LateX.html) ）
@@ -72,7 +71,7 @@ Put the following two lines before just before `\usepackage{amsmath}`
 \expandafter\let\csname endequation*\endcsname\relax 
 ```
 
-table， figure ，equation 格式举例:
+表格， 图片，公式格式举例:
 
 ```
 \begin{table} 
@@ -111,16 +110,14 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 1） 编辑表格生成.tex 表格代码：**
 [**https://www.tablesgenerator.com/**](https://www.tablesgenerator.com/) 
 **online, 比较适用写于写毕业论文用，需要安装的package在复制以后会以%提示，没有提示则不需要另外添加包；注意，从excel复制表格进tablegenerator之前，表格不要留空或者使用合并单元格（可以用_代替）。
-2) 将截图公式转换成.tex code** **公式代码** : 
-
-**可以根据截图生成公式代码： Mathpix snipping tool， 
+2) 将截图公式转换成.tex code** **公式代码** : Mathpix snipping tool， 
 快捷键: **CTRL** + **ALT** + **M** , 生成的代码，可能还有未安装的包，用\usepackage{}添加。 
 
 
 
 # <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 5: 参考文献的添加 </font> </font>
 
-用 BibTeX 工具，生成参考文献。涉及额外的两个文件：.bst （生成的references的格式） 和 .bib。期刊提供的 .bst 默认已经正确规定好了生成的reference的形态格式，不过还是需要进行格式检查。对于 .bib，复制scholar提供的标签和内容，然后在.tex正文中用 \cite{} 引用@article{} 括号中的标签内容。
+用 BibTeX 工具，生成参考文献。涉及额外的两个文件：.bst （生成的references的格式） 和 .bib。期刊提供的 .bst 默认已经正确规定好了生成的reference的形态格式。对于 .bib，复制scholar提供的标签和内容，然后在.tex正文中用 \cite{} 引用@article{} 括号中的标签内容。
 
  连续添加多个参考，如 xxx. [8-11]的形式，不是 xxx.[8,9,10,11]，需要另外添加 \usepackage{cite} （在导言中）， 在正文部分，将文献标签以逗号隔开。
 
@@ -129,10 +126,6 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 ![google scholar中添加references的位置](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/06.jpg)
 
 ![google scholar中添加references的位置2](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/07.jpg)
-
-在短时间内在Chrome中多次打开 scholar Bibtex URL 后，通知 403 error，清理cache，Temp，重装Chrome都无效。似乎除了改IP地址，别无他法。 此时IE浏览器充分发挥了备胎作用，但是还是用着不爽，因为需要不停地人机验证。在48小时后，Chrome Bibtex URL 的限制被解，可以正常访问了。
-
-![google scholar 403 error](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/08.png)
 
 
 
@@ -170,7 +163,7 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 
 # <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 8: 用 latexdiff 比较 不同 .tex 版本之间的差异，并自动标注</font> </font>
 
-安装 latexdiff 的宏包。 保证两个版本的 .tex 与其引用文件在同一文件夹下。 在空白处按住shift+右击鼠标，在弹出的快捷菜单选择 “在此处打开powershell窗口”。 在powershell 窗口中输入: latexdiff 旧的版本.tex 新的版本.tex> diff.tex 。
+安装 latexdiff 包。 保证两个版本的 .tex 与其引用文件在同一文件夹下。 powershell 窗口中输入: latexdiff  旧的版本名.tex   新的版本名.tex  >   diff.tex 。
 
 
 
@@ -178,12 +171,10 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 
 
 
-# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 9: latex的 .tex 格式如何转换成word格式</font> </font>
+# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 9: latex的 .tex 格式转换成word格式</font> </font>
 
-在写journal的同时，有可能同时在写毕业thesis。而学校提供的模板可能只有MSword，这是就有了将.tex文件转换成.doc/.docx格式的需求。
-
-简单的方法是生成pdf之后，有很多在线转换。但是它们的效果首先不好，其次是上传到互联网转换有风险。用[GrindEQ](https://www.grindeq.com/)把.tex文件转换成word，出来的成品马马虎虎可以用，是MS word的官方插件。下载好以后，备份.tex文件，然后用word打开，文件格式选.tex。
-转换出来的bibliography 和公式都没问题。只是文中 \Fref, \Tref, \cite 的引用效果都不复存在, 需要再编辑。
+[GrindEQ](https://www.grindeq.com/)把.tex文件转换成word，出来的成品马马虎虎可以用，是MS word的官方插件。下载好以后，备份.tex文件，然后用word打开，文件格式选.tex。
+转换出来的bibliography 和公式没问题。只是文中 \Fref, \Tref, \cite 的引用效果都不复存在, 需要再编辑。
 
 
 
