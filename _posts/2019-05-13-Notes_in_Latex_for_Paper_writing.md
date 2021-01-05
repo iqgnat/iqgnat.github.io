@@ -1,5 +1,5 @@
 ---
-title: Latex写期刊论文的快速入门笔记
+title: Latex写期刊的笔记
 tags: 科研工具
 author: Tang Qi
 sidebar:
@@ -12,11 +12,7 @@ aside:
 
 <!--more-->
 
- Latex 之于 Word，类似于 Visio 之于 小画家 ，是一个化繁为简，针对性强的排版工具，适用于速成与严谨地撰稿。本科期间，就听说周围实验室规定用latex写报告了，我一度以为，它的学习成本较高。但其实，如果不求甚解+按图索骥，是可以很快上手的。
-
-​        我没有比较不同文字处理系统（如 MiKTeX, TeX Live,  CTeX, cwTex) 或 不同整合开发环境 ( 如Texstudio**,** WinEdt, TeXstudio, TeXmaker) 之间的异同。我选择了 **Miktex** + **Texstudio** 的常用组合 （win10环境中）。 
-
-​         本文只总结了从零到上手Latex写报告和期刊的大步骤。真正写的时候，涉及到的无数格式细节，需要google具体的package (添加到导言中) 和命令(添加在正文部分)。
+ Latex 针对性强的排版工具，适用于速成与严谨地撰稿。这里没有比较不同文字处理系统（如 MiKTeX, TeX Live,  CTeX, cwTex) 或 不同整合开发环境 ( 如Texstudio**,** WinEdt, TeXstudio, TeXmaker) 之间的异同，仅仅选择了 **Miktex** + **Texstudio** 的常用组合 （win10环境中）。 
 
 # <font face="黑体" color=green size=5>**步骤**</font>
 
@@ -33,17 +29,17 @@ aside:
 
 # <font face="黑体" color=green size=5>Step 1:  Windows环境下的安装--latex的, 先MiKTeX [(官网)](https://miktex.org/download) ，后Texstudio[(官网)](https://www.texstudio.org/) </font>
 
-Texstudio 是一个够方便的编辑器，装不同的宏包, 是通过 **mpm** (*MiKTeX* Package Manager) 在线安装 。 我们在安装完Miktex后，可以通过 **cmd** 在终端中输入 **mpm** 字符，来查看MiKtex Console是否存在并打开。
+Texstudio 是一个够方便的编辑器，装不同的宏包, 是通过 **mpm** (*MiKTeX* Package Manager) 在线安装 。 我们在安装完Miktex后，可以通过 **cmd** 在终端中输入 **mpm** 字符，来查看 MiKtex Console是否存在并打开。
 
 ![判断MiKTex是否存在](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/01.jpg)
 
-# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 2：能否成功安装宏包（packages） </font> </font>
+# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 2：安装包（packages） </font> </font>
 
 安装宏包时，在开始菜单 (或者通过cmd打开终端) 输入 **mpm**并回车运行。 在打开的 MiKtex Console，点击“Switch to administrator mode” （若弹出"用户账户控制", 选择"允许")， 在左侧边栏选择“Package”, 输入包名 按加号。
 
 ![安装宏包](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/02.jpg)
 
-一开始我在开始菜单搜索的是 “ Package Manager ”，打开以后得到一个和MiKtex Console 差不多的Package编辑界面。 但在这个界面中，完全无法添加宏包，会报错 " MiKTeX Problem Report：The operation could not be completed because a required file does not exist. "。 尝试添加镜像，手动增加宏包等，但都以报错“No data”告终。 或许这种添加方式，只适用于Texlive。 寻思了一天，直到和大师兄一对比，才发现虽然是安装package，但不是在" Package Manager", 而是在" MiKTeX Console" 。
+ “ Package Manager ” 和 MiKtex Console 的Package编辑界面很像。 但我在 “ Package Manager ”添加包报 " MiKTeX Problem Report：The operation could not be completed because a required file does not exist. "。 尝试添加镜像，手动增加包文件等，都以报“No data”告终。 或许这种添加方式，只适用于Texlive。 
 
 ![安装宏包2](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/03.jpg)
 
@@ -51,23 +47,21 @@ Texstudio 是一个够方便的编辑器，装不同的宏包, 是通过 **mpm**
 
 # <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 3：设置Texstudio的编译器和默认文献工具 </font> </font>
 
-写IOP期刊论文时用的是IOP template，规定用的编译器是PdfLatex，文献工具是：BibTex。当写学校毕业论文的时候，因为对字体有些特别规定，所以用的XeLatex编译器。（不少高校的毕业论文，在github上已经有模板了）。具体用哪个编译器，还取决于文章需求。用下来觉得PdfLatex编译的速度比较快。
+写IOP期刊论文时用的是IOP template，规定用的编译器是PdfLatex，文献工具是：BibTex。当写毕业论文的时候，学院对字体有要求，用的XeLatex编译器。用下来觉得PdfLatex编译的速度比较快。
 
 ![编译器选择](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/04.jpg)
 
 
 
-# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 4：按.tex template，插入公式, table, 和 figure  </font> </font>
+# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 4：.tex template 插入公式, 表格和图片</font> </font>
 
-找到期刊提供的 Latex template，用texstudio打开".tex", 文本中的数学符号 （$...$）、公式、表格 、图片（等， 根据template中的描述（或google），把自己的文章内容替换进去。
-
-贴心的IOP 帮我们提前定义好了如下命令，这样分别引用section，figure，table 等，就能自动加上对应的前缀：
+找到期刊提供的 Latex template，用 texstudio打开".tex", 文本中的数学符号 （$...$）、公式、表格 、图片（等， 根据template中的描述（或google），把文章内容替换进去。比如 IOP 定义了如下命令，分别引用section，figure，table 等，自动加上对应的前缀：
 
 ```
 \newcommand{\eref}[1]{(\ref{#1})} \newcommand{\sref}[1]{section~\ref{#1}} \newcommand{\fref}[1]{figure~\ref{#1}} \newcommand{\tref}[1]{table~\ref{#1}} \newcommand{\Eref}[1]{Equation (\ref{#1})} \newcommand{\Sref}[1]{Section~\ref{#1}} \newcommand{\Fref}[1]{Figure~\ref{#1}} \newcommand{\Tref}[1]{Table~\ref{#1}}
 ```
 
-如果刊物没有提供latex的模板，可以考虑用 [IOPLatexGuidelines (官网下载) ](https://publishingsupport.iopscience.iop.org/questions/latex-template/)的模板牛刀小试，因为该模板对格式的要求和示例非常详尽，可以按图索骥。遇到没有示例的功能，也可以google到对应的宏包，通过step2下载宏包并使用。
+用 [IOPLatexGuidelines (官网下载) ](https://publishingsupport.iopscience.iop.org/questions/latex-template/)模板对格式的要求和示例很详细，
 然而，IOP提供的 iopart (\documentclass[12pt]{iopart}) 与常用的用于公式的宏包 [`**amsmath**`](https://www.ctan.org/pkg/amsmath) 不兼容。在 github已经有了解决方法：
 
 Put the following two lines before just before `\usepackage{amsmath}` 
@@ -109,33 +103,26 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 \end{equation}
 ```
 
-\* \label{} 要紧挨着 \end{} 之前申明，过早申明就会报错, 而且报错的位置，总是有点迷。
+\* \label{} 要紧挨着 \end{} 之前申明，过早申明就会报错。
 
 
 
 **TIPS：
 1） 编辑表格生成.tex 表格代码：**
 [**https://www.tablesgenerator.com/**](https://www.tablesgenerator.com/) 
-**online, 比较适用写于写毕业论文用，需要安装的package在复制以后会以%提示，没有提示则不需要另外添加包；注意，从excel复制表格进tablegenerator之前，表格不要留空或者使用合并单元格（可以用_代替），否则复制后，格式会错乱。
+**online, 比较适用写于写毕业论文用，需要安装的package在复制以后会以%提示，没有提示则不需要另外添加包；注意，从excel复制表格进tablegenerator之前，表格不要留空或者使用合并单元格（可以用_代替）。
 2) 将截图公式转换成.tex code** **公式代码** : 
-**Mathpix snipping tool**，快捷键: **CTRL** + **ALT** + M
 
-
-
-**可以根据截图生成公式代码： Mathpix snipping tool （很好用）**， 
-快捷键: **CTRL** + **ALT** + **M** , 生成的代码，可能还有未安装的包。
-如果报错，具体看到缺失哪一个 "control sequence"，上网找到对应的package，用\usepackage{}添加即可。 
-心得：snipping tool 没有 tablegenerator这么贴心， tablegenerator会在复制后把缺失的package在备注里面显示。
+**可以根据截图生成公式代码： Mathpix snipping tool， 
+快捷键: **CTRL** + **ALT** + **M** , 生成的代码，可能还有未安装的包，用\usepackage{}添加。 
 
 
 
 # <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 5: 参考文献的添加 </font> </font>
 
-核心：用 BibTeX 工具，生成参考文献。
+用 BibTeX 工具，生成参考文献。涉及额外的两个文件：.bst （生成的references的格式） 和 .bib。期刊提供的 .bst 默认已经正确规定好了生成的reference的形态格式，不过还是需要进行格式检查。对于 .bib，复制scholar提供的标签和内容，然后在.tex正文中用 \cite{} 引用@article{} 括号中的标签内容。
 
-这里涉及额外的两个文件：.bst （生成的references的格式） 和 .bib。需要注意的是，期刊提供的 .bst依然需要进行格式检查，因为有的期刊提供的 .bst 可能甚至格式不能满足它自己的要求。但一般情况下，默认.bst已经正确规定好了生成的reference的形态格式。 对于 .bib，只需要机械地复制scholar提供的标签和内容，然后在.tex正文中用 \cite{} 引用@article{} 括号中的标签内容即可。
-
-小细节： 连续添加多个参考，如 xxx. [8-11]的形式，而不是 xxx.[8,9,10,11]。还需另外添加 \usepackage{cite} （在导言中）， 在正文部分，将文献标签以逗号隔开即可。
+ 连续添加多个参考，如 xxx. [8-11]的形式，不是 xxx.[8,9,10,11]，需要另外添加 \usepackage{cite} （在导言中）， 在正文部分，将文献标签以逗号隔开。
 
 ![生成references的格式](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/05.jpg)
 
