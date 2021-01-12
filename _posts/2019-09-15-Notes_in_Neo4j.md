@@ -1,9 +1,10 @@
 ---
-title: 图数据库 Neo4j 笔记
+title: 图数据库 Neo4j 随笔
 tags: 编程随笔
 author: Tang Qi
 sidebar:
   nav: docs-cn
+categories: 编程随笔
 ---
 
 腾讯课堂有 庞国明的教学课程，配套了一本全面的中文教材。
@@ -53,7 +54,7 @@ sidebar:
     
 12.  WITH语句没有包含的参数 是不能被返回的；
 
-    
+​    
 
 13. NEO4J DESKTOP支持的库： APOC, GRAPH Algorithms，GraphQL;
 

@@ -6,6 +6,7 @@ sidebar:
   nav: docs-cn
 aside:
   toc: true
+categories: [课堂笔记,科研工具]
 ---
 
 课程相关: 

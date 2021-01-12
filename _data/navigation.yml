@@ -69,29 +69,29 @@ docs-cn:
   - title:      随笔
     children:
       - title:  课堂笔记
-        url:    /docs/en/quick-start
+        url:    /docs/cn/Courses
         
       - title:  科研工具
-        url:    /docs/en/structure
+        url:    /docs/cn/Science
        
         
         
       - title:  编程随笔
-        url:    /docs/en/structure  
+        url:    /docs/cn/Codings  
         
         
       - title:  人间草木
-        url:    /docs/en/structure
+        url:    /docs/cn/Readings
 
 
   - title:      板块
     children:
       - title:  脑电(EEG)/脑机接口
-        url:    /docs/en/navigation
+        url:    /docs/cn/BCI
         
       - title:  计算机
-        url:    /docs/en/configuration
+        url:    /docs/cn/Develop
       - title:  金融分析
-        url:    /docs/en/navigation
+        url:    /docs/cn/Finance
 
   

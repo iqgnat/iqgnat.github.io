@@ -1,14 +1,24 @@
 ---
-title: Oracle 笔记
+title: Oracle 随笔
 tags: 编程随笔
 author: Tang Qi
 sidebar:
   nav: docs-cn
 aside:
   toc: true
+category: 编程随笔
 ---
 
- 打工人 的 Oracle 笔记，持续追加更新。
+1. TNS 协议适配器错误
+2. 数据库名，实例名，服务名，用户名（schema）的区别
+3. 表空间、临时表空间不足
+4.  数据装载
+5. 数据量大的情况
+6. DDL 语句在存储过程执行
+7. 表关联出现重复数据
+8. 显式授权
+9. 开窗函数 over (partition by)
+10. ...
 
 <!--more-->
 

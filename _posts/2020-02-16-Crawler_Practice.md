@@ -6,6 +6,7 @@ sidebar:
   nav: docs-cn
 aside:
   toc: true
+categories: 编程随笔
 ---
 
 

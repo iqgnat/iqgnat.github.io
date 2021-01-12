@@ -1,11 +1,12 @@
 ---
 title: 特征衍生、特征筛选
-tags: 编程随笔
+tags: 机器学习
 author: Tang Qi
 sidebar:
   nav: docs-cn
 aside:
   toc: true
+categories: 机器学习
 ---
 
 特征优选，让模型自适应地选择最优特征，进而实现稀疏化，降低过拟合。包括两个方面：特征衍生和特征筛选。
@@ -126,7 +127,6 @@ aside:
      ![LASSO_2](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2020-06-05-Feature_augmentation/wps4.png)
      
      其中e^(2k/T)为惩罚因子(penalty factor)。AIC指标是常用的利用趋势估计预测模型的指标之一。选择模型时，选择AIC最大的模型。
-     
      
    - 贝叶斯信息准则（Bayesian information criteria）
    
