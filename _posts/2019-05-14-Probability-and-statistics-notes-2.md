@@ -1,9 +1,12 @@
 ---
 title: 概率统计笔记2:实操
-tags: 理论基础
+tags: [科研工具,理论基础]
 author: Tang Qi
 sidebar:
   nav: docs-cn
+aside:
+  toc: true
+categories: [科研工具,理论基础]
 ---
 
  这一篇记录的是概率统计理论的应用：**正态分布检验，相关性分析（Pearson，Spearman，Kendall),**    **T检验 (配对 *t*），two-way repeated ANOVA，以及用 SPSS statistics, MATLAB 和 Excel** 对上述统计性分析的实现。

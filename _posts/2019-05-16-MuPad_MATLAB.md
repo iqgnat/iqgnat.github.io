@@ -1,9 +1,12 @@
 ---
 title: MuPAD 递归项
-tags: 理论基础
+tags: 科研工具
 author: Tang Qi
 sidebar:
   nav: docs-cn
+aside:
+  toc: true
+categories: 科研工具
 ---
 
 **MuPAD的官方介绍 ：**

@@ -4,7 +4,9 @@ tags: 编程随笔
 author: Tang Qi
 sidebar:
   nav: docs-cn
-
+aside:
+  toc: true
+categories: 科研工具
 ---
 
 1. **行式存储与列式存储：**

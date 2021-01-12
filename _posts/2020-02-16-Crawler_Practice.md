@@ -1,6 +1,6 @@
 ---
 title: 一个小爬爬练习
-tags: 编程随笔、python
+tags: 编程随笔
 author: Tang Qi
 sidebar:
   nav: docs-cn
