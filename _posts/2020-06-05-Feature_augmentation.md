@@ -1,12 +1,12 @@
 ---
 title: 特征衍生、特征筛选
-tags: 机器学习
+tags: 机器学习和建模
 author: Tang Qi
 sidebar:
   nav: docs-cn
 aside:
   toc: true
-categories: 机器学习
+category: 机器学习和建模
 ---
 
 特征优选，让模型自适应地选择最优特征，进而实现稀疏化，降低过拟合。包括两个方面：特征衍生和特征筛选。
