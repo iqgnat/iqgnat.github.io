@@ -1,5 +1,5 @@
 ---
-title: 多元回归解决公式参数缺失问题
+title: 回归解决公式因子的缺失问题
 tags: [机器学习和建模,金融分析]
 author: Tang Qi
 sidebar:
