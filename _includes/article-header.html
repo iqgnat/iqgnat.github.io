@@ -15,9 +15,11 @@
 
   {%- if _show_title or _show_edit_on_github -%}
     <div class="article__header">
+
       {%- if _show_title -%}
         <header><h1>{{ _article_title }}</h1></header>
       {%- endif -%}
+	  	    
       {%- if _show_edit_on_github -%}
         {%- if site.repository and site.repository_tree -%}
           {%- include snippets/is_collection.html page=include.article -%}
@@ -32,6 +34,10 @@
           {%- endif -%}
           {%- assign _github_path = site.repository | append: '/tree/' | append: site.repository_tree | append: '/' | append: _article_path | replace:'//','/' -%}
           <span class="split-space">&nbsp;</span>
+		  
+		  <span id="busuanzi_container_page_pv">  
+			<br>本文总阅读量<span id="busuanzi_value_page_pv"></span>次 </br>
+		  </span>
           <a class="edit-on-github"
             title="{{ _locale_post_on_github }}"
             href="https://github.com/{{ _github_path }}">

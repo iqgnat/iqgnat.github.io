@@ -70,6 +70,7 @@ sidebar:
     <div class="{{ _page_main_class }} cell cell--auto">
 
       <div class="page__main-inner">
+
       {%- if _header != false -%}
         <div class="page__header d-print-none">
         {%- assign _header_theme = page.header.theme | default: layout.header.theme -%}
@@ -85,6 +86,7 @@ sidebar:
 
 
         <div class="page__content">
+
         {%- if _article_header_type == 'overlay' or _article_header_type == 'cover' -%}
 
           {%- if _article_header_type == 'overlay' -%}
@@ -228,7 +230,7 @@ sidebar:
 
         {%- if _footer != false -%}
           <div class="page__footer d-print-none">{%- include footer.html -%}</div>
-
+		  <div class="page__footer d-print-none"> include article-footer.html </div>
         {%- endif -%}
       </div>
     </div> {%- comment -%} end page__main {%- endcomment -%}

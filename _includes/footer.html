@@ -8,10 +8,7 @@
     {%- else -%}
       {%- assign _site_author_itemtype = 'http://schema.org/Person' -%}
     {%- endif -%}
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_site_pv">
-		您是做客iqgnat小天地的第 <span id="busuanzi_value_site_pv"></span> 位客人。
-	</span>
+	
     <div itemscope itemtype="{{ _site_author_itemtype }}">
       <meta itemprop="name" content="{{ _site_author.name }}">
       {%- assign _site_author_url = _site_author.url | default: '/'-%}
