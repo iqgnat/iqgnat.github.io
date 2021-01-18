@@ -143,7 +143,7 @@ comments:
   gitalk:
     clientID    : ca7e0e25f1b4efbbf3b8 # GitHub Application Client ID
     clientSecret: b8dddaa69fd7c71cfa13c8f45e6093706753f9d3 # GitHub Application Client Secret
-    repository  : https://github.com/iqgnat/iqgnat.github.io# GitHub repo
+    repository  : iqgnat/iqgnat.github.io # GitHub repo
     owner       : iqgnat # GitHub repo owner
     admin: # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
       # - your GitHub Id
