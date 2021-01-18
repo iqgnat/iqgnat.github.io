@@ -237,5 +237,5 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jemoji
-  - category_plugin
-  - jekyll-admin
+#  - category_plugin
+#  - jekyll-admin
