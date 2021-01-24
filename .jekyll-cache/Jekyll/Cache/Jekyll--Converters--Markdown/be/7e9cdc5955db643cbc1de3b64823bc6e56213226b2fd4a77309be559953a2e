@@ -1,0 +1,14 @@
+I"�<ol>
+  <li>TNS 协议适配器错误</li>
+  <li>数据库名，实例名，服务名，用户名（schema）的区别</li>
+  <li>表空间、临时表空间不足</li>
+  <li>数据装载</li>
+  <li>数据量大的情况</li>
+  <li>DDL 语句在存储过程执行</li>
+  <li>表关联出现重复数据</li>
+  <li>显式授权</li>
+  <li>开窗函数 over (partition by)</li>
+  <li>…</li>
+</ol>
+
+:ET

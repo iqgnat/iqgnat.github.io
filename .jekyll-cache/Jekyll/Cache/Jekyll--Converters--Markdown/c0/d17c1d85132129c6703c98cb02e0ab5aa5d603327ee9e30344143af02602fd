@@ -1,0 +1,66 @@
+I"m<p>腾讯课堂有 庞国明的教学课程，配套了一本全面的中文教材。</p>
+
+<p>图数据库有几种选型。其中，OrientDB是开源的，但网上的资源比较少，较长时间不维护了。Neo4j社区活跃，企业版也支持集群。</p>
+
+<!--more-->
+
+<ol>
+  <li>
+    <p>CONNECT_BY不是一个合法neo4j sql语句;</p>
+  </li>
+  <li>
+    <p>在不同database存一个cypher脚本： Browser Sync；</p>
+  </li>
+  <li>
+    <p>对Customer label的节点的name属性添加index：<strong>CREATE INDEX ON: Customer(name);</strong></p>
+  </li>
+  <li>
+    <p>Neo4j desktop可以创建多个数据库，但是每次只能连接一个；</p>
+  </li>
+  <li>
+    <p>PROFILE 指令：执行查询； EXPLAIN 指令：provide the plain;</p>
+  </li>
+  <li>
+    <p>{a:1, b:2, c:3} 是 map 类型；</p>
+  </li>
+  <li>
+    <p>bolt接口的作用：binary protocol， 加密数据和压缩数据。</p>
+  </li>
+  <li>
+    <p>属性的数据类型可以是： 数字，布尔值，字节，字符串，一列字符串，日期；</p>
+  </li>
+  <li>
+    <p>NEO4J browser 本身是不能创建新database的；</p>
+  </li>
+  <li>
+    <p>载入csv用分号分隔符语句： 
+<strong>LOAD CSV FROM “url” As row FIELD TERMINATOR “;”</strong></p>
+  </li>
+  <li>
+    <p>WITH语句没有包含的参数 是不能被返回的；</p>
+  </li>
+</ol>
+
+<p>​</p>
+
+<ol>
+  <li>
+    <p>NEO4J DESKTOP支持的库： APOC, GRAPH Algorithms，GraphQL;</p>
+  </li>
+  <li>
+    <p>NEO4J 提供的UI: desktop， browser， bloom；</p>
+  </li>
+  <li>
+    <p>NEO4J 的create relation需要指定方向，但是match不需要；</p>
+  </li>
+  <li>
+    <p>NEO4J 提供了driver的语言有：python，java， go；</p>
+  </li>
+  <li>
+    <p>Neo4j 的输出格式有： PNG, CSV, SVG;</p>
+  </li>
+  <li>
+    <p>删除label需要用 REMOVE 语句；查看节点的label种类：labels(xxx)</p>
+  </li>
+</ol>
+:ET

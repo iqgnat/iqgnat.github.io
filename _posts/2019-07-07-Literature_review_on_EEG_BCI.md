@@ -1,12 +1,15 @@
 ---
 title: 无创脑机接口（BCI）现状概述
-tags: 脑电(EEG)/脑机接口
+categories: 脑电EEG和脑机接口BCI
+tags: 脑电EEG和脑机接口BCI
+description: 
+comments: true
 author: Tang Qi
 sidebar:
   nav: docs-cn
 aside:
   toc: true
-categories: 脑电(EEG)/脑机接口
+layout: post
 ---
 
 【翻译自 TangQi 的硕士毕业论文：**A Further Study of the Alpha-Down Neurofeedback Training**

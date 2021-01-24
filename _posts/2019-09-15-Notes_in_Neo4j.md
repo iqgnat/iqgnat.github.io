@@ -1,10 +1,15 @@
 ---
 title: 图数据库 Neo4j 随笔
+categories: 编程随笔
 tags: 编程随笔
+description: 
+comments: true
 author: Tang Qi
 sidebar:
   nav: docs-cn
-categories: 编程随笔
+aside:
+  toc: true
+layout: post
 ---
 
 腾讯课堂有 庞国明的教学课程，配套了一本全面的中文教材。

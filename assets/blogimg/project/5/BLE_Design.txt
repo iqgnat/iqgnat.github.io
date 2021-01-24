@@ -1,0 +1,5 @@
+We designed the Sensor testing circuits to detect and identify the changes of our gum sensor, and forward the data to an Android-based smart phone wirelessly through the Bluetooth Low Energy (BLE) module. 
+
+As the block diagram shows, the testing procedure mainly consists of three steps. Firstly, we concert the physical changes of the gum sensor into electrical signals by Resistance Testing Module. Then, a 10 bits Analog to Digital Convertor (ADC)  is applied to quantize the signal with the 20 Hz sampling frequency. Lastly, the digital signal is transmitted wirelessly to the smart phone through BLE links, and we can observe and study the changing properties on graphical interfaces developed by ourselves. Certainly, all the modules are powered by the Battery Module directly or by the regulated voltage. 
+
+Extensive experiments show that these circuits (this system) work sufficiently for our detecting jobs.

@@ -1,13 +1,20 @@
 ---
-title: MuPAD 递归项
-tags: 科研工具
+title:  MuPAD 递归项
+categories: 科研工具
+tags: MATLAB
+description: 
+comments: true
 author: Tang Qi
 sidebar:
   nav: docs-cn
 aside:
   toc: true
-categories: 科研工具
+layout: post
 ---
+
+
+
+
 
 **MuPAD的官方介绍 ：**
 “ MATLAB is good for writing simple programs and working with numbers, but is cumbersome for doing symbolic calculations. **Mupad** is a GUI driven MATLAB package that helps you do algebra, calculus, as well as to graph and visualize functions. ”

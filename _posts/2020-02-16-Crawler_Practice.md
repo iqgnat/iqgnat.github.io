@@ -1,12 +1,15 @@
 ---
 title: 一个小爬爬练习
-tags: 编程随笔
+categories: 编程随笔
+tags: Python,爬虫
+description: 
+comments: true
 author: Tang Qi
 sidebar:
   nav: docs-cn
 aside:
   toc: true
-categories: 编程随笔
+layout: post
 ---
 
 

@@ -1,0 +1,233 @@
+I":U<ol>
+  <li>TNS 协议适配器错误</li>
+  <li>数据库名，实例名，服务名，用户名（schema）的区别</li>
+  <li>表空间、临时表空间不足</li>
+  <li>数据装载</li>
+  <li>数据量大的情况</li>
+  <li>DDL 语句在存储过程执行</li>
+  <li>表关联出现重复数据</li>
+  <li>显式授权</li>
+  <li>开窗函数 over (partition by)</li>
+  <li>…</li>
+</ol>
+
+<!--more-->
+
+<h1 id="1--tns-协议适配器错误"><font face="黑体" color="green" size="5">1.  TNS 协议适配器错误</font></h1>
+
+<ol>
+  <li>检查监听程序是否正常启动 （lsnrctl status），host 是否在添加到监听列表中；</li>
+  <li>实例服务是否正常运行（select status from v$instance;），服务器有没有挂（ping -t -域名，startup pfile 、spfile ）;</li>
+  <li>检查注册表（windows：regedit）、 bash_profile (linux: ORACLE_SID) 的实例名是否指向目标数据库实例（ORACLE_SID 必须与instance_name的值一致）。</li>
+</ol>
+
+<h1 id="2-数据库名实例名服务名用户名schema的区别"><font face="黑体" color="green" size="5">2. 数据库名，实例名，服务名，用户名（schema）的区别。</font></h1>
+
+<p>实例 = 进程 + 进程所使用的内存( 系统全局区SGA)</p>
+
+<p>数据库 = 重做文件 + 控制文件 + 数据文件 + 临时文件</p>
+
+<p>服务 = 实例 + 数据库</p>
+
+<p>用户（schema）= 一个用户下，数据库对象的集合。</p>
+
+<p>单机 Oracle 情况下，数据库名可以和实例名一样。在 RAC 中， 一个数据库有多个实例名（多个实例同时打开一个数据库文件的系统）。服务名 就是对外公布的名称，为网络监听服务，所以一个数据库可以有多个服务名。sid用于实例区分各个数据库，service name用于外部链接。</p>
+
+<p>举例【https://www.zhetao.com/content240】：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>打个比方，你的名字叫小明，但是你有很多外号。你父母叫你小明，但是朋友都叫你的外号。
+
+这里你的父母就是oracle实例，小明就是sid，service name就是你的外号。
+</code></pre></div></div>
+
+<p>=======================================================================================</p>
+
+<p>Oracle连接串：</p>
+
+<p>​	用户名/密码@主机名:端口号/实例号</p>
+
+<p>​	用户名/密码@主机名:端口号:服务名</p>
+
+<p>Python接口：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>连接：
+cx_Oracle.Connection(用户名/密码@主机名:端口号/实例号)
+cx_Oracle.Connection(用户名/密码@主机名:端口号:实例号)
+
+插数：
+INSERT INTO &lt;schema&gt;.&lt;table&gt; (字段1，字段2) VALUES (:1,:2)
+</code></pre></div></div>
+
+<h1 id="3-表空间临时表空间不足"><font face="黑体" color="green" size="5">3. 表空间、临时表空间不足。</font></h1>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">--查看（临时）表空间大小</span>
+ <span class="k">select</span> <span class="n">tablespace_name</span> <span class="p">,</span> <span class="n">bytes</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span> <span class="k">as</span> <span class="nv">"space(M)"</span> <span class="k">from</span> <span class="n">dba_temp_files</span> <span class="k">where</span> <span class="n">tablespace_name</span> <span class="o">=</span><span class="s1">'TEMP'</span><span class="p">;</span>
+ 
+ <span class="c1">--查看（临时）表空间使用情况</span>
+ <span class="k">select</span> <span class="n">D</span><span class="p">.</span><span class="n">tablespace_name</span><span class="p">,</span>
+ <span class="k">space</span> <span class="nv">"sum_space(G)"</span><span class="p">,</span>
+ <span class="n">blocks</span> <span class="nv">"sum_blocks"</span><span class="p">,</span>
+ <span class="n">used_space</span> <span class="nv">"USED_SPACE(G)"</span><span class="p">,</span>
+ <span class="n">ROUND</span><span class="p">(</span><span class="n">NVL</span><span class="p">(</span><span class="n">USED_space</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="k">space</span> <span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="nv">"used_rate(%)"</span><span class="p">,</span>
+ <span class="k">space</span> <span class="o">-</span> <span class="n">used_space</span> <span class="nv">"FREE_SPACE(G)"</span>
+ <span class="k">from</span> <span class="p">(</span><span class="k">select</span> <span class="n">tablespace_name</span><span class="p">,</span>
+ <span class="n">round</span><span class="p">(</span><span class="k">sum</span><span class="p">(</span><span class="n">bytes</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span> <span class="k">space</span><span class="p">,</span>
+ <span class="k">sum</span><span class="p">(</span><span class="n">blocks</span><span class="p">)</span> <span class="n">blocks</span>
+ <span class="k">from</span> <span class="n">dba_temp_files</span>
+ <span class="k">group</span> <span class="k">by</span> <span class="n">tablespace_name</span><span class="p">)</span> <span class="n">D</span><span class="p">,</span>
+ <span class="p">(</span><span class="k">select</span> <span class="n">tablespace</span><span class="p">,</span>
+    <span class="n">round</span><span class="p">(</span><span class="k">sum</span><span class="p">(</span><span class="n">blocks</span> <span class="o">*</span><span class="mi">8192</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span> <span class="n">used_space</span>
+ <span class="k">from</span> <span class="n">v</span><span class="err">$</span><span class="n">sort_usage</span> 
+ <span class="k">group</span> <span class="k">by</span> <span class="n">tablespace</span><span class="p">)</span> <span class="n">F</span>
+ <span class="k">where</span> <span class="n">D</span><span class="p">.</span><span class="n">tablespace_name</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">tablespace</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+ <span class="k">and</span> <span class="n">d</span><span class="p">.</span><span class="n">tablespace_name</span> <span class="k">in</span> <span class="p">(</span><span class="s1">'TEMP'</span><span class="p">,</span><span class="s1">'TEMP1'</span><span class="p">)</span>
+ 
+ <span class="c1">-- 查看用户下各对象所占空间</span>
+<span class="k">select</span> <span class="k">owner</span><span class="p">,</span>
+       <span class="n">t</span><span class="p">.</span><span class="n">segment_name</span><span class="p">,</span>  
+       <span class="n">t</span><span class="p">.</span><span class="n">segment_type</span><span class="p">,</span>
+       <span class="k">sum</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">bytes</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">)</span> <span class="n">mmm</span>
+  <span class="k">from</span> <span class="n">dba_segments</span> <span class="n">t</span>
+ <span class="k">where</span> 
+    <span class="n">t</span><span class="p">.</span><span class="k">owner</span> <span class="o">=</span> <span class="s1">'用户名'</span>
+ <span class="k">group</span> <span class="k">by</span> <span class="k">owner</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">segment_name</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">segment_type</span>
+ <span class="k">order</span> <span class="k">by</span> <span class="n">mmm</span> <span class="k">desc</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>考虑释放高水位线：move、shrink space、truncate 表重建代替delete等。</p>
+  </li>
+  <li>
+    <p>新增数据文件到表空间。</p>
+  </li>
+  <li>
+    <p>考虑压缩表（但降低UPDATE和DELETE语句的性能），ctas操作代替insert等优化。</p>
+  </li>
+  <li>
+    <p>分析具体语句影响的块数量。</p>
+  </li>
+</ol>
+
+<h1 id="4-数据装载"><font face="黑体" color="green" size="5">4. 数据装载</font></h1>
+
+<ol>
+  <li>
+    <p>数据泵整个数据库的导入导出（oracle导出 oracle导入）；</p>
+  </li>
+  <li>
+    <p>通过 sqlloader 命令，配合 .ctl 文件导入，大表开并行、direct。</p>
+  </li>
+  <li>
+    <p>通过 txt 或 csv 文本导入；</p>
+  </li>
+</ol>
+
+<h1 id="5-数据量大的情况"><font face="黑体" color="green" size="5">5. 数据量大的情况</font></h1>
+
+<ol>
+  <li>查询：避免全表扫描（避免  or and，in not in， like，!=, 字段表达式）</li>
+  <li>压缩 （牺牲UPDATE、DELETE语句的性能 ）</li>
+  <li>索引（降低访问数据的I/O）。</li>
+  <li>分区，shell 循环执行 DML、 DDL操作 （对比在对近60亿条记录进行update的速度，由十几小时提升到半小时）。</li>
+  <li>hint 开并行。</li>
+  <li>查看执行计划，sql性能分析，统计数据收集。</li>
+  <li>更合适的系统设计。</li>
+</ol>
+
+<p>分区类型：</p>
+
+<p>范围分区 – 每个分区定义了上限值</p>
+
+<p>哈希分区– 数据按分区健的哈希值分布</p>
+
+<p>列表分区 – 每个分区存储预先定义的健值</p>
+
+<p>二级分区</p>
+
+<p>分区过多： DML, DDL或者其他数据字典的操作会对性能导致显著的负面影响</p>
+
+<p>【参考：https://www.oracle.com/oce/dc/assets/CONTB48FAA109DD74654AC2F94E4D62BEA35/native/oracle-database-19c-webinar-l24.pdf?elqTrackId=98f78db5b0ca44cca0270a4248c9d356&amp;elqaid=89270&amp;elqat=2】</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 查看执行计划</span>
+<span class="k">select</span> <span class="k">operation</span><span class="p">,</span> <span class="k">options</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span><span class="k">cardinality</span><span class="p">,</span><span class="n">bytes</span><span class="p">,</span><span class="n">cpu_cost</span><span class="p">,</span><span class="n">io_cost</span><span class="p">,</span><span class="n">hash_value</span><span class="p">,</span><span class="n">sql_id</span><span class="p">,</span><span class="n">plan_hash_value</span><span class="p">,</span>
+<span class="nb">timestamp</span><span class="p">,</span><span class="n">object_name</span><span class="p">,</span>
+<span class="n">ID</span><span class="p">,</span><span class="n">parent_id</span><span class="p">,</span><span class="n">depth</span><span class="p">,</span><span class="k">position</span><span class="p">,</span><span class="n">access_predicates</span><span class="p">,</span><span class="nb">time</span><span class="p">,</span><span class="n">qblock_name</span>
+<span class="k">from</span> <span class="n">v</span><span class="err">$</span><span class="n">sql_plan</span> <span class="k">where</span> <span class="n">sql_ID</span><span class="o">=</span><span class="s1">'ID号'</span><span class="p">;</span>
+     
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span><span class="p">(</span><span class="n">dbms_xplan</span><span class="p">.</span><span class="n">display_awr</span><span class="p">(</span><span class="s1">'ID号'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">-- 统计信息收集：表（举例）</span>
+ <span class="k">execute</span> <span class="n">dbms_stats</span><span class="p">.</span><span class="n">gather_table_stats</span> <span class="p">(</span><span class="n">ownname</span> <span class="o">=&gt;</span> <span class="s1">'用户名'</span><span class="p">,</span><span class="n">tabname</span><span class="o">=&gt;</span><span class="s1">'表名'</span><span class="p">,</span><span class="n">estimate_percent</span><span class="o">=&gt;</span><span class="mi">5</span><span class="p">,</span><span class="n">degree</span><span class="o">=&gt;</span><span class="mi">16</span><span class="p">,</span><span class="k">cascade</span><span class="o">=</span><span class="k">true</span> <span class="p">);</span>
+ <span class="err">对大表设置较低的采样比例</span><span class="n">estimate_percent</span><span class="err">。</span>
+</code></pre></div></div>
+
+<h1 id="6-ddl-语句在存储过程执行"><font face="黑体" color="green" size="5">6. DDL 语句在存储过程执行。</font></h1>
+
+<p>ddl语句需要加execute immediate 执行（有授权）并进行显式提交，不支持分号多句，支持动态语句。</p>
+
+<h1 id="7-表关联出现重复数据"><font face="黑体" color="green" size="5">7. 表关联出现重复数据。</font></h1>
+
+<p>两表之间关联， 比如 select xxx from A inner join B on 关键字1=关键字2。 如果B表中关键字2存在重复，则 关联出的表的关键字1对应的记录也会成倍出现。</p>
+
+<h1 id="8-显式授权"><font face="黑体" color="green" size="5">8. 显式授权</font></h1>
+
+<p>在 sql 可以完成的操作，在存储过程中报没有权限，需要显式授权。</p>
+
+<h1 id="9-开窗函数-over-partition-by"><font face="黑体" color="green" size="5">9.  开窗函数 over (partition by)</font></h1>
+
+<p>与group by 的区别： over(partition by)返回结果包含重复（原表中存在重复的话） ，和不参与group by 的其他字段。</p>
+
+<p>排序、聚合、行指定 都可以跟在 over 后面。</p>
+
+<p>【https://blog.csdn.net/naomi_qing/article/details/70271883】</p>
+
+<h1 id="10-常用sql语句"><font face="黑体" color="green" size="5">10. 常用sql语句</font></h1>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">---- 管理员：</span>
+<span class="c1">--赋角色权限</span>
+ <span class="k">grant</span> <span class="k">select</span> <span class="k">on</span> <span class="n">DBA_SEGMENTS</span> <span class="k">to</span> <span class="err">用户名</span><span class="p">;</span>
+ <span class="k">grant</span> <span class="n">dba</span> <span class="k">to</span> <span class="err">用户名</span> <span class="k">with</span> <span class="k">admin</span> <span class="k">option</span><span class="p">;</span>
+ 
+<span class="c1">--收回角色权限</span>
+  <span class="k">revoke</span> <span class="k">connect</span><span class="p">,</span><span class="n">resource</span> <span class="k">from</span> <span class="err">用户名</span><span class="p">;</span>
+  
+<span class="c1">-- 非管理员进行开发期间常用的角色权限（可能报错系统节点启动失败）</span>
+<span class="c1">-- 1.创建开发角色 （赋连结、创建、debug 等权限）</span>
+<span class="c1">-- 2.赋开发角色到用户。</span>
+
+<span class="c1">---- 开发过程：</span>
+<span class="c1">-- 查看存储过程锁</span>
+	<span class="k">select</span> <span class="k">c</span><span class="p">.</span><span class="n">sql_text</span><span class="p">,</span><span class="n">a</span><span class="p">.</span><span class="n">spid</span> <span class="k">from</span> <span class="n">gv</span><span class="err">$</span><span class="n">process</span> <span class="n">a</span> <span class="p">,</span> <span class="n">gv</span><span class="err">$</span><span class="k">session</span> <span class="n">b</span><span class="p">,</span> <span class="n">gv</span><span class="err">$</span><span class="k">sql</span> <span class="k">C</span>
+<span class="k">where</span> <span class="n">b</span><span class="p">.</span><span class="n">paddr</span><span class="o">=</span><span class="n">a</span><span class="p">.</span><span class="n">addr</span> <span class="k">and</span> <span class="n">b</span><span class="p">.</span><span class="n">sql_address</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">address</span> <span class="k">and</span> <span class="k">lower</span> <span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">sql_TEXT</span><span class="p">)</span> <span class="k">like</span> <span class="s1">'%存储过程名%'</span>
+
+
+<span class="c1">-- 查看正在进行的sql进程</span>
+<span class="k">set</span> <span class="n">linesize</span> <span class="mi">400</span><span class="p">;</span>
+<span class="k">set</span> <span class="n">pagesize</span> <span class="mi">400</span><span class="p">;</span>
+<span class="k">set</span> <span class="n">long</span> <span class="mi">4000</span><span class="p">;</span>
+<span class="n">col</span> <span class="n">sql_fulltext</span> <span class="n">format</span> <span class="n">a100</span><span class="p">;</span>
+<span class="n">col</span> <span class="n">machine</span> <span class="n">format</span> <span class="n">a25</span><span class="p">;</span>
+<span class="n">col</span> <span class="n">username</span> <span class="n">format</span> <span class="n">a15</span><span class="p">;</span>
+<span class="k">select</span> <span class="n">a</span><span class="p">.</span><span class="n">username</span> <span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">machine</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">sql_id</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">sql_fulltext</span><span class="p">,</span><span class="n">a</span><span class="p">.</span><span class="n">status</span> <span class="k">from</span> <span class="n">v</span><span class="err">$</span><span class="k">session</span> <span class="n">a</span><span class="p">,</span> <span class="n">v</span><span class="err">$</span><span class="n">sqlarea</span> <span class="n">b</span> <span class="k">where</span> <span class="n">a</span><span class="p">.</span><span class="n">sql_address</span> <span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">address</span>
+<span class="k">and</span> <span class="n">a</span><span class="p">.</span><span class="n">sql_hash_value</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">hash_value</span> <span class="k">and</span> <span class="n">username</span><span class="o">=</span><span class="s1">'用户名'</span><span class="p">;</span>
+
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">v</span><span class="err">$</span><span class="k">sql</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="err">$</span><span class="k">session</span> <span class="n">t</span><span class="p">,</span> <span class="n">v</span><span class="err">$</span><span class="n">process</span> <span class="n">v</span> <span class="k">where</span> <span class="n">s</span><span class="p">.</span><span class="n">sql_id</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">sql_id</span> <span class="k">and</span> <span class="n">t</span><span class="p">.</span><span class="n">paddr</span><span class="o">=</span><span class="n">v</span><span class="p">.</span><span class="n">addr</span><span class="p">;</span>
+
+<span class="c1">-- 查看已kill进程</span>
+<span class="k">select</span> <span class="n">a</span><span class="p">.</span><span class="n">spid</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">sid</span><span class="p">,</span><span class="n">b</span><span class="p">.</span><span class="nb">serial</span><span class="o">#</span><span class="p">,</span><span class="n">b</span><span class="p">.</span><span class="n">username</span> <span class="k">from</span> <span class="n">v</span><span class="err">$</span><span class="n">process</span> <span class="n">a</span><span class="p">,</span> <span class="n">v</span><span class="err">$</span><span class="k">session</span> <span class="n">b</span> <span class="k">where</span> <span class="n">a</span><span class="p">.</span><span class="n">addr</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">paddr</span> <span class="k">and</span> <span class="n">b</span><span class="p">.</span><span class="n">status</span> <span class="o">=</span><span class="s1">'KILLED'</span><span class="p">;</span>
+<span class="err">（如果资源未释放，</span><span class="n">kill</span><span class="err">不掉，可能需要从操作系统对</span><span class="n">kill</span><span class="err">进程）</span>
+
+</code></pre></div></div>
+
+<p>其他（进行中）：</p>
+
+<ol>
+  <li>
+    <p>oracle 、grid、cluster 安装步骤.</p>
+
+    <p>2.物化视图</p>
+  </li>
+</ol>
+:ET

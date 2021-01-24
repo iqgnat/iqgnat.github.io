@@ -1,13 +1,18 @@
 ---
 title: 大数据技术初级笔记
+categories: 编程随笔
 tags: 编程随笔
+description: 
+comments: true
 author: Tang Qi
 sidebar:
   nav: docs-cn
 aside:
   toc: true
-categories: 科研工具
+layout: post
 ---
+
+
 
 1. **行式存储与列式存储：**
 

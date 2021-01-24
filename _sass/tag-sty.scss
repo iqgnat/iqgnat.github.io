@@ -1,0 +1,21 @@
+
+#tag_cloud{margin-bottom: 1em; margin-left: 1em}
+#tag_cloud a:hover{color:#333333 !important;text-decoration:none;}
+.listing-item,.listing-seperator{list-style-type:none;}
+.listing-item a{
+	padding:.2em 1em;
+}
+.listing-item time{color:#999999;}
+.listing-seperator{font-weight:bold;}
+
+table{
+    border-left:1px solid #000000;border-top:1px solid #000000;
+    width: 100%;
+    word-wrap:break-word; word-break:break-all;
+}
+table th{
+  text-align:center;
+}
+table th,td{
+    border-right:1px solid #000000;border-bottom:1px solid #000000;
+}

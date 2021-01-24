@@ -1,12 +1,15 @@
 ---
 title: 概率统计笔记：章节概括
-tags: 理论基础
+categories: [课堂笔记,科研工具]
+tags: 课堂笔记
+description: 
+comments: true
 author: Tang Qi
 sidebar:
   nav: docs-cn
 aside:
   toc: true
-categories: [课堂笔记,科研工具]
+layout: post
 ---
 
 课程相关: 

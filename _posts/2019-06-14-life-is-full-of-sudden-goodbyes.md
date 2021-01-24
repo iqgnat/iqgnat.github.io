@@ -1,13 +1,18 @@
 ---
 title: 也叹人生忽然间
+categories: 人间草木
 tags: 人间草木
+description: 
+comments: true
 author: Tang Qi
 sidebar:
   nav: docs-cn
 aside:
   toc: true
-categories: 人间草木
+layout: post
 ---
+
+
 
 和做学术一样，到了一定阶段便进入了相似的程序，竟然有一天, 也让我感叹 “人生忽然间 ” 了。
 

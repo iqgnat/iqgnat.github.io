@@ -1,12 +1,15 @@
 ---
 title: Latex写期刊的笔记
-tags: 科研工具
+categories: [课堂笔记,科研工具]
+tags: 课堂笔记
+description: 
+comments: true
 author: Tang Qi
 sidebar:
   nav: docs-cn
 aside:
   toc: true
-categories: 科研工具
+layout: post
 ---
 
  “ LaTeX 优秀之处在于，它将内容与格式分开，使得作者不需要，或者只需要知道很少的排版细节就能排出漂亮的文章。”

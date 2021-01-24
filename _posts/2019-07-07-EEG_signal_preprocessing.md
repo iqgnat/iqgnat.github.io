@@ -1,12 +1,15 @@
 ---
 title: 常用的EEG信号预处理
-tags: 脑电(EEG)/脑机接口
+categories: 脑电EEG和脑机接口BCI
+tags: 脑电EEG和脑机接口BCI
+description: 
+comments: true
 author: Tang Qi
 sidebar:
   nav: docs-cn
 aside:
   toc: true
-categories: 脑电(EEG)/脑机接口
+layout: post
 ---
 
 ​    脑电信号 (EEG) 的采集常遵守10-20国际系统标准，比如：O1，Oz，O2，PO3，POz，PO4，P3，Pz，P4，C3，Cz，C4，F3，Fz，F4，Fpz等通道。比较常用的ground通道有ground 和reference参考电极有耳后乳突。在采集过程中，操作者依据实际需要对EEG信号以一定的采样率进行采样，然后通过放大器以进行放大。 采集时，要求电极的电路阻抗均保持在10kΩ，甚至 3 kΩ 以下。受试者最好身体处于静止状态，在实验中减少EOG（眼电） 、 EMG（肌电） 、ECG（心电） 等干扰。 

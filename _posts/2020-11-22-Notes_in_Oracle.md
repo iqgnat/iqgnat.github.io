@@ -1,12 +1,15 @@
 ---
-title: Oracle 随笔
-tags: 编程随笔
+title: Oracle 随笔 
+categories: 编程随笔
+tags: Oracle
+description: 
+comments: true
 author: Tang Qi
 sidebar:
   nav: docs-cn
 aside:
   toc: true
-category: 编程随笔
+layout: post
 ---
 
 1. TNS 协议适配器错误
