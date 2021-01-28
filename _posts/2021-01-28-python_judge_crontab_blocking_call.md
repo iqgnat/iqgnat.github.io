@@ -1,7 +1,7 @@
 ---
 title: Python进程判断和crontab阻塞调起
-categories: [课堂笔记,科研工具]
-tags: 课堂笔记
+categories: 编程随笔
+tags: 编程随笔
 description: 
 comments: true
 author: Tang Qi
