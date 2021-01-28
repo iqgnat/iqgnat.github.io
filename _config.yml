@@ -38,7 +38,7 @@ ga:
 # Build settings
 permalink: /:year/:month/:day/:title.html
 markdown: kramdown
-highlighter: rouge
+highlighter: pygments
 mathjax: disabled
 sass:
   style: compressed
