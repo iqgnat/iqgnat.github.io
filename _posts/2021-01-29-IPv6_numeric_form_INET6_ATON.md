@@ -75,3 +75,6 @@ end
 INET6_ATON(ipaddr)
 ```
 
+
+
+最后的然而，gbase 没有有 INET6_ATON 的内建函数，也不支持128位的数值数据类型 。
