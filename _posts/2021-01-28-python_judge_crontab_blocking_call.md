@@ -12,15 +12,17 @@ aside:
 layout: post
 ---
 
-现象描述： 
-
-按日出现 Croncheck_comrisk_pid.py 和 按小时出现Call_polling.py 的无数进程，拖垮服务器内存和swap空间，导致服务器宕机。
+ 按日出现 Croncheck_comrisk_pid.py 和 按小时出现Call_polling.py 的无数进程，拖垮服务器内存和swap空间，导致服务器宕机。
 
 <!--more-->
 
-# <font face="黑体" color=green size=5>现象分析 </font>
+# <font face="黑体" color=green size=5>代码结构 </font>
 
-现象分析：
+![代码结构](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-01-28-python_judge_crontab_blocking_call/%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84.PNG)
+
+
+
+# <font face="黑体" color=green size=5>现象分析 </font>
 
 1. 出现无数 Croncheck_comrisk_pid.py 进程（crontab应该非阻塞调起）；
 2. Croncheck_comrisk_pid.py的主线程 应该在 确认过call_polling 进程存在（或者调起后) 退出，进程保留。 
