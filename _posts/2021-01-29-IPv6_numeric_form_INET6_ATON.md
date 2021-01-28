@@ -38,7 +38,7 @@ IPv4 的地址是32位，用四个字节表示一个IP地址，每个字节按�
 
 原始：
 
-```mysql
+```sql
 -- 将转换后的ip地址存储为字符串，以 ‘|’ 间隔，调用时转换为数值型。
 delimiter / ;
 
@@ -70,7 +70,7 @@ end
 
 修改后：
 
-```mysql
+```sql
 -- 将转换后的ip地址都存储为varbinary
 INET6_ATON(ipaddr)
 ```
