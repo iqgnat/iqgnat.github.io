@@ -36,9 +36,9 @@ IPv4 的地址是32位，用四个字节表示一个IP地址，每个字节按�
 
 # <font face="黑体" color=green size=5>代码更改</font>
 
-原始：
+原始 mysql 脚本：
 
-```sqllite
+```python
 -- 将转换后的ip地址存储为字符串，以 ‘|’ 间隔，调用时转换为数值型。
 delimiter / ;
 
@@ -66,11 +66,16 @@ begin
 return replace(substring(substring_index(x, delim, pos), length(substring_index(x, delim, pos -1)) +1 ), delim , '');
 end
 /
+
+-- ipv4 长整型调用：
+SET ipv4long = cast(split_str(ipaddr_deal(ipaddr), '|', 1)  as bigint);
+-- ipv6 二进制数值型调用：
+SET ipv6long = cast( split_str(ipaddr_deal(ipaddr), '|', 2 as varbinary);
 ```
 
-修改后：
+修改后 mysql 脚本：
 
-```sqllite
+```python
 -- 将转换后的ip地址都存储为varbinary
 INET6_ATON(ipaddr)
 ```
@@ -78,3 +83,4 @@ INET6_ATON(ipaddr)
 
 
 最后的然而，工作用的 gbase 数据库暂无 INET6_ATON 的内建函数，也不支持128位的数值数据类型 。
+
