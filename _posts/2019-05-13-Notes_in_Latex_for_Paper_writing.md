@@ -10,6 +10,7 @@ sidebar:
 aside:
   toc: true
 layout: post
+key: Latex
 ---
 
  “ LaTeX 优秀之处在于，它将内容与格式分开，使得作者不需要，或者只需要知道很少的排版细节就能排出漂亮的文章。”
