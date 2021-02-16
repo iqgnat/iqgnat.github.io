@@ -1,6 +1,11 @@
 ---
 layout: default
 ---
+
+ <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+ <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+ 
+ 
 <article class="post container">
   <div class="post-meta">
     <span class="post-meta-span date">{{ page.date | date:"%Y %B %d" }}</span>
@@ -27,21 +32,20 @@ layout: default
 </div>
 {% endif %}
 
-<!--使用gitalk来当做文章的评论部分-->
-	  <div id="gitalk-container"></div>
-	   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-	   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-	   <script src="/js/md5.min.js"></script>
-	  <script>
-		   var gitalk = new Gitalk({
-			  clientID: '9b0d5f3ce03f311b21d3',
-			  clientSecret: 'baa66e6e2af43dbdfacbcaccd13cca9b67a47af6',
-			  repo: 'iqgnat.github.io',
-			  owner: 'iqgnat',
-			  admin: ['iqgnat'],
-			  //id:  md5(location.href),      // Ensure uniqueness and length less than 50
-			  distractionFreeMode: true  // Facebook-like distraction free mode
-			})
-
-			gitalk.render('gitalk-container')
-		</script>
+<!-- Gitalk 评论框 start -->
+<div class="comment">
+    <div id="gitalk-container"></div>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: '9b0d5f3ce03f311b21d3',
+            clientSecret: 'baa66e6e2af43dbdfacbcaccd13cca9b67a47af6',
+            repo: 'iqgnat.github.io',
+            owner: 'iqgnat',
+            admin: ['iqgnat'],
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+        gitalk.render('gitalk-container')
+    </script>
+</div>
+<!-- Gitalk 评论框 end -->
