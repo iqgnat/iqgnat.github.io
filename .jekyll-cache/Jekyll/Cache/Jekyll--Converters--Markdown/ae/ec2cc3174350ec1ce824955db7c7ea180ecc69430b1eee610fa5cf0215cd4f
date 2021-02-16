@@ -1,7 +1,0 @@
-I"{<p>【翻译自 TangQi 的硕士毕业论文：<strong>A Further Study of the Alpha-Down Neurofeedback Training</strong></p>
-
-<p><strong>for SSVEP-based BCIs</strong>】</p>
-
-<p>​	非侵入性脑机接口（BCI）的应用目前主要基于运动图像（MI)，事件相关电位（ERP）和稳态视觉诱发电位（SSVEP）这三种范式{Lee_paradigm_2019}。 这些BCI范式中，SSVEP具有很高的信息传输率（ITR），并且几乎不需要预先对受试者进行训练。目前BCI拼写器的最优成绩是 Nakanishi 保持的，他们取得了平均 ITR = 325.33 ± 38.17位/分钟{nakanishi_SSVEPBCI_2018} 的成绩。 BCI的最大挑战是“BCI不兼容”现象，这是指由于表现不佳而无法使用BCI的受试者{blankertz2009，vidaurre2010towards，Spezialetti_BCIill_2018}。 BCI不兼容程度随范式和在不同研究中定义的临界值而变化。最近，在Lee的论文中指出，在相同的受试者和实验环境中，在SSVEP和ERP中表现为BCI不兼容的比率分别为10.2％和11.1％（临界阈值为90％），而对于MI则为53.7％（临界阈值为70％）{Lee_paradigm_2019}。</p>
-
-:ET

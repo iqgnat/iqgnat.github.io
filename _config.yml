@@ -63,13 +63,14 @@ locals:
 plugins:
   - jekyll-seo-tag
 
-#comments:
-#  provider: gitalk
-#  gitalk:
-#    clientID    : 9b0d5f3ce03f311b21d3
-#    clientSecret: baa66e6e2af43dbdfacbcaccd13cca9b67a47af6
-#    repository  : iqgnat.github.io
-#    owner       : iqgnat
-#    admin: # Github repo owner and collaborators, only these guys can initialize github issues, IT IS A LIST.
-#      - iqgnat
+comments:
+  provider: gitalk
+  gitalk:
+    clientID    : 9b0d5f3ce03f311b21d3
+    clientSecret: baa66e6e2af43dbdfacbcaccd13cca9b67a47af6
+    repository  : iqgnat.github.io
+    owner       : iqgnat
+    admin: # Github repo owner and collaborators, only these guys can initialize github issues, IT IS A LIST.
+      - iqgnat
+    distractionFreeMode : true
   

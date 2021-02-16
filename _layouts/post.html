@@ -18,24 +18,49 @@ layout: default
   {{ content }}
 </article>
 
+<div>
+     {% if site.comments.gitalk %}
+     <section class="post-footer-item comment">
+     <div id="gitalk_container"></div>
+     <div id="disqus_thread"></div>
+     </section>
+     {% endif %}
+ </div>
+ 
+ <!--{% if site.comments.gitalk %}
+  <script>
+    var gitalk = new Gitalk({
+      id: location.pathname,
+      clientID: '{{ site.comments.clientID }}',  //这里其实可以直接填值，但是考虑到页面安全性，还是通过配置的方式添加
+      clientSecret: '{{ site.comments.secret }}', 
+      repo: '{{ site.comments.repo }}', 
+      owner: '{{ site.comments.owner }}',
+      admin: '{{ site.comments.admin }}',
+      distractionFreeMode: '{{ site.comments.distractionFreeMode }}'
+    })
 
-<!-- Gitalk 评论框 start -->
-<div class="comment">
-    <div id="gitalk-container"></div>
-    <script>
-        var gitalk = new Gitalk({
-            clientID: '9b0d5f3ce03f311b21d3',
-            clientSecret: 'baa66e6e2af43dbdfacbcaccd13cca9b67a47af6',
-            repo: 'iqgnat.github.io',
-            owner: 'iqgnat',
-            admin: ['iqgnat'],
-            id: location.pathname,      // Ensure uniqueness and length less than 50
-            distractionFreeMode: false  // Facebook-like distraction free mode
-        })
-        gitalk.render('gitalk-container')
-    </script>
-</div>
-<!-- Gitalk 评论框 end -->
+    gitalk.render('disqus_thread')
+  </script>
+  {% endif %}
+-->
+  <!--gitalk js code start-->
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: window.location.pathname,
+        clientID: {{ site.comments.clientID }},
+        clientSecret: {{ site.comments.secret }},
+        repo: {{ site.comments.repo }},
+        owner: {{ site.comments.owner }},
+        admin: [{{ site.comments.admin }}],
+        distractionFreeMode: false
+      });
+      gitalk.render('gitalk-container');
+</script>
+<!--gitalk js code end-->
+
 
 <div class="post-share">
   <div class="container">
