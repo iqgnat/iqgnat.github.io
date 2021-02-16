@@ -61,6 +61,21 @@ layout: default
 </script>
 <!--gitalk js code end-->
 
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+    owner: 'iqgnat', //比如我的叫nilzzzz
+    repo: 'iqgnat.github.io', //比如我的叫nilzzzz.github.io
+    oauth: {
+        client_id: '4cff548d007d4ed64a5d', //比如我的828***********
+        client_secret: 'f77dd9efe3e709f71cf1745fb21c5642be5b1404', //比如我的49e************************
+    },
+});
+gitment.render('gitmentContainer');
+</script> 
+
 
 <div class="post-share">
   <div class="container">
