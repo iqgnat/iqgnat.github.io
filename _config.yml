@@ -64,7 +64,7 @@ plugins:
   - jekyll-seo-tag
 
 comments:
-  provider: gitalk
+  provider: gitment
   gitalk:
     clientID    : 4cff548d007d4ed64a5d
     clientSecret: f77dd9efe3e709f71cf1745fb21c5642be5b1404
