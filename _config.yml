@@ -66,8 +66,8 @@ plugins:
 comments:
   provider: gitalk
   gitalk:
-    clientID    : 9b0d5f3ce03f311b21d3
-    clientSecret: baa66e6e2af43dbdfacbcaccd13cca9b67a47af6
+    clientID    : 4cff548d007d4ed64a5d
+    clientSecret: f77dd9efe3e709f71cf1745fb21c5642be5b1404
     repository  : iqgnat.github.io
     owner       : iqgnat
     admin: # Github repo owner and collaborators, only these guys can initialize github issues, IT IS A LIST.
