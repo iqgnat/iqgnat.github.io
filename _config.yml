@@ -70,7 +70,6 @@ comments:
     clientSecret: f77dd9efe3e709f71cf1745fb21c5642be5b1404
     repository  : iqgnat.github.io
     owner       : iqgnat
-    admin: # Github repo owner and collaborators, only these guys can initialize github issues, IT IS A LIST.
-      - iqgnat
+    admin:  iqgnat
     distractionFreeMode : true
   
