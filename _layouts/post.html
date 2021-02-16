@@ -2,10 +2,6 @@
 layout: default
 ---
 
- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
- <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
- 
- 
 <article class="post container">
   <div class="post-meta">
     <span class="post-meta-span date">{{ page.date | date:"%Y %B %d" }}</span>
@@ -16,16 +12,25 @@ layout: default
 
   <h1 class="post-title">{{ page.title }}</h1>
   {{ content }}
+  
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+	
+<script>
+    var valine = new Valine();
+    valine.init({
+        el:'#comment',
+        appId:'vYdUebEDzLQy03V1z8EFsI1f-gzGzoHsz',
+        appKey:'VEUKdjsPMDeRvBvgucfe7kCV',
+        notify:true,
+        path: '/post/jekyll-%E6%B7%BB%E5%8A%A0-Valine-%E8%AF%84%E8%AE%BA.html',
+        placeholder:'请在这里评论'
+    })
+</script>
 </article>
 
-<div>
-     {% if site.comments.gitalk %}
-     <section class="post-footer-item comment">
-     <div id="gitalk_container"></div>
-     <div id="disqus_thread"></div>
-     </section>
-     {% endif %}
- </div>
+
  
  <!--{% if site.comments.gitalk %}
   <script>
@@ -62,20 +67,8 @@ layout: default
 </script>-->
 <!--gitalk js code end-->
 
-<div id="gitmentContainer"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-    owner: 'iqgnat', //比如我的叫nilzzzz
-    repo: 'iqgnat.github.io', //比如我的叫nilzzzz.github.io
-    oauth: {
-        client_id: '4cff548d007d4ed64a5d', //比如我的828***********
-        client_secret: 'f77dd9efe3e709f71cf1745fb21c5642be5b1404', //比如我的49e************************
-    },
-});
-gitment.render('gitmentContainer');
-</script> 
+
+
 
 
 <div class="post-share">
