@@ -8,12 +8,11 @@
     <script>
 		var valine = new Valine();
 		valine.init({
+			enable: true,
 			el: '#comments',
 			appid: '{{ site.valine.appid }}',
 			appkey: '{{ site.valine.appkey }}',
 			placeholder: '{{ site.valine.placeholder }}',
-			notify: '{{ site.valine.notify }}',
-			recordIP: true,
 			requiredFields: ['nick','mail',],
         })
     </script>

@@ -53,7 +53,7 @@ gems:
 locals:
   recent: Recents
   tech: 技术
-  life: 生活
+  life: 生活f
   project: 项目
   research: 科研
   resource: 资源
@@ -63,24 +63,6 @@ locals:
 plugins:
   - jekyll-seo-tag
 
-comments:
-    provider: valine
-    valine:
-      # 开启 Valine 评论 
-      enable: true
-      # 设置应用 id 和 key
-      appid: vYdUebEDzLQy03V1z8EFsI1f-gzGzoHsz
-      appkey: VEUKdjsPMDeRvBvgucfe7kCV
-      # mail notifier , https://github.com/xCss/Valine/wiki
-      # 关闭提醒与验证 
-      notify: true
-      verify: true
-      placeholder: 欢迎评论，请输入正确的邮箱地址。
-      # 文本框占位文字 
-      # 默认头像 
-      avatar: wavatar
-      # 每页显示的评论数 
-      pageSize: 30
       
 valine:
   # 开启 Valine 评论 
@@ -94,8 +76,8 @@ valine:
   #verify: true
   # 文本框占位文字 
   # 默认头像 
-  avatar: wavatar
-  placeholder: 欢迎评论，请输入正确的邮箱地址。
+  #avatar: wavatar
+  placeholder: 欢迎评论，请输入正确的昵称和邮箱地址。
   # 每页显示的评论数 
   pageSize: 30
 
