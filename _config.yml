@@ -91,12 +91,11 @@ valine:
   # mail notifier , https://github.com/xCss/Valine/wiki
   # 关闭提醒与验证 
   notify: true
-  verify: true
+  #verify: true
   # 文本框占位文字 
   # 默认头像 
   avatar: wavatar
   placeholder: 欢迎评论，请输入正确的邮箱地址。
-  
   # 每页显示的评论数 
   pageSize: 30
 
