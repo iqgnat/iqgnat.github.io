@@ -12,64 +12,34 @@ layout: default
 
   <h1 class="post-title">{{ page.title }}</h1>
   {{ content }}
-  
+<!-- 
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
     <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
     <div id="comment"></div>
 	
-<script>
+	
+  <script>
     var valine = new Valine();
     valine.init({
         el:'#comment',
         appId:'vYdUebEDzLQy03V1z8EFsI1f-gzGzoHsz',
         appKey:'VEUKdjsPMDeRvBvgucfe7kCV',
         notify:true,
+		verify:true,
         path: '/post/jekyll-%E6%B7%BB%E5%8A%A0-Valine-%E8%AF%84%E8%AE%BA.html',
-        placeholder:'请在这里评论'
+        placeholder:'欢迎评论，请输入正确的邮箱地址。',
+		requiredFields: ['nick','mail',]
     })
-</script>
-</article>
-
-
- 
- <!--{% if site.comments.gitalk %}
-  <script>
-    var gitalk = new Gitalk({
-      id: location.pathname,
-      clientID: '{{ site.comments.clientID }}',  //这里其实可以直接填值，但是考虑到页面安全性，还是通过配置的方式添加
-      clientSecret: '{{ site.comments.secret }}', 
-      repo: '{{ site.comments.repo }}', 
-      owner: '{{ site.comments.owner }}',
-      admin: '{{ site.comments.admin }}',
-      distractionFreeMode: '{{ site.comments.distractionFreeMode }}'
-    })
-
-    gitalk.render('disqus_thread')
-  </script>
-  {% endif %}
 -->
-  <!--gitalk js code start-->
-    <!--
-<div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-      var gitalk = new Gitalk({
-        id: window.location.pathname,
-        clientID: "4cff548d007d4ed64a5d",
-        clientSecret: "f77dd9efe3e709f71cf1745fb21c5642be5b1404",
-        repo: "iqgnat.github.io",
-        owner: "iqgnat",
-        admin: ["iqgnat"],
-        distractionFreeMode: false
-      });
-      gitalk.render('gitalk-container');
-</script>-->
-<!--gitalk js code end-->
+   <!-- Valine 评论框 start -->
+   {% if site.valine.enable %}
+			  {% include valine_comments.html %}
+   {% endif %}
+   <!-- Valine 评论框 end -->
+		   
+  </script>
 
-
-
-
+</article>
 
 <div class="post-share">
   <div class="container">
