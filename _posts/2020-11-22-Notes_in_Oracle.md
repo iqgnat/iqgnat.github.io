@@ -1,5 +1,5 @@
 ---
-title: Oracle 随笔 
+title: Oracle 工作笔记 
 categories: 编程随笔
 tags: Oracle
 description: 
