@@ -29,7 +29,7 @@ layout: post
    field_4 number(19,60), 
    field_5 varchar2(4000)
    ) partition by hash (cusid) partitions 512;
-     ```
+    ```
 
 2.  创建日志表
 
@@ -40,7 +40,7 @@ layout: post
    step varchar2(20),
    log_time date,
    log_desc varchar2(200));
-     ```
+    ```
 
 3.  将原表灌入分区表
 
@@ -49,9 +49,9 @@ layout: post
    commit;
    SELECT * FROM iqgnat_table_partitions;
    SELECT COUNT(1) FROM iqgnat_table_partitions;
-     ```
+    ```
 
-4.  根据具体需求 (以下代码以对记录去重为例)，通过定义匿名包对分区表进行循环操作
+4.  根据具体需求 (以下代码以对记录去重为例) ，通过定义匿名包文件 sample_operation.sql 对分区表进行循环操作
 
      ```sql
    declare
@@ -112,7 +112,7 @@ layout: post
      RETURN;
    END;
    /
-     ```
+    ```
 
    
 
@@ -126,13 +126,13 @@ layout: post
    set linesize 80
    echo 开始执行PLSQL文件!
    echo "${time}"
-   @./ctis_duisi.sql
+   @./sample_operation.sql
    echo PLSQL文件执行完毕！
    echo "${time}"
    commit;
    quit;
    EOF`
-     ```
+    ```
 
    
 
