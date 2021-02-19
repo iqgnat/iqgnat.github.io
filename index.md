@@ -12,7 +12,7 @@ comments: false
 
 以下是我的个人简历：
 
-
+<img src='https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/about/avatar.jpg' style=' width:120px;height:100 px; float: right;'/>
 
 ## Qi Tang
 
