@@ -16,24 +16,6 @@ layout: post
 
 <!--more-->
 
-【本文主要基于以下网络资源整理。如有侵权部分，请随时联系。】
-
-主要参考资料：
-
-1. https://zhuanlan.zhihu.com/p/114852465
-
-2. https://www.cnblogs.com/yyy-blog/p/10420175.html
-
-3. http://www.uml.org.cn/ai/201811051.asp
-
-4. https://blog.csdn.net/sb19931201/article/details/65445514
-
-5. 华泰证券：基于遗传规划的选股因子挖掘
-
-6. 蚂蚁金服核心技术：百亿特征实时推荐算法揭秘
-
-   
-
 # <font face="黑体" color=green size=5>一、业务衍生</font>
 
 1. **定义**：结合对业务理解，设计能够表征数据特点的新特征变量，利用业务思维和统计方法进行衍生，提取次级特征。
@@ -145,9 +127,21 @@ layout: post
 
 
 
+【本文主要基于以下网络资源整理。如有侵权部分，请随时联系。】
 
+主要参考资料：
 
+1. https://zhuanlan.zhihu.com/p/114852465
 
+2. https://www.cnblogs.com/yyy-blog/p/10420175.html
+
+3. http://www.uml.org.cn/ai/201811051.asp
+
+4. https://blog.csdn.net/sb19931201/article/details/65445514
+
+5. 华泰证券：基于遗传规划的选股因子挖掘
+
+6. 蚂蚁金服核心技术：百亿特征实时推荐算法揭秘
 
 
 
