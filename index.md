@@ -8,11 +8,11 @@ description: My profile
 comments: false
 ---
 
-靡不有初，鲜克有终, 希望我能坚持记录。如果我的点滴经验对您有帮助，欢迎常来逛逛并与我留言互动唷！
+靡不有初，鲜克有终。如果我的点滴经验对您有帮助，欢迎常来逛逛并与我留言互动唷！
 
 以下是我的个人简历：
 
-<img src='https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/about/avatar.jpg' style=' width:120px;height:100 px; float: right;'/>
+
 
 ## Qi Tang
 
@@ -73,7 +73,7 @@ This is Qi Tang, I am passionate for digital signal processing, financial modell
 ## Professional Skills
 - **Current Focus**
   - FinTech: Financial Modelling and Statistical Data Analysis
-  - Database: MySQL, Oracle, pyspark
+  - Database Related:  Oracle, MySQL，pyspark
   - Maching/Deep learning: Sk-learn, Tensorflow, Keras, Pytorch, OpenCV
   
 - Finance Related
@@ -97,5 +97,5 @@ This is Qi Tang, I am passionate for digital signal processing, financial modell
 
 - **SocialMedia**: Explore the sidebar to access my info.
 - **Location**: Pudong District, Shanghai ,China 
-- **Email**: [db12928@gmail.com]
+- **Email**: db12928@gmail.com
 
