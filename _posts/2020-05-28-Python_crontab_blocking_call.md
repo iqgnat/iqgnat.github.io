@@ -33,8 +33,14 @@ layout: post
 
 # <font face="黑体" color=green size=5>解决方法</font>
 
-1. 非阻塞调起 ： crontab 中加上 flock –x (解决多 个 Croncheck_comrisk_pid.py 问题)。
+1. 非阻塞调起 ： crontab 中加上 flock –x (解决多 个 Croncheck_comrisk_pid.py 问题)：
+
+   ```shell
+   0 0 * * * flock -xn /iqgnat/python/code/create.lock -c '/iqgnat/python/app/anaconda4.3.1/bin/python  /iqgnat/python/code/Call_polling.py /iqgnat  1>>/iqgnat/python/code/log/cron.log  2>&1
+   ```
+
 2. 经确认，主线程没有被子线程阻塞（没有join）。没有daemon，主线程意外结束，子线程依然保留。该脚本内容可以通过crontab非阻塞来实现，考虑删除该部分。
+
 3. 在psutil判断进程名字不是关键字搜索，而是精准匹配，可以改为正则匹配。也可以直接起一个子进程通过pgrep 判断。
 
 # <font face="黑体" color=green size=5>代码更改</font>
