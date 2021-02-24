@@ -16,6 +16,12 @@ layout: post
 
 <!--more-->
 
+<img src="https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-02-20-After_reading_A_brief_history_of_the_future/miao.jpg" style="zoom:60%" />
+
+
+
+
+
 # <font face="黑体" color=green size=5>各种主义</font>
 
 1.  不同主义的出现都是为了迎合发展的需要，有神论是祖先在采集时代、农业化时代的需求，崇拜自然神。人文主义无神论是工业化发展的需求，数据主义是未来发展的需要。发展如果刹车，经济就会轰然倒塌并拖垮社会。
