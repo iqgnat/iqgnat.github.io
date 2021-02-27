@@ -9,6 +9,8 @@ layout: default
     {% if page.tags.size > 0 %}
     <span class="post-meta-span tag">{{ page.tags | join: ', ' }}</span>
     {% endif %}
+	<!-- 同时兼容http与https -->
+	浏览量:&nbsp;<span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"> - </span>次.
   </div>
 
   <h1 class="post-title">{{ page.title }}</h1>

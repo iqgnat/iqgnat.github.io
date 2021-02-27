@@ -11,6 +11,7 @@ aside:
   toc: true
 layout: post
 music-id: 407759503
+visitor: true
 ---
 
 安德的游戏，以天选之人安德被培养来对抗虫族的故事为主线，一些情节与隐秘的角落有共通之处：
