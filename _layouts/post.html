@@ -2,7 +2,6 @@
 layout: default
 ---
 
-
 <article class="post container">
   <div class="post-meta">
     <span class="post-meta-span date">{{ page.date | date:"%Y %B %d" }}</span>
@@ -10,7 +9,14 @@ layout: default
     <span class="post-meta-span tag">{{ page.tags | join: ', ' }}</span>
     {% endif %}
 	<!-- 同时兼容http与https -->
-	浏览量:&nbsp;<span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"> - </span>次.
+	浏览量:&nbsp;<span id="{{ post.url }}" class="leancloud_visitors" data-flag-title="{{ post.title }}"> </span>次.
+   {% if site.leancloud.enable %}
+		<span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
+		<span class="post-meta-divider">|</span>
+		<span class="post-meta-item-text"> Hits:  </span>
+		<span class="leancloud-visitors-count"></span>
+		</span>
+   {% endif %}
   </div>
 
   <h1 class="post-title">{{ page.title }}</h1>
@@ -18,7 +24,7 @@ layout: default
 	{% if page.music-id %}
 		{% include cloud-music.html %}
 	{% endif %} 
-		
+
     {{ content }}
 
    <!-- Valine 评论框 start -->

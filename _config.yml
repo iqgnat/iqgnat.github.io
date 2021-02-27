@@ -62,7 +62,9 @@ locals:
 
 plugins:
   - jekyll-seo-tag
-
+  
+leancloud:
+  enable: true
       
 valine:
   # 开启 Valine 评论 
