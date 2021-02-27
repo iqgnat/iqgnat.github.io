@@ -68,8 +68,8 @@ valine:
   # 开启 Valine 评论 
   enable: true
   # 设置应用 id 和 key
-  appid: vYdUebEDzLQy03V1z8EFsI1f-gzGzoHsz
-  appkey: VEUKdjsPMDeRvBvgucfe7kCV
+  appId: vYdUebEDzLQy03V1z8EFsI1f-gzGzoHsz
+  appKey: VEUKdjsPMDeRvBvgucfe7kCV
   # mail notifier , https://github.com/xCss/Valine/wiki
   # 关闭提醒与验证 
   notify: true
