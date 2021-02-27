@@ -14,12 +14,10 @@ filter: 'category'
 recent_num: 50
 
 # Social account
-#twitter: 
-#instagram: 
+
 #weibo: itzhenzhao
 #facebook: itzhenzhao
-zhihu: 
-#youtube: youtubezhen
+zhihu: chinatang-68
 linkedin: 旗-唐-a89477134
 
 # avatar and Favicon
@@ -53,7 +51,7 @@ gems:
 locals:
   recent: Recents
   tech: 技术
-  life: 生活f
+  life: 生活
   project: 项目
   research: 科研
   resource: 资源
