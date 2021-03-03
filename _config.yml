@@ -63,6 +63,8 @@ plugins:
   
 leancloud:
   enable: true
+  appId: vYdUebEDzLQy03V1z8EFsI1f-gzGzoHsz
+  appKey: VEUKdjsPMDeRvBvgucfe7kCV
       
 valine:
   # 开启 Valine 评论 

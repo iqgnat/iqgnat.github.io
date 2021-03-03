@@ -9,14 +9,12 @@ layout: default
     <span class="post-meta-span tag">{{ page.tags | join: ', ' }}</span>
     {% endif %}
 	<!-- 同时兼容http与https -->
-   {% if site.leancloud.enable %}
-		<span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
-		<span class="post-meta-divider"> | </span>
-		<span class="post-meta-item-text"> 浏览量:</span> 
-		<span class="leancloud-visitors-count"> </span>
-		<span class="post-meta-item-text"> 次 </span> 
-		</span>
-   {% endif %}
+	{% if site.leancloud.enable %}
+	  <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}"> 
+	  Visited: <a href="#"><span class="leancloud-visitors-count"></span> 次</a>
+	  </span>
+	{% endif %}
+
   </div>
 
   <h1 class="post-title">{{ page.title }}</h1>
