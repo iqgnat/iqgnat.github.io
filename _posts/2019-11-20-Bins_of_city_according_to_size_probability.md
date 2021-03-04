@@ -1,5 +1,5 @@
 ---
-title: 根据违约/营销成功概率和规模将不同城市进行分箱
+title: 对城市进行分箱
 categories: 金融分析和智能风控
 tags: 金融分析和智能风控
 description: 
@@ -29,6 +29,15 @@ visitor: true
 其他对类型变量进行分箱的常用手段有： IV值、等频等宽分箱、最优分箱、xgb分箱等。
 
 # <font face="黑体" color=green size=5>代码示例</font>
+
+输入.csv文件示例：
+
+```ruby
+| PROVINCE_CITY | SINGLE_COUNT | ALL_COUNT | RATIO |
+| ------ | ------ | ------ | ------ |
+| A市 | 4120 | 5391 | 0.764236691 |
+| B市 | 2888 | 3969 | 0.727639204 |
+```
 
 ```python
 # -*- encoding in utf-8 -*-
