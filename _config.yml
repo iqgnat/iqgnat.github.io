@@ -65,7 +65,8 @@ leancloud:
   enable: true
   appId: vYdUebEDzLQy03V1z8EFsI1f-gzGzoHsz
   appKey: VEUKdjsPMDeRvBvgucfe7kCV
-      
+
+google_analytics: UA-191934883-1
 valine:
   # 开启 Valine 评论 
   enable: true
