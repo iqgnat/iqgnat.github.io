@@ -14,88 +14,164 @@ comments: false
 
 
 
-## Qi Tang
-
-This is Qi Tang, I am passionate for digital signal processing, financial modelling, machine learning, brain computer interface, advanced algorithms, software development.
 
 
+<center><b><font size="9px"> 唐旗</font></b></center>
 
-## Selected Awards
+<center><font size="6px">IEEE 学生会员</font></center>
 
-- #### Excellent Graduate Student (MSc)
 
-  Date: Jul.2019  ORG: Faculty of Science and Technology, University of Macau
 
-- #### Third Position, in Hong Kong-Macau Joint Chapter Student Paper Competition 2015
+## 教育背景
 
-  Date: Aug.2015  ORG: IEEE Macau Student Branch Membership Committee
+- ####  2015- 2019  硕士研究生 · 电机与计算机工程 · 澳门大学
 
-- #### Dean's Final Year Project
+   GPA: 3.67 / 4.00; 
+   成绩在专业排名 Top 2 / 35
+   以杰出毕业生身份毕业。
 
-  Date: May.2015 ORG: Faculty of Science and Technology, University of Macau
+    主要专业课（成绩）：
+       高等数学(A); 
+       数字信号处理(B+);
+       嵌入式系统(A); 
+       控制系统(A-); 
+       专家系统 (A-)。 
 
-  
+- #### 2011-2015  理学学士  · 电机与计算机工程 · 澳门大学
 
-## Project Experiences
+​      GPA: 2.97 / 4.00; 
+​      成绩在专业排名 Top 10 / 52；
+​      毕业设计论文被选入“澳门大学优秀学生学术论文（UMOAPS）”
 
-1. Aug. 2020, develop and complete Anti-Money Laundering Model independently and this project won two prizes in municipal competitions.
 
-2. Apr.2020, in charge of Business Survival Days Model independently.
 
-3. Jan.2020, develop Comprehensive Risk Early Warning Model independently.
+## 荣誉 & 奖项
 
-4. Teaching Assistant: Presented tutorial lectures and/or laboratory lectures of the following courses:
-   Applied Electronics (ECEB310),
-   Probability and Statistics (ECEB252&ECEN2007),
-   Control Systems (ECEN3000),
-   Embedded System (ECEB121),
-   Electricity and Life (GEST016)
+1. 先进员工 (Top 3 / 58) · 2021 年 02 月 · 中银金融科技有限公司创新研究中心； 
+2. 独立负责的模型获得《特色信用案例》奖项 · 2021 年 01 月 ·  上海市浦东新区社会信用体系建设联席会议办公室；
+3. “小海豚杯” 人工智能建模大赛二等奖 · 2020 年 01 月 · 中国银行软件中心；
+4. 杰出毕业生 · 2019 年 07月 · 澳门大学科技学院；
 
-5. Graduate Research:
-   Neurofeedback effects and brain connectivity analysis on steady-state visually evoked potentials
+5. IEEE EMBS 澳门项目比赛第三名 · 2015 年 08月 ·  IEEE EMBS 香港-澳门分会；
+6. 本科毕业设计被入选院长荣誉毕业设计名单· 2015 年 05 月 · 澳门大学科技学院。
 
-6. Student internship in Mobile Networking Department. Content: web crawling for competitive analysis;
 
-   
 
-## Publications
+## 认证证书 & 技能
 
-- #### Eyes-Closed Resting EEG Predicts the Learning of Alpha Down- Regulation in Neurofeedback Training, Frontiers
+1. 岗位相关技能：
+           Python （2018 - 至今）
+           MATLAB （2014 - 2019）
+           Linux & Shell（2019 - 至今）
+           PL/SQL (Oracle、MySQL)（2019 - 至今）
+           Latex （2019）
+           SPSS （2015 - 2019） 
+      	Neo4j 图数据库 （2019）
+           Java、C++ （业余项目）
 
-- #### Neurofeedback Improves SSVEP-based BCI Performance on Subjects with Both 'High' and 'Low' Performance, Seventh International BCI Meeting: BCIs: Not Getting Lost in Translation, Pacific Grove, CA, May 21-25, 2018
+2. 专业知识：
 
-- #### How Mental Strategy Affects Beta/Theta Neurofeedback Training, World Congress on Medical Physics and Biomedical Engineering, June 7-12, 2015, Toronto, Canada
+   + 金融场景数据分析和模型构建：
+     + 可疑交易监测 
+     + 智能风控
+   + 脑机接口：
+     + 稳态视觉诱发电位（SSVEP）
+     + 神经反馈（Neurofeedback)
 
-- #### A Multi-channel SSVEP- based BCI for Computer Games with Analogue Control, IEEE International Conference on Computational Intelligence and Virtual Environments for Measurement Systems and Applications (CIVEMSA)
+   3. 应用电子
 
-  
+3. 01/2020： Deep Learning Specialization（由 Coursera 授予的在线课程学习证明）
 
-## Professional Skills
-- **Current Focus**
-  - FinTech: Financial Modelling and Statistical Data Analysis
-  - Database Related:  Oracle, MySQL，pyspark
-  - Maching/Deep learning: Sk-learn, Tensorflow, Keras, Pytorch, OpenCV
-  
-- Finance Related
-  - Anti-Money Laundering
-  - Intelligent Risk Control and Risk Transmission Prediction
-  - Can comprehend factors in financial reports factors
+      
 
-- Programming Related
-  - Lang:`Python`,`PL/SQL`,`Shell`,`MATLAB`,`Java`,`C++`; 
-  - *Other Skills:*  Git, LaTeX, Unix, Arduino, Simple Circuit Design: Amplifier Circuits
+## 工作经历
 
-- Brain Computer Interface (BCI)  and Digital Signal Related
+  **一、中银金融科技有限公司·创新研究中心 · 专业岗位 · 初级工程师**
+          *上海浦东· 2019 年 07 月 - 至今*
 
-  - Neurofeedback, Steady State Visual Invoked Potential (SSVEP)
+1. 独立完成及负责以下三个智能风控模型的开发和后续跟进：
 
-  - SPSS
++ AI 检测分析模型（2020年07月27日 - 至今)：
+     + 业务逻辑整合，模型构建和优化，在多个分行部署、投产，全天候处理实施过程发生的情况；
+     + 提供了超 70 小时的培训；
+     + 在多个项目组中进行传帮带和知识转移。
+     + 培训、安装手册、成果汇报、知识转移、各类奖项申请等材料的撰写；
+
+   + 疫情期间的风险预警模型（2020年03月08日 - 2020年03月12日）：
+
+     + 外部数据分析、评分卡计算、模型搭建和优化；
+     + 模型成果汇报等材料的撰写；
+
++ 综合风险预警模型（2019年11月 - 2020年7月）：                     
+
+  + 数据分析和特征工程，模型构建、评分卡计算等；
+
+  + 模型成果汇报等文档撰写和知识转移；
 
     
 
-## Contact Me
+2.  跟踪测试第三方提供的传导模型和平台（2020年04月24日 - 2020年07月29日）:
 
-- **SocialMedia**: Explore the sidebar to access my info.
-- **Location**: Pudong District, Shanghai ,China 
+   + 对第三方提供的模型进行验证，并对平台进行测试；
+
+     
+
+3. 参与知识图谱的构建 (2019年07月23日 - 2019年09月06日)：
+
+   + 图数据库选型和部分调研工作；
+   + 图谱的后端构建；
+
+
+
+**二、 澳门大学控制与自动化实验室 · 科研助理**
+  		*澳门 · 2015 年 8月 - 2019 年  07 月*
+
+​	以下课题研究： 
+​           1、 提高脑机接口-人机交互（稳态视觉诱发电位-SSVEP）的表现；
+​           2、 多状态下的脑网络分析。
+​			
+​	具体内容：
+
+​                  a. 采集人机交互数据，并做降噪和数字信号分析； 
+​                  b. 文献综述，数据分析，实验结果总结投稿;
+
+
+
+**三、澳门大学科技学院 · 教学助理**
+      *澳门 · 2016 年 8月 - 2019 年 01 月* 
+      以下本科课程教学助理: 
+           1、 现代控制系统 (ECEB252 & ECEN3000); 
+           2、 应用电子 (ECEB310); 
+           3、 嵌入式系统 (ECEB121); 
+           4、 概率统计 (ECEB252 & ECEN2007); 
+           5、 电力生活 (GEST016); 
+                  工作内容：
+                   a. 习题课、实验课；
+                   b. 功课、考试、实验报告批改和答疑。
+
+ **四、 凤凰网凤凰新闻客户端 · 移动互联网部门 · 实习生** 
+       	*北京望京 · 2017 年  07 月 - 2017 年  08 月* 
+
+   1. 同类产品的竞品分析;
+
+   2. 为竞品分析而编写批量抓取的脚本。
+
+      
+
+## 发表论文
+
+1.  Q.Tang, W.Y. Nan, F. Wan et.al. Neurofeedback Improves SSVEP BCI Performance on Subject with Both 'High' and 'Low' Performance.
+2.  C.M. Wong, Q.Tang, J.N. da Cruz et.al. A Multi-channel SSVEPbased BCI for Computer Games with Analogue Control.
+3. X.T. Qu, Q. Tang, L. M. Yang et.al How Mental Strategy Affects Beta/Theta Neurofeedback Training. 
+4. W.Y. Nan, F. Wan, Q.Tang et.al. Eyes-Closed Resting EEG Predicts the Learning of Alpha Down - Regulation in Neurofeedback Training. Journal Paper 
+
++ 投稿中 : Q.Tang, C.M. Wong, Z. Wang et.al. Alpha Down-Regulation Neurofeedback Training Effects on SSVEP-Based BCI Performances in Journal of Neural Engineering.
+
+
+
+## 联系我
+
+- **社交网站**: 请见侧边栏。
+- **地址**: 上海市浦东新区
 - **Email**: db12928@gmail.com
 

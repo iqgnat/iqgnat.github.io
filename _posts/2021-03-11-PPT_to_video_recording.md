@@ -1,7 +1,7 @@
 ---
 title: PPT录制课堂视频小记
-categories: 人间草木
-tags: 人间草木
+categories: 科研工具
+tags: 科研工具
 description: 
 comments: true
 author: Tang Qi
