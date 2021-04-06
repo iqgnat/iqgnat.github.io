@@ -1,5 +1,5 @@
 ---
-title: 欢迎来到我的小天地
+title: 唐旗
 layout: post
 category: About Me
 time: 2018-01-16
@@ -7,20 +7,6 @@ tags: [profile]
 description: My profile
 comments: false
 ---
-
-靡不有初，鲜克有终。如果我的点滴经验对您有帮助，欢迎常来逛逛并与我留言互动唷！
-
-以下是我的个人简历：
-
-
-
-
-
-<center><b><font size="9px"> 唐旗</font></b></center>
-
-<center><font size="4px">IEEE 学生会员</font></center>
-
-
 
 ## 教育背景
 
@@ -73,8 +59,8 @@ comments: false
        ​	SPSS （2015 - 2019） 
        
         	Neo4j 图数据库 （2019）
-       
-         	Java、C++ （业余项目）
+        	
+        	Java、C++ （业余项目）
 
 2. 专业场景：
 
