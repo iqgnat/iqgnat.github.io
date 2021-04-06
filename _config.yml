@@ -18,10 +18,11 @@ recent_num: 50
 #weibo: itzhenzhao
 #facebook: itzhenzhao
 zhihu: chinatang-68
-linkedin: 旗-唐-a89477134
+github: iqgnat
+#linkedin: 旗-唐-a89477134
 
 # avatar and Favicon
-avatar: /assets/images/about/avatar2.jpg
+avatar: /assets/images/about/avatar.jpg
 favicon: /assets/favicon.ico
 
 # disqus config
@@ -31,7 +32,7 @@ disqus:
 # google analytics config
 ga:
   id: 187801267
-  url: tangqinotes.me
+  url: iqgnat.github.io
 
 # Build settings
 permalink: /:year/:month/:day/:title.html
