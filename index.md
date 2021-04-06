@@ -25,9 +25,9 @@ comments: false
 
 - #### 2011-2015  理学学士  · 电机与计算机工程 · 澳门大学
 
-​      GPA: 2.97 / 4.00; 
-​      成绩在专业排名 Top 10 / 52；
-​      毕业设计论文被选入“澳门大学优秀学生学术论文（UMOAPS）”
+   ​     GPA: 2.97 / 4.00; 
+   ​     成绩在专业排名 Top 10 / 52；
+   ​     毕业设计论文被选入“澳门大学优秀学生学术论文（UMOAPS）”
 
 
 
@@ -37,7 +37,6 @@ comments: false
 2. 独立负责的模型获得《特色信用案例》奖项 · 2021 年 01 月 ·  上海市浦东新区社会信用体系建设联席会议办公室；
 3. “小海豚杯” 人工智能建模大赛二等奖 · 2020 年 01 月 · 中国银行软件中心；
 4. 杰出毕业生 · 2019 年 07月 · 澳门大学科技学院；
-
 5. IEEE EMBS 粤港澳区项目比赛第三名 · 2015 年 08月 ·  IEEE EMBS 香港-澳门分会；
 6. 本科毕业设计被入选院长荣誉毕业设计名单· 2015 年 05 月 · 澳门大学科技学院。
 
@@ -46,22 +45,21 @@ comments: false
 ## 认证证书 & 技能
 
 1. 岗位相关技能：
-           Python （2018 - 至今）
        
-       ​    MATLAB （2014 - 2019）
+           + Python （2018 - 至今）
        
-       ​    Linux & Shell（2019 - 至今）
+       + MATLAB （2014 - 2019）
        
-       ​    PL/SQL (Oracle、MySQL)（2019 - 至今）
+       + Linux & Shell（2019 - 至今）
        
-       ​    Latex （2019）
+       + PL/SQL (Oracle、MySQL)（2019 - 至今）
        
-       ​	SPSS （2015 - 2019） 
+       + Latex （2019）
        
-        	Neo4j 图数据库 （2019）
-        	
-        	Java、C++ （业余项目）
-
+       + SPSS （2015 - 2019） 
+       + Neo4j 图数据库 （2019）
+       + Java、C++ （业余项目）
+       
 2. 专业场景：
 
    + 金融场景数据分析和模型构建：
@@ -155,7 +153,7 @@ comments: false
 
 
 
-## 发表论文
+## 论文
 
 1.  Q.Tang, W.Y. Nan, F. Wan et.al. Neurofeedback Improves SSVEP BCI Performance on Subject with Both 'High' and 'Low' Performance.
 2.  C.M. Wong, Q.Tang, J.N. da Cruz et.al. A Multi-channel SSVEPbased BCI for Computer Games with Analogue Control.
