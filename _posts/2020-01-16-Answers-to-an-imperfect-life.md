@@ -1,5 +1,5 @@
 ---
-title: 《幸福课-不完美人生的解答书》 --读书笔记
+title: 《幸福课-不完美人生的解答书》读书笔记
 categories: 人间草木
 tags: 人间草木
 description: 

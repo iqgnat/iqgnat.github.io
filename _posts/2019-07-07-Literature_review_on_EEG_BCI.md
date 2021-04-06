@@ -12,7 +12,7 @@ aside:
 layout: post
 ---
 
-【翻译自 TangQi 的硕士毕业论文：**A Further Study of the Alpha-Down Neurofeedback Training**
+【翻译自 TangQi 的硕士毕业论文第一章节：**A Further Study of the Alpha-Down Neurofeedback Training**
 
 **for SSVEP-based BCIs**】
 

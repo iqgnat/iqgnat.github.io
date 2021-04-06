@@ -1,5 +1,5 @@
 ---
-title: 《被讨厌的勇气》 --读书笔记
+title: 《被讨厌的勇气》读书笔记
 categories: 人间草木
 tags: 人间草木
 description: 
