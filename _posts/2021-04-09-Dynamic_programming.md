@@ -100,8 +100,8 @@ class Solution:
         return cur
     
 NUMS = [100,50,1000,10000,50000,400,3000,80000,400000]
-cur_cash = Solution()
-print(cur_cash.rob(NUMS))
+Solution_instance = Solution()
+print(Solution_instance.rob(NUMS))
 ```
 
 Java
@@ -123,8 +123,8 @@ public class Dp{
 
     public static void main(String[] args) {
         List < Integer > NUMS = Arrays.asList(100, 50, 1000, 10000, 50000, 400, 3000, 80000, 400000);
-        Dp cur_cash = new Dp();
-        System.out.println(cur_cash.rob(NUMS));
+        Dp Solution_instance = new Dp();
+        System.out.println(Solution_instance.rob(NUMS));
     }
 }
 ```
@@ -143,8 +143,8 @@ class Solution{
 }
 
 let NUMS = [100,50,1000,10000,50000,400,3000,80000,400000]
-var cur_cash = Solution()
-print(cur_cash.rob(nums:NUMS))
+var Solution_instance = Solution()
+print(Solution_instance.rob(nums:NUMS))
 ```
 
 # <font face="黑体" color=green size=5>相关题目</font>
@@ -160,21 +160,24 @@ print(cur_cash.rob(nums:NUMS))
 
 ```python
 class Solution:
-    def rob(self, nums: List[int]) -> int:
+    def rob(self, nums) -> int:
         def my_rob(nums):
             cur, pre = 0, 0
             for num in nums:
                 cur, pre = max(pre + num, cur), cur
             return cur
-        return max(my_rob(nums[:-1]),my_rob(nums[1:])) if len(nums) != 1 else nums[0]
+
+        my_rob(nums)
+        return max(my_rob(nums[:-1]), my_rob(nums[1:])) if len(nums) != 1 else nums[0]
+
 
 # 作者：jyd
-#链接：https://leetcode-cn.com/problems/house-robber-ii/solution/213-da-jia-jie-she-iidong-tai-gui-hua-jie-gou-hua-/
-#来源：力扣（LeetCode）
-    
-NUMS = [100,50,1000,10000,50000,400,3000,80000,400000]
-cur_cash = Solution()
-print(cur_cash.rob(NUMS))
+# 链接：https://leetcode-cn.com/problems/house-robber-ii/solution/213-da-jia-jie-she-iidong-tai-gui-hua-jie-gou-hua-/
+# 来源：力扣（LeetCode）
+
+NUMS = [100, 50, 1000, 10000, 50000, 400, 3000, 80000, 400000]
+Solution_instance = Solution()
+print(Solution_instance.rob(NUMS))
 ```
 
 相关应用：
