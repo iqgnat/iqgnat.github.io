@@ -1,5 +1,5 @@
 ---
-title: 算法导论第十五章:动态规划
+title: 动态规划之打家劫舍
 categories: 课堂笔记
 tags: [算法导论,leetcode]
 description: 
@@ -20,13 +20,21 @@ layout: post
 
 # <font face="黑体" color=green size=5>理解</font>
 
-动态规划：
+法一：迭代：
+
+​	有重叠子问题：函数的输入值全部拦截下来，然后把它的输出值然也记录下来，然后下次有相同的输入的时候，不再去算这个函数，而是直接从她的那个结果表里把结果查询出来，加速子问题的方法。
+
+
+
+法二：动态规划：
 
 1. 解决多阶段决策过程最优化的一种数学方法。把多阶段问题变换为一系列相互联系的的单阶段问题，然后逐个加以解决；
-2. 具有马尔可夫特征：无后效性；
-3. 有重叠子问题：函数的输入值全部拦截下来，然后把它的输出值然也记录下来，然后下次有相同的输入的时候，不再去算这个函数，而是直接从她的那个结果表里把结果查询出来，算不算也是一种就是动态规划子问题，加速子问题的方法。
 
-区别相似算法：
+2. 具有马尔可夫特征：无后效性；
+
+   
+
+动态规划区别相似算法：
 
 1. 和分治法的本质区别： 分治法的单阶段是完全独立的， 利用递归对各个子问题独立求解，最后利用各子问题的解进行合并形成原问题的解。动态规划的通过计算出子问题的结果构造一个最优解，迭代法自底向上求解，将分解后的子问题理解为相互间有联系，有重叠的部分。
 2. 和贪心法的区别：贪心着眼现实当下，只选择当前最有利的，不考虑这步选择对以后的选择造成的影响，不能看出全局最优，依赖于当前已经做出的所有选择，采用自顶向下(每一步根据策略得到当前一个最优解，保证每一步都是选择当前最优的) 的解决方法。动规谨记历史进程，通过较小规模的局部最优解一步步最终得出全局最优解。
@@ -48,26 +56,38 @@ $$
 
 1）刻画一个最优解的结构特征: 状态(抢劫总金额) dp[*n*]
 
-2）递归定义最优解的值:    dp[*n*+1] = dp[*n*-1] + nums[n]，其中 nums[n] 为第n家商铺的存有金额 （
+2）递归定义最优解的值:    dp[*n-1*] = dp[*n*-2] + nums[n]，其中 nums[n] 为第n家商铺的存有金额 （
 
-3）计算最优解的值，通常采用自底向上方法: dp[*n*+1] = *max*(*dp*[*n*], *dp[*n*−1]+*nums[n] ) 
+3）计算最优解的值，通常采用自底向上方法: dp[*n*+1] = *max*(*dp*[*n*-1], *dp[*n*−2]+*nums[n] ) 
 
 4）利用计算出的信息构造一个最优解。
 
-5)  记忆存储，复用现有结果，加速求解。（自底向上似乎不需要。）
-
 # <font face="黑体" color=green size=5>实现</font>
 
-Krahets 的思路，~妙哇~：
+Krahets 的思路，可以减少考虑初始时刻的情况,  ~妙哇~：
 
-​	上一刻状态：dp[n-2]
-​	此刻状态： dp[n-1]
-​	下一刻状态: dp[n]
-​	下一家商铺金额 num
-​	cur:  *dp*[*n*−1]
-​	pre:  *dp*[*n*−2]
++ 上一刻状态pre：dp[n-2]
 
- 	可以减少考虑初始时刻的情况。
++ 此刻状态cur： dp[n-1]
+
++ 下一刻状态 :   dp[n]
+
++ 下一家商铺金额 :   num
+
+  举例9家店铺金额分别为 [100, 50, 1000, 10000, 50000, 400, 3000, 80000, 400000] 
+
+
+  | store | num    | pre (= dp[n-2] ) | cur (= dp[n-1]) | *max*(*dp*[*n*-1], *dp[*n*−2]+*nums[n] ) = new cur | new pre (= cur) |
+  | ----- | ------ | ---------------- | --------------- | -------------------------------------------------- | --------------- |
+  | 1     | 100    | 0                | 0               | 100                                                | 0               |
+  | 2     | 50     | 0                | 100             | 100                                                | 100             |
+  | 3     | 1000   | 100              | 100             | 1100                                               | 100             |
+  | 4     | 10000  | 100              | 1100            | 10100                                              | 1100            |
+  | 5     | 50000  | 1100             | 10100           | 51100                                              | 10100           |
+  | 6     | 400    | 10100            | 51100           | 51100                                              | 51100           |
+  | 7     | 3000   | 51100            | 51100           | 54100                                              | 51100           |
+  | 8     | 80000  | 51100            | 54100           | 134100                                             | 54100           |
+  | 9     | 400000 | 54100            | 134100          | 454100                                             | 134100          |
 
 Python3：
 
@@ -88,9 +108,9 @@ Java
 ```java
 import java.util.List;
 import java.util.Arrays;
-
 import static java.lang.Math.max;
-public class dp{
+
+public class Dp{
     public int rob(List<Integer> nums) {
         int pre = 0, cur = 0, tmp;
         for (int num: nums) {
@@ -103,7 +123,7 @@ public class dp{
 
     public static void main(String[] args) {
         List < Integer > NUMS = Arrays.asList(100, 50, 1000, 10000, 50000, 400, 3000, 80000, 400000);
-        dp cur_cash = new dp();
+        Dp cur_cash = new Dp();
         System.out.println(cur_cash.rob(NUMS));
     }
 }
@@ -127,20 +147,35 @@ var cur_cash = Solution()
 print(cur_cash.rob(nums:NUMS))
 ```
 
-
-
 # <font face="黑体" color=green size=5>相关题目</font>
 
 如果考虑房间是首尾相连的情况 (如图)：
+![打家劫舍-首尾相接](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-04-09-Dynamic_programming/dp.JPG)
 
+```python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        cur, pre = 0, 0
+        for index,num in enumerate(nums):
+    
+            cur, pre = max(pre + num, cur), cur
+            if cur > pre:
+				
+        return cur
+    
+NUMS = [100,50,1000,10000,50000,400,3000,80000,400000]
+cur_cash = Solution()
+print(cur_cash.rob(NUMS))
+```
 
+其他适用题目：
 
-最长公共子序列、最长子串、最大字段、装配线，矩阵乘法、构造最优的二叉树。
+​	最长公共子序列、最长子串、最大字段、装配线，矩阵乘法、构造最优的二叉树。
 
 
 # <font face="黑体" color=green size=5>参考资料</font>
 
-1.  [labuladong的算法专栏](https://www.zhihu.com/column/labuladong)
-2.  https://cloud.tencent.com/developer/article/1017975
-3.  https://blog.csdn.net/u012961566/article/details/77077578
-4. https://leetcode-cn.com/problems/house-robber/solution/da-jia-jie-she-dong-tai-gui-hua-jie-gou-hua-si-lu-/, 作者：jyd,来源：力扣（LeetCode）
+1.  https://leetcode-cn.com/problems/house-robber/solution/da-jia-jie-she-dong-tai-gui-hua-jie-gou-hua-si-lu-/, 作者：jyd,来源：力扣（LeetCode）
+2.  [labuladong的算法专栏](https://www.zhihu.com/column/labuladong)
+3.  https://cloud.tencent.com/developer/article/1017975
+4.  https://blog.csdn.net/u012961566/article/details/77077578
