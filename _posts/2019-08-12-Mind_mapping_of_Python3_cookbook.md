@@ -12,7 +12,7 @@ aside:
 layout: post
 ---
 
-稍微整理一下 python3-cookbook 中的知识点。
+Cookbook 名字真贴切，不是manual，不是guide，是一些精悍却实现一个完整功能的一段代码，就想烹饪书上的菜肴，不会做菜的人学做菜，会做菜的复盘自己过去的做法，并加以改进。稍微整理一下我在 python3-cookbook 中学到的知识点。
 
 <!--more-->
 
