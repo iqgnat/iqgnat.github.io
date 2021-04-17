@@ -1,6 +1,6 @@
 ---
 title: 动态规划之打家劫舍
-categories: 课堂笔记
+categories: [课堂笔记,编程随笔]
 tags: [算法导论,leetcode]
 description: 
 comments: true

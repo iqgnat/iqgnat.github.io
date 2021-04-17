@@ -1,6 +1,6 @@
 ---
 title:  特征衍生、特征筛选
-categories: 机器学习和建模
+categories: ML/DL
 tags: 机器学习和建模
 description: 
 comments: true

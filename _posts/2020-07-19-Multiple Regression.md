@@ -1,7 +1,7 @@
 ---
 title: 回归解决公式因子的缺失问题
 categories: [机器学习和建模,金融分析和智能风控]
-tags: 机器学习和建模
+tags: ML/DL
 description: 
 comments: true
 author: Tang Qi
