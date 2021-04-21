@@ -1,5 +1,5 @@
 ---
-title: MapReduce思维导图
+title: MapReduce 思维导图
 categories: [课堂笔记]
 tags: [MapReduce,java]
 description: 
@@ -17,6 +17,9 @@ MapReduce的思维导图。
 <!--more-->
 
 # <font face="黑体" color=green size=5>思维导图</font>
+
+[MindMap思维导图下载](https://github.com/iqgnat/iqgnat.github.io/blob/master/assets/images/2021-04-21-MapReduce_mindmap/MapReduce.png)
+概览：
 
 ![mapreduce](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-04-21-MapReduce_mindmap/MapReduce.png)
 
