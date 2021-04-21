@@ -1,7 +1,7 @@
 ---
 title: MapReduce思维导图
 categories: [课堂笔记]
-tags: [mapreduce,java]
+tags: [MapReduce,java]
 description: 
 comments: true
 author: Tang Qi
@@ -12,7 +12,7 @@ aside:
 layout: post
 ---
 
-Mapreduce的思维导图
+MapReduce的思维导图。
 
 <!--more-->
 
