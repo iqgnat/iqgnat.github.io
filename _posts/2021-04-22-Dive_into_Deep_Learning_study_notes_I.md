@@ -110,33 +110,7 @@ pip install torch torchvision -f https://download.pytorch.org/whl/torch_stable.h
 2. Frobenius 范数：可以理解为将矩阵拉成一维向量，具体就是矩阵的每个元素的平方和的开方。
 
 3. 正交矩阵： 正交矩阵（Orthogonal Matrix）是指其转置等于其逆的矩阵。几何意义是行向量和列向量皆为正交的单位向量。
-   **定义**：
-
-   正交矩阵（Orthogonal Matrix）是指其转置等于其逆的矩阵。
-
-   ![[公式]](https://www.zhihu.com/equation?tex=A%5ET%3DA%5E%7B-1%7D)
-
-   例子：
-
-   ![[公式]](https://www.zhihu.com/equation?tex=A%3D+%5Cbegin%7Bpmatrix%7D+1+%26+0+%5C%5C+0+%26+1+%5Cend%7Bpmatrix%7D+%2C+%5Cquad+B%3D+%5Cbegin%7Bpmatrix%7D+1+%26+0+%5C%5C+0+%26+-1+%5Cend%7Bpmatrix%7D+%2C+%5Cquad+C%3D+%5Cbegin%7Bpmatrix%7D+0+%26+1+%26+0+%5C%5C+-1+%26+0+%26+0+%5C%5C+0+%26+0+%26+-1+%5Cend%7Bpmatrix%7D+)
-
-   **知识点**：
-
-   （1）因为：
-
-   ![[公式]](https://www.zhihu.com/equation?tex=I%3DAA%5E%7B-1%7D%3DA%5E%7B-1%7DA%3DA%5ETA%3DAA%5ET%5CLeftrightarrow+A%5E%7B-1%7D%3DA%5ET)
-
-   所以当看到 ![[公式]](https://www.zhihu.com/equation?tex=AA%5E%7B-1%7D%3DA%5ETA) 时，可知 ![[公式]](https://www.zhihu.com/equation?tex=A) 是正交矩阵。
-
-   注意到 ![[公式]](https://www.zhihu.com/equation?tex=I%3DAA%5ET) ，也就是说矩阵的行（或列）向量之间点积等于0（向量正交），行（或列）向量与自身的点积等于1（单位向量），所以正交矩阵又有另一种定义：由行之间两两正交、列之间两两正交的单位向量组成的方阵。
-
-   （2）又因为：
-
-   ![[公式]](https://www.zhihu.com/equation?tex=1%3Ddet%28I%29%3Ddet%28A%5ETA%29%3Ddet%28A%5ET%29det%28A%29%3Ddet%28A%29%5E2)
-
-   ![[公式]](https://www.zhihu.com/equation?tex=+%5CRightarrow+det%28A%29%3D%5Cpm1)
-
-   所以正交矩阵的行列式必定是+1或-1。
+   ![知乎_渔非鱼_正交矩阵](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-04-22-Dive_into_Deep_Learning_study_notes_I/orthogo_matrix.PNG)
 
    # <font face="黑体" color=blue size=5> Q&A </font>
 
