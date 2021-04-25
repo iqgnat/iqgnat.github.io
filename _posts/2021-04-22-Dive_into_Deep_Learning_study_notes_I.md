@@ -101,7 +101,7 @@ pip install torch torchvision -f https://download.pytorch.org/whl/torch_stable.h
    [   8,    9,   10,   11]])
    ```
    5. tensor 和 array 的区别： array 是一个计算机概念，tensor是数学上的概念。 torch 和 tensorflow 用的是数学上的概念，但在计算机使用上，两者其实没有什么区别。
-      6. 是否可以用 jax 替代 numpy： 可以，jax 是 google 做的另一个框架，和numpy 很像，但还不够成熟，和tensorflow的团队是隔壁团队。
+   6. 是否可以用 jax 替代 numpy： 可以，jax 是 google 做的另一个框架，和numpy 很像，但还不够成熟，和tensorflow的团队是隔壁团队。
 
 # <font face="黑体" color=green size=5>线性代数</font>
 
@@ -116,15 +116,12 @@ pip install torch torchvision -f https://download.pytorch.org/whl/torch_stable.h
 
 4.  One-hot 转换后，矩阵很稀疏的影响：
    如果label本身是有關係的話 (如大, 中, 小這種有程度只分的), onehot就會消去了這種關係; 
-
-   **如果以dense matrix來保存的話會耗內存, 以sparse matrix方式儲存則減少很多, 而由於sparse matrix計算時可以skip 0的計算, 轉換後對計算速度應該沒有太大影響。“**
-   **In practice, we actually usually run out of space before we run out of time. If we have 16 GB of memory, the biggest matrix we can store (each number requires 8 bytes) is 8n^2 = 16 * 10 ^9 = 4000 * 4000. **
-
-   **The saving grace is that most really large matrices are sparse = mostly zeros (or have some other special structure with similar consequences). Yon only have to store the nonzero entries, and you can multiply matrix * vector quickly (you can skip zeros). In Julia, there are many functions to work with sparse matrices by only storing the nonzero elements. **
-
-   **The simplest one is the sparse function. Given a matrix A, the sparse(A) function creates a special data structure that only stores the nonzero entries, and you can multiply matrix * vector quickly (you can skip the zeros)。**
-
-5.  copy 和 clone 的区别： copy 分深度和浅度，clone 一定会复制内存。
+**如果以dense matrix來保存的話會耗內存, 以sparse matrix方式儲存則減少很多, 而由於sparse matrix計算時可以skip 0的計算, 轉換後對計算速度應該沒有太大影響。“**
+           **In practice, we actually usually run out of space before we run out of time. If we have 16 GB of memory, the biggest matrix we can store (each number requires 8 bytes) is 8n^2 = 16 * 10 ^9 = 4000 * 4000. **
+           **The saving grace is that most really large matrices are sparse = mostly zeros (or have some other special structure with similar consequences). Yon only have to store the nonzero entries, and you can multiply matrix * vector quickly (you can skip zeros). In Julia, there are many functions to work with sparse matrices by only storing the nonzero elements. **
+        **The simplest one is the sparse function. Given a matrix A, the sparse(A) function creates a special data structure that only stores the nonzero entries, and you can multiply matrix * vector quickly (you can skip the zeros)。**
+   
+5. copy 和 clone 的区别： copy 分深度和浅度，clone 一定会复制内存。
 
 # <font face="黑体" color=green size=5>矩阵计算 </font>
 
