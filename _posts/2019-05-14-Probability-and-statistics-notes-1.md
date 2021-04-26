@@ -1,7 +1,7 @@
 ---
 title: 概率统计笔记：章节概括
-categories: [课堂笔记,科研工具]
-tags: 课堂笔记
+categories: [科研笔记]
+tags: 概率统计
 description: 
 comments: true
 author: Tang Qi

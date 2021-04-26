@@ -1,7 +1,7 @@
 ---
-title: 动手学深度学习-学习笔记 I： 环境安装、线性代数、矩阵计算、自动求导（P1-P14）
-categories: [课堂笔记]
-tags: [Pytorch]
+title: 动手学深度学习-学习笔记 I：P1-P14
+categories: 机器学习和时序分析
+tags: [Pytorch,深度学习]
 description: 
 comments: true
 author: Tang Qi
@@ -12,7 +12,7 @@ aside:
 layout: post
 ---
 
-沐神的动手学深度学习 Pytorch 版直播课堂的 学习笔记，第一部分：环境安装和数据操作。
+动手学深度学习 Pytorch 版直播课堂的 学习笔记，第一部分：环境安装和数据操作。
 
 <!--more-->
 

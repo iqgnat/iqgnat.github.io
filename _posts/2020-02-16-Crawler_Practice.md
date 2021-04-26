@@ -1,7 +1,7 @@
 ---
-title: 一个小爬爬练习
-categories: 编程随笔
-tags: Python,爬虫
+title: crawler:手机信息抓取
+categories: 开发随笔
+tags: Python
 description: 
 comments: true
 author: Tang Qi

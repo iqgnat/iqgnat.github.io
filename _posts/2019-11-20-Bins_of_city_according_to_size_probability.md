@@ -1,7 +1,7 @@
 ---
 title: 对城市进行分箱
-categories: 金融分析和智能风控
-tags: 金融分析和智能风控
+categories: 机器学习和时序分析
+tags: 金融分析
 description: 
 comments: true
 author: Tang Qi

@@ -1,7 +1,7 @@
 ---
 title: 无创脑机接口（BCI）现状概述
-categories: 脑电EEG和脑机接口BCI
-tags: 脑电EEG和脑机接口BCI
+categories: 科研笔记
+tags: [EEG,BCI]
 description: 
 comments: true
 author: Tang Qi

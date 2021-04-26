@@ -1,7 +1,7 @@
 ---
 title: 《应用时间序列分析》学习笔记
-categories: [课堂笔记，金融分析和智能风控]
-tags: [时间序列]
+categories: 机器学习和时序分析
+tags: 时序分析
 description: 
 comments: true
 author: Tang Qi

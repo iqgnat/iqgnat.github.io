@@ -1,6 +1,6 @@
 ---
 title:  MuPAD 递归项
-categories: 科研工具
+categories: 科研笔记
 tags: MATLAB
 description: 
 comments: true

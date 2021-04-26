@@ -1,6 +1,6 @@
 ---
 title: Oracle 工作笔记 
-categories: 编程随笔
+categories: 开发随笔
 tags: Oracle
 description: 
 comments: true

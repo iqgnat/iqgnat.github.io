@@ -1,7 +1,7 @@
 ---
 title: UM提供的论文工具之-VeriGuide
-categories: 科研工具
-tags:  科研工具
+categories: 科研笔记
+tags:  工具
 description: 
 comments: true
 author: Tang Qi

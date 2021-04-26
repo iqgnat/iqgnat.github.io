@@ -1,6 +1,6 @@
 ---
 title: Python Cookbook 知识点思维导图
-categories: 编程随笔
+categories: 开发随笔
 tags: Python
 description: 
 comments: true

@@ -1,7 +1,7 @@
 ---
 title: 大数据技术初级笔记1
-categories: 编程随笔
-tags: 编程随笔
+categories: 开发随笔
+tags: hadoop
 description: 
 comments: true
 author: Tang Qi

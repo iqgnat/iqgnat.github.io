@@ -1,7 +1,7 @@
 ---
 title: Latex写期刊的笔记
-categories: [课堂笔记,科研工具]
-tags: 课堂笔记
+categories: [科研笔记]
+tags: latex
 description: 
 comments: true
 author: Tang Qi

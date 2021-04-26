@@ -1,6 +1,6 @@
 ---
 title: MapReduce 思维导图
-categories: [课堂笔记]
+categories: 开发随笔
 tags: [MapReduce,java]
 description: 
 comments: true
