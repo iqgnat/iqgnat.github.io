@@ -1,7 +1,7 @@
 ---
 title: Python Cookbook 知识点思维导图
 categories: 开发随笔
-tags: Python
+tags: python
 description: 
 comments: true
 author: Tang Qi

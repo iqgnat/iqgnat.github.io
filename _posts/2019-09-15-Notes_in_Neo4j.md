@@ -1,7 +1,7 @@
 ---
 title: 图数据库 Neo4j 随笔
 categories: 开发随笔
-tags: Neo4j
+tags: neo4j
 description: 
 comments: true
 author: Tang Qi

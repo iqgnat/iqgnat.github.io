@@ -1,7 +1,7 @@
 ---
 title: 动手学深度学习-学习笔记 I：P1-P14
-categories: 机器学习和时序分析
-tags: [Pytorch,深度学习]
+categories: ML和时序分析
+tags: [pytorch,ML,python]
 description: 
 comments: true
 author: Tang Qi

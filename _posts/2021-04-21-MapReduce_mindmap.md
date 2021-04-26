@@ -1,7 +1,7 @@
 ---
 title: MapReduce 思维导图
 categories: 开发随笔
-tags: [MapReduce,java]
+tags: [mapreduce,java]
 description: 
 comments: true
 author: Tang Qi

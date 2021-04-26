@@ -1,7 +1,7 @@
 ---
 title: 对城市进行分箱
-categories: 机器学习和时序分析
-tags: 金融分析
+categories: ML和时序分析
+tags: [ML,python]
 description: 
 comments: true
 author: Tang Qi

@@ -1,7 +1,7 @@
 ---
 title: Oracle 大表分区，并通过 PL/SQL 语句循环执行操作。
 categories: 开发随笔
-tags: Oracle
+tags: oracle
 description: 
 comments: true
 author: Tang Qi

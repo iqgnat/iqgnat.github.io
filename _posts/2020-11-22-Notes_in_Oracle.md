@@ -1,7 +1,7 @@
 ---
 title: Oracle 工作笔记 
 categories: 开发随笔
-tags: Oracle
+tags: [oracle,sql]
 description: 
 comments: true
 author: Tang Qi

@@ -1,7 +1,7 @@
 ---
 title: crawler:手机信息抓取
 categories: 开发随笔
-tags: Python
+tags: python
 description: 
 comments: true
 author: Tang Qi

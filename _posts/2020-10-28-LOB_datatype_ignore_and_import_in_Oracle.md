@@ -1,7 +1,7 @@
 ---
 title: Oracle 导数，越过或导入 LOB 字段。
 categories: 开发随笔
-tags: Oracle
+tags: oracle
 description: 
 comments: true
 author: Tang Qi
@@ -68,9 +68,11 @@ TRAILING NULLCOLS
 )  
 ```
 
-
-
 sqlldr 执行语句：
 
-​	```sqlldr userid= <数据库用户名>/<数据库密码>@<IP地址>:<端口号>/<服务名> control=C:\sample_data.ctl log=C:\sample_data_import.log```
+```shell
+sqlldr userid= <数据库用户名>/<数据库密码>@<IP地址>:<端口号>/<服务名> control=C:\sample_data.ctl log=C:\sample_data_import.log
+```
+
+
 

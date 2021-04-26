@@ -1,7 +1,7 @@
 ---
 title: IPV6 转换为长整型遇到的问题：INET6_ATON 转为二进制数值型
 categories: 开发随笔
-tags: [mysql,sql]
+tags: [sql]
 description: 
 comments: true
 author: Tang Qi

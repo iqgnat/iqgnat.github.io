@@ -1,7 +1,7 @@
 ---
 title: 常用的EEG信号预处理
 categories: 科研笔记
-tags: [EEG,BCI]
+tags: [EEG&BCI]
 description: 
 comments: true
 author: Tang Qi

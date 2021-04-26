@@ -1,7 +1,7 @@
 ---
 title:  MuPAD 递归项
 categories: 科研笔记
-tags: MATLAB
+tags: matlab
 description: 
 comments: true
 author: Tang Qi

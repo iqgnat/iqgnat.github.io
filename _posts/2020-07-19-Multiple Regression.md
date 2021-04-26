@@ -1,6 +1,6 @@
 ---
 title: 回归解决公式因子的缺失问题
-categories: 机器学习和时序分析
+categories: ML和时序分析
 tags: 建模
 description: 
 comments: true
