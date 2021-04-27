@@ -1,6 +1,6 @@
 ---
 title: UM提供的论文工具之-VeriGuide
-categories: 科研笔记
+categories: 杂
 tags:  工具
 description: 
 comments: true

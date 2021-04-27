@@ -1,6 +1,6 @@
 ---
 title:  UMAC SSLVPN的学生使用手册
-categories: 科研笔记
+categories: 杂
 tags: 工具
 description: 
 comments: true

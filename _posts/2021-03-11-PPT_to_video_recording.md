@@ -1,6 +1,6 @@
 ---
 title: PPT录制课堂视频小记
-categories: 科研笔记
+categories: 杂
 tags: 工具
 description: 
 comments: true
