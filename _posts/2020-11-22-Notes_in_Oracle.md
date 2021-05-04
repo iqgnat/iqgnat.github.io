@@ -242,4 +242,104 @@ select a.spid, b.sid,b.serial#,b.username from v$process a, v$session b where a.
 
 1. oracle 、grid、cluster 安装步骤.
 
+   ```sql
+   --1、创建数据库用户，组
+   groupadd -g 54321 oinstall
+   groupadd -g 54322 dba
+   groupadd -g 54323 oper
+   groupadd -g 54324 asmdba
+   groupadd -g 54325 asmoper
+   groupadd -g 54326 asmadmin
+   useradd -u 54322 -g oinstall -G asmdba,asmoper,asmadmin grid 
+   useradd -u 54321 -g oinstall -G dba,oper,asmdba,asmoper,asmadmin oracle
+   
+   --2、创建grid与oracle软件安装目录
+   mkdir -p  /u01/12.2.0/grid
+   mkdir -p /u01/app/grid
+   mkdir -p /u01/app/oracle
+   chown -R grid:oinstall /u01
+   chown oracle:oinstall /u01/app/oracle
+   chmod -R 775 /u01/
+   
+   3、安装依赖包
+   yum install -y bc binutils compat-libcap1 compat-libstdc++-33 e2fsprogs e2fsprogs-libs glibc glibc-devel ksh libaio libaio-devel libX11 libXau libXi libXtst libgcc libstdc++ libstdc++-devel libxcb make net-tools nfs-utils smartmontools  sysstat gcc-c++
+   
+   4、在/etc/hosts文件中设置ip与主机名解析
+   
+   5、设置grid环境变量，在grid的home目录的.bash_profile文件中添加
+   export ORACLE_BASE=/u01/app/grid
+   export ORACLE_HOME=/u01/12.2.0/grid
+   export ORACLE_SID=+ASM1
+   export NLS_LANG=AMERICAN_AMERICA.AL32UTF8
+   export NLS_DATE_FORMAT="yyyy-mm-dd hh24:mi:ss"
+   export PATH=.:${PATH}:$HOME/bin:$ORACLE_HOME/bin
+   export PATH=${PATH}:/usr/bin:/bin:/usr/bin/X11:/usr/local/bin
+   export PATH=${PATH}:$ORACLE_BASE/common/oracle/bin
+   export ORACLE_PATH=${PATH}:$ORACLE_BASE/common/oracle/sql:.:$ORACLE_HOME/rdbms/admin
+   export ORACLE_TERM=xterm
+   export TNS_ADMIN=$ORACLE_HOME/network/admin
+   export ORA_NLS10=$ORACLE_HOME/nls/data
+   export LD_LIBRARY_PATH=$ORACLE_HOME/lib
+   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$ORACLE_HOME/oracm/lib
+   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/lib:/usr/lib:/usr/local/lib
+   export CLASSPATH=$ORACLE_HOME/JRE
+   export CLASSPATH=${CLASSPATH}:$ORACLE_HOME/jlib
+   export CLASSPATH=${CLASSPATH}:$ORACLE_HOME/rdbms/jlib
+   export CLASSPATH=${CLASSPATH}:$ORACLE_HOME/network/jlib
+   stty erase ^H
+   
+   6、设置oracle环境变量，在oracle的home目录的.bash_profile文件中添加
+   export NLS_LANG=AMERICAN_AMERICA.AL32UTF8
+   export NLS_DATE_FORMAT="yyyy-mm-dd hh24:mi:ss"
+   export ORACLE_BASE=/u01/app/oracle
+   export GI_HOME=/u01/12.2.0/grid
+   export ORACLE_HOME=/u01/app/oracle/product/11.2.0/dbhome_1
+   export ORACLE_SID=jkpzdb1
+   export PATH=.:${PATH}:$HOME/bin:$ORACLE_HOME/bin:$ORACLE_HOME/OPatch
+   export PATH=${PATH}:/usr/bin:/bin:/usr/bin/X11:/usr/local/bin
+   export PATH=${PATH}:$ORACLE_BASE/common/oracle/bin
+   export LD_LIBRARY_PATH=$ORACLE_HOME/lib
+   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$ORACLE_HOME/oracm/lib
+   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/lib:/usr/lib:/usr/local/lib
+   export CLASSPATH=$ORACLE_HOME/JRE
+   export CLASSPATH=${CLASSPATH}:$ORACLE_HOME/jlib
+   export CLASSPATH=${CLASSPATH}:$ORACLE_HOME/rdbms/jlib
+   export CLASSPATH=${CLASSPATH}:$ORACLE_HOME/network/jlib
+   export PATH=${PATH}:$GI_HOME/bin
+   stty erase ^H  
+   
+   7、设置内核参数
+   
+   8、存储绑定
+   
+   批量绑定脚本
+   
+   执行命令使绑定生效
+   udevadm control --reload-rules
+   udevadm trigger --type=devices --action=change
+   
+   配置ssh互信认证，也可以在安装图形界面配置
+   
+   oracle优化参数，oracle用户执行sqlplus / as sysdba后执行下面语句，关闭所有节点数据库，重启数据库
+   alter system set "_use_adaptive_log_file_sync"=false;
+   alter system set "max_dump_file_size"='200m';
+   alter system set "_gc_policy_time"=0 scope=spfile;
+   alter system set "_gc_undo_affinity"=false scope=spfile;
+   alter system set "_optimizer_extended_cursor_sharing"=none;
+   alter system set "_optimizer_extended_cursor_sharing_rel"=none;
+   alter system set processes=3000 scope=spfile;
+   ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;
+   alter system set "audit_trail"=none scope=spfile;
+   alter system set "deferred_segment_creation"=false;
+   ALTER SYSTEM SET EVENT = '28401 TRACE NAME CONTEXT FOREVER, LEVEL 1' SCOPE=SPFILE;
+   exec dbms_stats.set_param('method_opt','for all columns size 1');
+   exec DBMS_WORKLOAD_REPOSITORY.MODIFY_SNAPSHOT_SETTINGS(retention =>20*24*60);
+   
+   grid优化参数，grid用户执行sqlplus / as sysasm后执行下面语句
+   alter system set memory_max_target=2G scope=spfile;
+   alter system set memory_target=2G scope=spfile;
+   ```
+
+   
+
    2.物化视图
