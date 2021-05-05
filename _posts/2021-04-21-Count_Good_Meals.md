@@ -39,9 +39,9 @@ Explanation: The good meals are (1,1) with 3 ways, (1,3) with 9 ways, and (1,7) 
 
 + % 求余
 
-第三步：通过排列组合提高效率。
+第三步：通过排列组合减少重复计算。
 
-# <font face="黑体" color=green size=5>代码样例</font>
+# <font face="黑体" color=green size=5>代码</font>
 
 ```python
 #!/usr/bin/env python3
@@ -112,7 +112,7 @@ if __name__ == "__main__":
 
 # <font face="黑体" color=green size=5>大神思路</font>
 
-在力扣的评论中，很多网友用了 追加统计的思路来提高效率，很妙。
+在力扣的评论中，很多网友用了 追加统计 的思路来提高效率，代码也简练不少。
 
 >defaultdict() 返回一个类似字典的对象。defaultdict 是Python内建字典类（dict）的一个子类，它重写了方法 *missing*(key)，增加了一个可写的实例变量default_factory,实例变量default_factory被missing()方法使用，如果该变量存在，则用以初始化构造器，如果没有，则为None。其它的功能和dict一样。
 
