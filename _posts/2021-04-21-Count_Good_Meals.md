@@ -1,6 +1,6 @@
 ---
- title: 大餐计数 Count Good Meals 小记
-categories: [开发随笔]
+title: 大餐计数 Count Good Meals 小记
+categories: 开发随笔
 tags: [leetcode,python]
 description: 
 comments: true
@@ -39,9 +39,7 @@ Explanation: The good meals are (1,1) with 3 ways, (1,3) with 9 ways, and (1,7) 
 
 + % 求余
 
-第三步：如果list中的元素很多，且常有重复数据，考虑通过排列组合来减少计算量（2次幂判断次数）。
-
-+ factorial(n) / (factorial(n-m) * factorial(m))
+第三步：通过排列组合提高效率。
 
 # <font face="黑体" color=green size=5>代码样例</font>
 
@@ -56,7 +54,6 @@ def isPower(num):  # 通过循环左移直到得到余数，通过余数为0或1
     >>> isPower(6)
     False
     """
-        
     if num < 1:
         return False
     i = 1
@@ -65,6 +62,22 @@ def isPower(num):  # 通过循环左移直到得到余数，通过余数为0或1
             return True
         i <<= 1
     return False
+
+
+def factorial(n): 
+    result = 1
+    for i in range(2, n + 1):
+        result = result * i
+    return result
+
+
+def combination(n, m): # 减少计算次数
+    """
+    >>> combination(5, 1)
+    5
+    """
+    return factorial(n) // (factorial(n - m) * factorial(m))
+
 
 class Solution:
     def countPairs(self, dishes):
@@ -75,23 +88,33 @@ class Solution:
             k2_list.remove(k)  # remove是method，该方法不返回值，但会修改原来的list。
             k2_dict = {k: v for k, v in dishes_dict.items() if k in k2_list}
             for k2, v2 in k2_dict.items():
+                combination_list = [k, k2]
                 if isPower(v + v2):
-                    sum_no = sum_no + 1
-            return int(sum_no % (1e9 + 7)/2)
+                    N1 = dishes.count(combination_list[0])
+                    N2 = dishes.count(combination_list[1])
+                    if v == v2:
+                        no = N1 * (N1 - 1)
+                    else:
+                        no = N1 * N2
+                    sum_no = sum_no + no
+        return (int(sum_no % (1e9 + 7) / 2))
 
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
     solution = Solution()
-    solution.countPairs([1, 1, 1, 3, 3, 3, 7])
+    result = solution.countPairs([1, 1, 1, 3, 3, 3, 7])
+    print(result)
+
 ```
 
 # <font face="黑体" color=green size=5>大神思路</font>
 
-以下代码来自 Rhys_Wu 的回答，用到 collection中的 defaultdict （初初做的时候想到过，但还不够熟练）。
+在力扣的评论中，很多网友用了 追加统计的思路来提高效率，很妙。
 
->defaultdict() 返回一个类似字典的对象。defaultdict是Python内建字典类（dict）的一个子类，它重写了方法 *missing*(key)，增加了一个可写的实例变量default_factory,实例变量default_factory被missing()方法使用，如果该变量存在，则用以初始化构造器，如果没有，则为None。其它的功能和dict一样。
+>defaultdict() 返回一个类似字典的对象。defaultdict 是Python内建字典类（dict）的一个子类，它重写了方法 *missing*(key)，增加了一个可写的实例变量default_factory,实例变量default_factory被missing()方法使用，如果该变量存在，则用以初始化构造器，如果没有，则为None。其它的功能和dict一样。
 
 ```python
 #!/usr/bin/env python3
@@ -100,7 +123,7 @@ from collections import defaultdict
 
 class Solution:
     def countPairs(self, deliciousness) -> int:
-        m = [pow(2, n) for n in range(22)]
+        m = [pow(2, n) for n in range(22)] # 定义一个足够大的数字（中文版有22的限制条件)
         res = 0
         dic = defaultdict(int)
         for d in deliciousness:
