@@ -43,6 +43,8 @@ Explanation: The good meals are (1,1) with 3 ways, (1,3) with 9 ways, and (1,7) 
 
 # <font face="黑体" color=green size=5>代码</font>
 
+第一次尝试（基线，超时：完成测试用例 55/70。）：
+
 ```python
 #!/usr/bin/env python3
 # leetcode 大餐计数
@@ -53,6 +55,8 @@ def isPower(num):  # 通过循环左移直到得到余数，通过余数为0或1
     True
     >>> isPower(6)
     False
+    >>> isPower(8)
+    True
     """
     if num < 1:
         return False
@@ -63,19 +67,48 @@ def isPower(num):  # 通过循环左移直到得到余数，通过余数为0或1
         i <<= 1
     return False
 
+class Solution:
+    def countPairs(self, dishes):
+        dishes_dict = dict(zip(range(len(dishes)), dishes))
+        sum_no = 0
+        for k, v in dishes_dict.items():
+            k2_dict = {k2: v2 for k2, v2 in dishes_dict.items() if k2 >k}
+            for k2, v2 in k2_dict.items():
+                if isPower(v + v2):
+                    sum_no = sum_no + 1
+        return (int(sum_no % (1e9 + 7)))
 
-def factorial(n): 
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+    solution = Solution()
+    result = solution.countPairs([1, 1, 1, 3, 3, 3, 7])
+    print(result)
+```
+
+第二次尝试 （加对重复组合判断 -> 超时：完成测试用例 41/70。）：
+
+```python
+def isPower(num):  # 通过循环左移直到得到余数，通过余数为0或1判断是否为2的幂。
+    if num < 1:
+        return False
+    i = 1
+    while i <= num:
+        if i == num:
+            return True
+        i <<= 1
+    return False
+
+
+def factorial(n):
     result = 1
     for i in range(2, n + 1):
         result = result * i
     return result
 
 
-def combination(n, m): # 减少计算次数
-    """
-    >>> combination(5, 1)
-    5
-    """
+def combination(n, m):
     return factorial(n) // (factorial(n - m) * factorial(m))
 
 
@@ -83,36 +116,69 @@ class Solution:
     def countPairs(self, dishes):
         dishes_dict = dict(zip(range(len(dishes)), dishes))
         sum_no = 0
+        storeset_combination_list=[]
         for k, v in dishes_dict.items():
-            k2_list = list(dishes_dict.keys())
-            k2_list.remove(k)  # remove是method，该方法不返回值，但会修改原来的list。
-            k2_dict = {k: v for k, v in dishes_dict.items() if k in k2_list}
+            k2_dict = {k2: v2 for k2, v2 in dishes_dict.items() if k2 >k}
             for k2, v2 in k2_dict.items():
-                combination_list = [k, k2]
-                if isPower(v + v2):
-                    N1 = dishes.count(combination_list[0])
-                    N2 = dishes.count(combination_list[1])
+                combination_set = {v, v2}
+                if combination_set in storeset_combination_list:
+                    continue
+                elif isPower(v + v2):
+                    storeset_combination_list.append(combination_set)
+                    N1 = dishes.count(v)
+                    N2 = dishes.count(v2)
                     if v == v2:
-                        no = N1 * (N1 - 1)
+                        no = combination(N1,2)
                     else:
                         no = N1 * N2
                     sum_no = sum_no + no
-        return (int(sum_no % (1e9 + 7) / 2))
+                else:
+                    pass
+        return (int(sum_no % (1e9 + 7)))
 
+```
 
-if __name__ == "__main__":
-    import doctest
+第三次尝试（从2的幂着手 -> 超时：完成测试用例 44/70。需要对count性能优化，试过 collections.Counter通过迭代计数，在这里提速不大，但不妨了解机制：https://www.guru99.com/python-counter-collections-example.html ）：
 
-    doctest.testmod()
-    solution = Solution()
-    result = solution.countPairs([1, 1, 1, 3, 3, 3, 7])
-    print(result)
+```python
+def isPower(num):
+    if num <1:
+        return False
+    result = num & (num-1)
+    if result == 0:
+        return True
+    else:
+        return False
+    
 
+class Solution:
+    def countPairs(self, dishes):
+        dishes_dict = dict(zip(range(len(dishes)), dishes))
+        sum_no = 0
+        storeset_combination_list=[]
+        for k, v in dishes_dict.items():
+            k2_dict = {k2: v2 for k2, v2 in dishes_dict.items() if k2 >k}
+            for k2, v2 in k2_dict.items():
+                combination_set = {v, v2}
+                if combination_set in storeset_combination_list:
+                    continue
+                elif isPower(v + v2):
+                    storeset_combination_list.append(combination_set)
+                    N1=dishes.count(v)
+                    N2=dishes.count(v2)
+                    if v == v2:
+                        no = N1 * (N1 -1) /2
+                    else:
+                        no = N1 * N2
+                    sum_no = sum_no + no
+                else:
+                    pass
+        return (int(sum_no % (1e9 + 7)))
 ```
 
 # <font face="黑体" color=green size=5>大神思路</font>
 
-在力扣的评论中，很多网友用了 追加统计 的思路来提高效率，代码也简练不少。
+在力扣的评论中，网友们用了 追加统计 的思路来提高效率，顺便判断是否为2的幂，代码也简练不少。
 
 >defaultdict() 返回一个类似字典的对象。defaultdict 是Python内建字典类（dict）的一个子类，它重写了方法 *missing*(key)，增加了一个可写的实例变量default_factory,实例变量default_factory被missing()方法使用，如果该变量存在，则用以初始化构造器，如果没有，则为None。其它的功能和dict一样。
 
@@ -147,6 +213,13 @@ if __name__ == "__main__":
 
 PS:  Chrome 如果启用有道词典取词划译，在每次按下ctrl键时，会跳出编辑环境。
 
-# <font face="黑体" color=green size=5>相关资料</font>
+# <font face="黑体" color=green size=5>参考资料</font>
 
 1. https://leetcode-cn.com/problems/count-good-meals/comments/
+
+2. 优化判断一个数是否是2的整数次幂，python实现：
+   https://blog.csdn.net/ymmbjcz/article/details/78645896
+   
+3. 探究 python list count 慢的原因。 How is Python's List Implemented（动态数组） :  https://stackoverflow.com/questions/3917574/how-is-pythons-list-implemented
+
+   
