@@ -1,6 +1,6 @@
 ---
- title: 动手学深度学习-学习笔记 II：线性回归和基础优化算法，Softmax回归和损失函数 
-categories: [ML和时序分析]
+title: 动手学深度学习-学习笔记 II：线性回归和基础优化算法，Softmax回归和损失函数 
+categories: ML和时序分析
 tags: [Pytorch]
 description: 
 comments: true
