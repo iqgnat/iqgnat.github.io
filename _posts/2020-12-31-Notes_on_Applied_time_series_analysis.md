@@ -18,7 +18,7 @@ layout: post
 
 # <font face="黑体" color=green size=5>思维导图</font>
 
-![时间序列分析](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2020-12-31-Notes_on_Applied_time_series_analysis/应用时间序列分析.png)
+![时间序列分析](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2020-12-31-Notes_on_Applied_time_series_analysis/应用时间序列分析.svg)
 
 ARMA、ARIMA及季节模型一般都假设干扰项的方差为常数，波动是随机的，不存在趋势，是平稳序列。然而很多情况下时间序列的波动有集聚性等特征，使得方差并不为常数。因此，如何刻画方差是十分有必要研究的。 本文介绍的ARCH（自回归条件异方差模型）、GARCH模型可以刻画出随时间变化的条件异方差。
 
