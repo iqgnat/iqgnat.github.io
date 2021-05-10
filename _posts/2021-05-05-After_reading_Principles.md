@@ -1,6 +1,6 @@
 ---
 title: 《原则》 读书笔记
-categories: [人间草木]
+categories: 人间草木
 tags: [人间草木]
 description: 
 comments: true

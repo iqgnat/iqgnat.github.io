@@ -1,6 +1,6 @@
 ---
  title: 量化投资与机器学习小记
-categories: [ML和时序分析]
+categories: ML和时序分析
 tags: [quant,ML]
 description: 
 comments: true
@@ -35,4 +35,3 @@ layout: post
     
 3.  基于VNPY的网页交易系统:
     https://github.com/vnpy/vnpy
-    
