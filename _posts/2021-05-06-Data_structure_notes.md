@@ -78,13 +78,10 @@ def fillNextCousinFieldsInTree(root):
 
 # <font face="黑体" color=green size=5>工作中的应用场景</font>
 
-1. 数据库 : b+树、b-树
+1. oracle存储 : b+树、b-树
 
-2. 数据库：hashmap（拉链表）
+2. oracle哈希分区：hashmap（拉链表）
 
-3. 数据库：groupby
-
-   
 
 # <font face="黑体" color=green size=5>参考资料</font>
 
