@@ -1,5 +1,5 @@
 ---
-title: Oracle 工作笔记 
+title: Oracle 常见问题小记
 categories: 开发随笔
 tags: [oracle,sql]
 description: 

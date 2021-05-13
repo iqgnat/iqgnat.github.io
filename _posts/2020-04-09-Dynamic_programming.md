@@ -64,7 +64,7 @@ $$
 
 # <font face="黑体" color=green size=5>实现</font>
 
-Krahets 的思路，可以减少考虑初始时刻的情况,  ~妙哇~：
+Krahets 的思路，可以减少考虑初始时刻的情况：
 
 + 上一刻状态pre：dp[n-2]
 

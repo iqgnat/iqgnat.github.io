@@ -14,7 +14,7 @@ layout: post
 
 
 
-基于 etree （lxml） 和 BeautifulSoup（bs4）的一次手机信息小爬爬练习。
+基于 etree （lxml） 和 BeautifulSoup（bs4）的一次手机信息抓取。
 
 <!--more-->
 

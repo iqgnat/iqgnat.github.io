@@ -1,5 +1,5 @@
 ---
-title: MapReduce 思维导图
+title: MapReduce - I
 categories: 开发随笔
 tags: [mapreduce,java]
 description: 

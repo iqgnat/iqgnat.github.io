@@ -1,5 +1,5 @@
 ---
-title: 《安德的游戏》读后感
+title: 《安德的游戏》
 categories: 人间草木
 tags: 人间草木
 description: 

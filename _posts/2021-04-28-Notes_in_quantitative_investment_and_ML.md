@@ -27,9 +27,6 @@ layout: post
 
 # <font face="黑体" color=green size=5>相关资料</font>
 
-1.  什么是高频交易系统 :
-    [https://www.zhihu.com/question/19839828](https://www.google.com/url?q=https://zh-v2.d2l.ai/&sa=D&source=calendar&usd=2&usg=AOvVaw3Kh-CordDCnX3_aymBzG3g)
-    
 2.  收益vs风险指标:
     [https://wenku.baidu.com/view/b8c0168fa21614791611289e.html](https://www.google.com/url?q=https://courses.d2l.ai/zh-v2/&sa=D&source=calendar&usd=2&usg=AOvVaw2fjME29Jd9xf4KAHyFt9uL)
     

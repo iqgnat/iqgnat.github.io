@@ -1,5 +1,5 @@
 ---
-title: Oracle 大表分区，并通过 PL/SQL 语句循环执行操作。
+title: Oracle 大表分区
 categories: 开发随笔
 tags: oracle
 description: 

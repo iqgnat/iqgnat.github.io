@@ -1,5 +1,5 @@
 ---
-title: 《未来简史》读后感
+title: 《未来简史》
 categories: 人间草木
 tags: 人间草木
 description: 

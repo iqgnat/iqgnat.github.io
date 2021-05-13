@@ -1,5 +1,5 @@
 ---
-title: 动手学深度学习-学习笔记 I：P1-P14
+title: Dive into Deep Learning -I：P1-P14
 categories: ML和时序分析
 tags: [pytorch,ML,python]
 description: 
@@ -116,7 +116,7 @@ pip install torch torchvision -f https://download.pytorch.org/whl/torch_stable.h
 
 4.  One-hot 转换后，矩阵很稀疏的影响：
    如果label本身是有關係的話 (如大, 中, 小這種有程度只分的), onehot就會消去了這種關係; 
-**如果以dense matrix來保存的話會耗內存, 以sparse matrix方式儲存則減少很多, 而由於sparse matrix計算時可以skip 0的計算, 轉換後對計算速度應該沒有太大影響。“**
+   **如果以dense matrix來保存的話會耗內存, 以sparse matrix方式儲存則減少很多, 而由於sparse matrix計算時可以skip 0的計算, 轉換後對計算速度應該沒有太大影響。“**
    
    + *In practice, we actually usually run out of space before we run out of time. If we have 16 GB of memory, the biggest matrix we can store (each number requires 8 bytes) is 8n^2 = 16 * 10 ^9 = 4000 * 4000. 
    + The saving grace is that most really large matrices are sparse = mostly zeros (or have some other special structure with similar consequences). Yon only have to store the nonzero entries, and you can multiply matrix * vector quickly (you can skip zeros). In Julia, there are many functions to work with sparse matrices by only storing the nonzero elements. 

@@ -1,5 +1,5 @@
 ---
-title: 《应用时间序列分析》学习笔记
+title: 《应用时间序列分析》
 categories: ML和时序分析
 tags: 时序分析
 description: 

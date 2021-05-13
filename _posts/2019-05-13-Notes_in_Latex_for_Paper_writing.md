@@ -1,5 +1,5 @@
 ---
-title: Latex写期刊的笔记
+title: Latex 写期刊
 categories: [科研笔记]
 tags: latex
 description: 
