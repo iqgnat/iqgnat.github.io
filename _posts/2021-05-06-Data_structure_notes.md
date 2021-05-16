@@ -23,7 +23,7 @@ layout: post
 [数据结构思维导图下载](https://github.com/iqgnat/iqgnat.github.io/blob/master/assets/images/2021-05-06-Data_structure_notes/data_structure.png)
 概览：
 
-![data_structure](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-05-06-Data_structure_notes/data_structure.png)
+[![data_structure.png](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-05-06-Data_structure_notes/data_structure.png)](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-05-06-Data_structure_notes/data_structure.png)
 
 # <font face="黑体" color=green size=5>Python实现二叉树层次遍历</font>
 
