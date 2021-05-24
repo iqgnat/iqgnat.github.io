@@ -18,7 +18,7 @@ layout: post
 
 <!--more-->
 
-# <font face="黑体" color=green size=5>问题分析</font>
+## <font face="黑体" color=green size=5>问题分析</font>
 
 1. 越过大字段：
 
@@ -47,7 +47,7 @@ layout: post
    
    
 
-# <font face="黑体" color=green size=5> SQL Loader的控制文件举例</font>
+## <font face="黑体" color=green size=5> SQL Loader的控制文件举例</font>
 
 ```sql
 characterset 'UTF8'

@@ -25,7 +25,7 @@ layout: post
 
 [![data_structure.png](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-05-06-Data_structure_notes/data_structure.png)](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-05-06-Data_structure_notes/data_structure.png)
 
-# <font face="黑体" color=green size=5>Python实现二叉树层次遍历</font>
+## <font face="黑体" color=green size=5>Python实现二叉树层次遍历</font>
 
 ```python
 #please complete the function to fill all nextCousin fields in tree starting from root
@@ -76,14 +76,15 @@ def fillNextCousinFieldsInTree(root):
 
 
 
-# <font face="黑体" color=green size=5>工作中的应用场景</font>
+## <font face="黑体" color=green size=5>工作中的应用场景</font>
 
 1. oracle存储 : b+树、b-树
 
 2. oracle哈希分区：hashmap（拉链表）
+   
 
 
-# <font face="黑体" color=green size=5>参考资料</font>
+## <font face="黑体" color=green size=5>参考资料</font>
 
 1.   《数据结构（java）版》，吕云翔著
 2.   《数据结构（c）版》，舒后著

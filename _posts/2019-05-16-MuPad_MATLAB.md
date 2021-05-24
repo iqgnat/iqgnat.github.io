@@ -16,7 +16,8 @@ layout: post
 
 
 
-**MuPAD的官方介绍 ：**
+## **MuPAD的官方介绍 ：**
+
 “ MATLAB is good for writing simple programs and working with numbers, but is cumbersome for doing symbolic calculations. **Mupad** is a GUI driven MATLAB package that helps you do algebra, calculus, as well as to graph and visualize functions. ”
 
 <!--more-->
@@ -24,7 +25,7 @@ layout: post
 用MuPAD 来得到递归项 a(n) 项的符号表达式。 已知 a(1)是初始项， a(n+1)和a(n)、a(1) 的关系如下：
 a(n+1)= -1/K*a(n)+a(1)
 
-MATLAB程序:
+## MATLAB程序:
 
 ```
 % edit at Oct.03,2018;
@@ -57,7 +58,9 @@ stem(a)
 [evalin](http://www.mathworks.com/help/symbolic/evalin.html?searchHighlight=evalin)：在不打开MuPAD notebook界面的情况下，在matlab command window或M file editor中直接调用MuPAD引擎，无需指定输入参数
 [feval](http://www.mathworks.com/help/symbolic/feval.html?searchHighlight=feval)： 在不打开MuPAD notebook界面的情况下，在matlab command window或M file editor中直接调用MuPAD引擎，需要指定输入参数
 
-**WolframAlpha的在线实现：**
+
+
+## **WolframAlpha的在线实现：**
 
 MuPAD 已经足够方便了，不过用Wolfram Alpha完成这一切，一句足矣。
 

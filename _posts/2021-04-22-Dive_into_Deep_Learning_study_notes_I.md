@@ -16,7 +16,7 @@ layout: post
 
 <!--more-->
 
-# <font face="黑体" color=green size=5>环境安装</font>
+## <font face="黑体" color=green size=5>环境安装</font>
 
 我的虚拟机器是 centos7.7 版本, 用以下语句安装环境 :
 
@@ -45,7 +45,7 @@ pip install d2l
 pip install torch torchvision -f https://download.pytorch.org/whl/torch_stable.html -i https://pypi.doubanio.com/simple
 ```
 
-# <font face="黑体" color=green size=5>数据操作</font>
+## <font face="黑体" color=green size=5>数据操作</font>
 
 1. 内存改写逻辑 (减轻内存负担，避免过度赋值)：
 
@@ -103,7 +103,7 @@ pip install torch torchvision -f https://download.pytorch.org/whl/torch_stable.h
    5. tensor 和 array 的区别： array 是一个计算机概念，tensor是数学上的概念。 torch 和 tensorflow 用的是数学上的概念，但在计算机使用上，两者其实没有什么区别。
    6. 是否可以用 jax 替代 numpy： 可以，jax 是 google 做的另一个框架，和numpy 很像，但还不够成熟，和tensorflow的团队是隔壁团队。
 
-# <font face="黑体" color=green size=5>线性代数</font>
+## <font face="黑体" color=green size=5>线性代数</font>
 
 1. 矩阵的内积与外积（矩阵乘法）：矩阵的内积指的是矩阵点乘，即矩阵的对应元素相乘； 矩阵的外积指的是矩阵的叉乘，即矩阵相乘，比如C=A*B，则A的列数要与B的行数一致，例如A为[m,n]， B 为[n,k]， 则C为[m,k]。
 
@@ -112,7 +112,7 @@ pip install torch torchvision -f https://download.pytorch.org/whl/torch_stable.h
 3. 正交矩阵： 正交矩阵（Orthogonal Matrix）是指其转置等于其逆的矩阵。几何意义是行向量和列向量皆为正交的单位向量。
    ![知乎_渔非鱼_正交矩阵](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-04-22-Dive_into_Deep_Learning_study_notes_I/orthogo_matrix.PNG)
 
-   # <font face="黑体" color=blue size=5> Q&A </font>
+   ### <font face="黑体" color=blue size=5> Q&A </font>
 
 4.  One-hot 转换后，矩阵很稀疏的影响：
    如果label本身是有關係的話 (如大, 中, 小這種有程度只分的), onehot就會消去了這種關係; 
@@ -124,7 +124,7 @@ pip install torch torchvision -f https://download.pytorch.org/whl/torch_stable.h
    
 5. copy 和 clone 的区别： copy 分深度和浅度，clone 一定会复制内存。
 
-# <font face="黑体" color=green size=5>矩阵计算 </font>
+## <font face="黑体" color=green size=5>矩阵计算 </font>
 
 1. 求导：  (fg)' = f'g + fg'、链式法则、不可微函数的导数：雅可比符号分情况讨论。
 
@@ -134,11 +134,11 @@ pip install torch torchvision -f https://download.pytorch.org/whl/torch_stable.h
 
 4. 分子（或分母）的布局矩阵。
 
-   # <font face="黑体" color=blue size=5>Q&A </font>
+   ### <font face="黑体" color=blue size=5>Q&A </font>
 
 5. 导数的作用是进行梯度下降，容易陷入局部最优解。如果损失函数不是一个凸函数，理论上是很难拿到全局最优解的。
 
-# <font face="黑体" color=green size=5>自动求导 </font>
+## <font face="黑体" color=green size=5>自动求导 </font>
 
 1. 链式法则对线性回归损失函数求导，正向累积（由底到顶）和反向累积（又称反向传递，由顶到底）。
    正向累积和反向累积的对比（假设神经网络有 n 层）：
@@ -178,14 +178,14 @@ pip install torch torchvision -f https://download.pytorch.org/whl/torch_stable.h
    x.grad == u # True
    ```
 
-   # <font face="黑体" color=blue size=5>Q&A </font>
+   ### <font face="黑体" color=blue size=5>Q&A </font>
 
    1. 为什么Pytorch会默认累积梯度：
       对一个比较大的批量，如果计算时候内存不足时，就把一个大批量切成几块，将梯度累加起来。也可以用在将multi-modality中，单个计算然后累加。多个损失函数分别反向的时候也需要累加梯度。
    2.  循环神经网络损失函数的求导可以是一个有向的环状图结构，但一般也展开为树状结构表达。
    3. Pytorch 和 Mxnet 框架实现矢量（高阶求导），比如XGBoost损失函数中的二阶优化算法，但通常比较慢。
 
-# <font face="黑体" color=green size=5>参考资料</font>
+## <font face="黑体" color=green size=5>参考资料</font>
 
 1.  教材/课程预告官方:
     [https://zh-v2.d2l.ai/](https://www.google.com/url?q=https://zh-v2.d2l.ai/&sa=D&source=calendar&usd=2&usg=AOvVaw3Kh-CordDCnX3_aymBzG3g)

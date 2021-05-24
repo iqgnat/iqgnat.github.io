@@ -21,7 +21,7 @@ ECEN 2007_Probability and Statistics
 
 在学期结束之际，记录一下课程的主要知识点和例题。**[下一篇](http://tangqinotes.me/psii-spss-matlab-excel/)**记录常用到的统计应用，包括：正态分布检验，配对t检验，相关性分析（Pearson & Spearman), ANOVA，主要用 SPSS statistics, Excel 和 MATLAB 实现。
 
-# <font face="黑体" color=green size=5>常用检验</font>
+## <font face="黑体" color=green size=5>常用检验</font>
 
 **1. 相关性检验:**
 
@@ -43,7 +43,7 @@ ECEN 2007_Probability and Statistics
 
  ***注意： 差异性检验，涉及到方差的有偏估计 (的矫正), 需要在检验结果中，描述 degree of freedom。**
 
-# <font face="黑体" color=green size=5>章节目录</font>
+## <font face="黑体" color=green size=5>章节目录</font>
 
 - **Chapter 1: 整本书的内容概括, 概率模型的介绍** 
 - **Chapter 2: 集合，贝叶斯定理， Subset Permutation Rule** 
@@ -56,14 +56,14 @@ ECEN 2007_Probability and Statistics
 - **Chapter 9: 对单整体进行假设检验**
 - **Chapter 10: 对双整体关系进行假设检验** 
 
-# <font face="黑体" color=green size=5>Chapter 1: 概率模型的介绍</font>
+## <font face="黑体" color=green size=5>Chapter 1: 概率模型的介绍</font>
 
 - A mechanistic model is built from our underlying knowledge of the basic physical mechanism that relates several variables. 
 
 - An empirical model is built from our engineering and scientific knowledge of the phenomenon but is not directly developed from our theoretical or first-principles understanding of the underlying mechanism.
 
 
-# <font face="黑体" color=green size=5>Chapter 2: 集合，贝叶斯定理， Subset Permutation Rule</font>
+## <font face="黑体" color=green size=5>Chapter 2: 集合，贝叶斯定理， Subset Permutation Rule</font>
 
 1. 关于集合的概念 (Distributive law [交的补等于补的并，并的补等于补的交 ] , Associative law, Permutation Rule [高中时的A，有序排序】, Combination Rule [高中时的C，无序排序】);
 2. Subset Permutation Rule (图a例题）; 
@@ -87,7 +87,7 @@ ECEN 2007_Probability and Statistics
 
 
 
-# <font face="黑体" color=green size=5>Chapter 3:  离散概率分布</font> 
+## <font face="黑体" color=green size=5>Chapter 3:  离散概率分布</font> 
 
 1. Probability Distributions, Probability Mass Functions (PDF) 
 2. Cumulative Distribution Functions (CDF,将会在正态分布，t分布的表格中用到,例题在图a)  
@@ -110,7 +110,7 @@ ECEN 2007_Probability and Statistics
 
 ![离散分布性质的比较](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS7-1024x775.webp)
 
-# <font face="黑体" color=green size=5>Chapter 4:  连续概率分布</font> 
+## <font face="黑体" color=green size=5>Chapter 4:  连续概率分布</font> 
 
 1. 连续概率分布均值和方差的性质 （与离散性质的比较）; 
 
@@ -144,7 +144,7 @@ ECEN 2007_Probability and Statistics
 
 ![Lognormal分布](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS12.webp)
 
-# <font face="黑体" color=green size=5>Chapter 5:  联合概率分布</font> 
+## <font face="黑体" color=green size=5>Chapter 5:  联合概率分布</font> 
 
 1. Two or More Random Variables (Joint/Marginal/Conditional Probability, Independence, more Than Two Random Variables) 
 2. Covariance and Correlation (图a), 判断变量之间的线性关系。 
@@ -157,13 +157,13 @@ ECEN 2007_Probability and Statistics
 
 ![Moment-Generating Function](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS14-1024x467.webp)
 
-# <font face="黑体" color=green size=5>Chapter 6:  数据的描述性分析(MATLAB, SPSS,Python,R 等皆可)</font> 
+## <font face="黑体" color=green size=5>Chapter 6:  数据的描述性分析(MATLAB, SPSS,Python,R 等皆可)</font> 
 
 MATLAB有关描述分析的 [小程序](http://tangqinotes.me/wp-content/uploads/2019/05/DescriptiveAnalysis_code.zip)。SPSS的相关操作，在SPSS章节记录。
 
 ![chap6作业题](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS17.webp)
 
-# <font face="黑体" color=green size=5>Chapter 7: 通过样本对整体进行点估计</font> 
+## <font face="黑体" color=green size=5>Chapter 7: 通过样本对整体进行点估计</font> 
 
 1. 样本的均值对整体的均值属于无偏估计，而样本的方差对整体方差的估计是有偏估计。矫正项是 1/(n-1）。推导公式见 图a.
 2. 两个样本均值差的分布估计, 图b. 
@@ -181,7 +181,7 @@ MATLAB有关描述分析的 [小程序](http://tangqinotes.me/wp-content/uploads
 
 ![最大似然估计，估计几何分布和泊松分布的概率、期望](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS21.webp)
 
-# <font face="黑体" color=green size=5>Chapter 8: 通过样本对整体的均值，方差进行 区间估计</font> 
+## <font face="黑体" color=green size=5>Chapter 8: 通过样本对整体的均值，方差进行 区间估计</font> 
 
 主要分为3个大类：通过样本信息对整体的均值估计，方差估计和分布近似。
 
@@ -194,7 +194,7 @@ MATLAB有关描述分析的 [小程序](http://tangqinotes.me/wp-content/uploads
 
 ![区间分布公式2](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019_05_14_Probability_and_statistics_notes_1/PS23-928x1024.webp)
 
-# <font face="黑体" color=green size=5>Chapter 9: 对单整体进行假设检定</font> 
+## <font face="黑体" color=green size=5>Chapter 9: 对单整体进行假设检定</font> 
 
 承接 Chap 8 的知识点， 对整体均值、方差和比例，做假设检验。通过样本所获统计量，判断整体是否符合假设，并对假设作出决策。涉及到的概念有:
 
@@ -209,7 +209,7 @@ MATLAB有关描述分析的 [小程序](http://tangqinotes.me/wp-content/uploads
 
 ****
 
-# <font face="黑体" color=green size=5>Chapter 10: 对双整体关系进行假设检定</font>
+## <font face="黑体" color=green size=5>Chapter 10: 对双整体关系进行假设检定</font>
 
 根据条件，根据假设检验的步骤: 
 

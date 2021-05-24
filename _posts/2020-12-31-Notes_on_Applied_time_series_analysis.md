@@ -16,7 +16,7 @@ layout: post
 
 <!--more-->
 
-# <font face="黑体" color=green size=5>思维导图</font>
+## <font face="黑体" color=green size=5>思维导图</font>
 
 ![时间序列分析](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2020-12-31-Notes_on_Applied_time_series_analysis/应用时间序列分析.png)
 
@@ -24,7 +24,8 @@ ARMA、ARIMA及季节模型一般都假设干扰项的方差为常数，波动�
 
 虽然ARCH模型简单，但为了充分刻画收益率的波动率过程，往往需要很多参数，例如上面用到ARCH(4)模型，有时会有更高的ARCH(m)模型。因此，Bollerslev(1986)年提出了一个推广形式，称为广义的ARCH模型（GARCH）
 
-# <font face="黑体" color=green size=5>参考材料</font>
+
+## <font face="黑体" color=green size=5>参考材料</font>
 
   1. 《Analyzing Neural Time Series Data》 http://mikexcohen.com/book/Cohen_AnalyzingNeuralTimeSeriesData_TOC.pdf
 

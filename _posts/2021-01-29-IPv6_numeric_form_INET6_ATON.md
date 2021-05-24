@@ -20,7 +20,7 @@ IPv4 的地址是32位，用四个字节表示一个IP地址，每个字节按�
 
 <!--more-->
 
-# <font face="黑体" color=green size=5>问题分析</font>
+## <font face="黑体" color=green size=5>问题分析</font>
 
 1. 数据库中的整型 位数是否能满足 IPv6 转为整型后的位？
 
@@ -34,7 +34,7 @@ IPv4 的地址是32位，用四个字节表示一个IP地址，每个字节按�
 
 
 
-# <font face="黑体" color=green size=5>代码更改</font>
+## <font face="黑体" color=green size=5>代码更改</font>
 
 原始 mysql 脚本：
 

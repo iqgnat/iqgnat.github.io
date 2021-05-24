@@ -28,7 +28,7 @@ layout: post
 
 通过已知 每年净房租收入和 购房总价房屋的 100，000家房屋得出 它的 租金回报率 。根据它的租金回报率 和 房价影响因素 构建多元回归方程。 得到 乘子向量和系数矩阵。
 
-![Genetic algorithm](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2020-07-19-Multiple%20Regression.md/processforMR.svg)
+![img](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2020-07-19-Multiple%20Regression/processforMR.png)
 
 
 
@@ -39,7 +39,6 @@ layout: post
 
 
  
-
 
 
 

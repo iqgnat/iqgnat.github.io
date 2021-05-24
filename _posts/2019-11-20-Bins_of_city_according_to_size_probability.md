@@ -28,7 +28,7 @@ visitor: true
 
 其他对类型变量进行分箱的常用手段有： IV值、等频等宽分箱、最优分箱、xgb分箱等。
 
-# <font face="黑体" color=green size=5>代码示例</font>
+## <font face="黑体" color=green size=5>代码示例</font>
 
 输入.csv文件示例：
 

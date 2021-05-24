@@ -18,7 +18,7 @@ layout: post
 
 <!--more-->
 
-# <font face="黑体" color=green size=5>理解</font>
+## <font face="黑体" color=green size=5>理解</font>
 
 法一：迭代：
 
@@ -52,7 +52,7 @@ $$
 
 **根据无后效性，后一步的选择只与前一步的状态有关，因此是自底向上、往前一刻状态找补的迭代求解。**
 
-# <font face="黑体" color=green size=5>步骤</font>
+## <font face="黑体" color=green size=5>步骤</font>
 
 1）刻画一个最优解的结构特征: 状态(抢劫总金额) dp[*n*]
 
@@ -62,7 +62,7 @@ $$
 
 4）利用计算出的信息构造一个最优解。
 
-# <font face="黑体" color=green size=5>实现</font>
+## <font face="黑体" color=green size=5>实现</font>
 
 Krahets 的思路，可以减少考虑初始时刻的情况：
 
@@ -147,7 +147,7 @@ var Solution_instance = Solution()
 print(Solution_instance.rob(nums:NUMS))
 ```
 
-# <font face="黑体" color=green size=5>相关题目</font>
+## <font face="黑体" color=green size=5>相关题目</font>
 
 如果考虑房间是首尾相连的情况 (如图)：
 ![打家劫舍-首尾相接](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-04-09-Dynamic_programming/dp.JPG)
@@ -185,7 +185,7 @@ print(Solution_instance.rob(NUMS))
 ​	最长公共子序列、最长子串、最大字段、装配线，矩阵乘法、构造最优的二叉树。
 
 
-# <font face="黑体" color=green size=5>参考资料</font>
+## <font face="黑体" color=green size=5>参考资料</font>
 
 1.  https://leetcode-cn.com/problems/house-robber/solution/da-jia-jie-she-dong-tai-gui-hua-jie-gou-hua-si-lu-/, 作者：jyd,来源：力扣（LeetCode）
 2.  [labuladong的算法专栏](https://www.zhihu.com/column/labuladong)

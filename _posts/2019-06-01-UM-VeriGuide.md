@@ -14,13 +14,13 @@ layout: post
 
 # UM提供的论文工具之-VeriGuide
 
-澳大为学生的学术生涯提供了许多便利，除了澳大图书馆电子资源库里面的众多database，还有 ICTO办公室提供的学生软件和硬件设备的申请（包括超算的账号）。在学生生涯，一定要利用起来。
+澳大为学生的学术生涯提供了许多便利，除了澳大图书馆电子资源库里面的众多database，还有 ICTO办公室提供的学生软件和硬件设备的申请（包括超算的账号）。
 http://library.umac.mo/lib.html
 https://icto.um.edu.mo/software/?lang=zh-hant
 
-[![img](C:\Users\db129\Desktop\iqgnat.github.io\assets\images\2019-06-25-UM-VeriGuide\image-8.png)](https://i0.wp.com/tangqinotes.me/wp-content/uploads/2019/06/image-8.png)
+![img](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-06-25-UM-VeriGuide/image-8.png)
 
-[![img](C:\Users\db129\Desktop\iqgnat.github.io\assets\images\2019-06-25-UM-VeriGuide\image-9.png)](https://i0.wp.com/tangqinotes.me/wp-content/uploads/2019/06/image-9.png)
+![img](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-06-25-UM-VeriGuide/image-9.png)
 
 其中有一项由香港中文大学开发的Veriguide查重，澳大学生可以申请使用。
 http://library.umac.mo/html/e_resources/veriguide_en.html
@@ -40,4 +40,4 @@ http://library.umac.mo/html/e_resources/veriguide_en.html
 
 对查出的重复，会给出对应的文献，结合自己的上下文，对重复的部分修修改改。
 
-![img](C:\Users\db129\Desktop\iqgnat.github.io\assets\images\2019-06-25-UM-VeriGuide\image-10.png)
+![img](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-06-25-UM-VeriGuide/image-10.png)

@@ -25,13 +25,14 @@ layout: post
 
 <!--more-->
 
-# <font face="黑体" color=green size=5>1.  TNS 协议适配器错误</font>
+## <font face="黑体" color=green size=5>1.  TNS 协议适配器错误</font>
 
 1. 检查监听程序是否正常启动 （lsnrctl status），host 是否在添加到监听列表中；
 2. 实例服务是否正常运行（select status from v$instance;），服务器有没有挂（ping -t -域名，startup pfile 、spfile ）;
 3. 检查注册表（windows：regedit）、 bash_profile (linux: ORACLE_SID) 的实例名是否指向目标数据库实例（ORACLE_SID 必须与instance_name的值一致）。
+   
 
-# <font face="黑体" color=green size=5>2. 数据库名，实例名，服务名，用户名（schema）的区别。</font>
+## <font face="黑体" color=green size=5>2. 数据库名，实例名，服务名，用户名（schema）的区别。</font>
 
 实例 = 进程 + 进程所使用的内存( 系统全局区SGA)
 
@@ -40,7 +41,6 @@ layout: post
 服务 = 实例 + 数据库
 
 用户（schema）= 一个用户下，数据库对象的集合。
-
 
 
 单机 Oracle 情况下，数据库名可以和实例名一样。在 RAC 中， 一个数据库有多个实例名（多个实例同时打开一个数据库文件的系统）。服务名 就是对外公布的名称，为网络监听服务，所以一个数据库可以有多个服务名。sid用于实例区分各个数据库，service name用于外部链接。
@@ -76,7 +76,7 @@ INSERT INTO <schema>.<table> (字段1，字段2) VALUES (:1,:2)
 
 
 
-# <font face="黑体" color=green size=5>3. 表空间、临时表空间不足。</font>
+## <font face="黑体" color=green size=5>3. 表空间、临时表空间不足。</font>
 
 ```sql
  --查看（临时）表空间大小
@@ -123,7 +123,7 @@ select owner,
 
    
 
-# <font face="黑体" color=green size=5>4. 数据装载</font>
+## <font face="黑体" color=green size=5>4. 数据装载</font>
 
 1. 数据泵整个数据库的导入导出（oracle导出 oracle导入）；
 
@@ -133,7 +133,7 @@ select owner,
 
 
 
-# <font face="黑体" color=green size=5>5. 数据量大的情况</font>
+## <font face="黑体" color=green size=5>5. 数据量大的情况</font>
 
 1. 查询：避免全表扫描（避免  or and，in not in， like，!=, 字段表达式）
 2. 压缩 （牺牲UPDATE、DELETE语句的性能 ）
@@ -177,21 +177,24 @@ select * from table(dbms_xplan.display_awr('ID号'))
 
 
 
-# <font face="黑体" color=green size=5>6. DDL 语句在存储过程执行。</font>
+## <font face="黑体" color=green size=5>6. DDL 语句在存储过程执行。</font>
 
 ddl语句需要加execute immediate 执行（有授权）并进行显式提交，不支持分号多句，支持动态语句。
 
-# <font face="黑体" color=green size=5>7. 表关联出现重复数据。</font>
+
+
+## <font face="黑体" color=green size=5>7. 表关联出现重复数据。</font>
 
 两表之间关联， 比如 select xxx from A inner join B on 关键字1=关键字2。 如果B表中关键字2存在重复，则 关联出的表的关键字1对应的记录也会成倍出现。 
 
-# <font face="黑体" color=green size=5>8. 显式授权</font>
+
+
+## <font face="黑体" color=green size=5>8. 显式授权</font>
 
 在 sql 可以完成的操作，在存储过程中报没有权限，需要显式授权。
 
 
-
-# <font face="黑体" color=green size=5>9.  开窗函数 over (partition by)</font>
+## <font face="黑体" color=green size=5>9.  开窗函数 over (partition by)</font>
 
 与group by 的区别： over(partition by)返回结果包含重复（原表中存在重复的话） ，和不参与group by 的其他字段。
 
@@ -199,7 +202,8 @@ ddl语句需要加execute immediate 执行（有授权）并进行显式提交�
 
 【https://blog.csdn.net/naomi_qing/article/details/70271883】
 
-# <font face="黑体" color=green size=5>10. 常用sql语句</font>
+
+## <font face="黑体" color=green size=5>10. 常用sql语句</font>
 
 ```sql
 ---- 管理员：

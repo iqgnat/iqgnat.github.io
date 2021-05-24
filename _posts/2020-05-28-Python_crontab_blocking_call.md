@@ -16,13 +16,13 @@ layout: post
 
 <!--more-->
 
-# <font face="黑体" color=green size=5>代码结构 </font>
+## <font face="黑体" color=green size=5>代码结构 </font>
 
 ![代码结构](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-01-28-python_judge_crontab_blocking_call/%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84.PNG)
 
 
 
-# <font face="黑体" color=green size=5>现象分析 </font>
+## <font face="黑体" color=green size=5>现象分析 </font>
 
 1. 出现无数 Croncheck_comrisk_pid.py 进程（crontab应该非阻塞调起）；
 2. Croncheck_comrisk_pid.py的主线程 应该在 确认过call_polling 进程存在（或者调起后) 退出，进程保留。 
@@ -31,7 +31,7 @@ layout: post
 
 
 
-# <font face="黑体" color=green size=5>解决方法</font>
+## <font face="黑体" color=green size=5>解决方法</font>
 
 1. 非阻塞调起 ： crontab 中加上 flock –x (解决多 个 Croncheck_comrisk_pid.py 问题)：
 
@@ -42,8 +42,9 @@ layout: post
 2. 经确认，主线程没有被子线程阻塞（没有join）。没有daemon，主线程意外结束，子线程依然保留。该脚本内容可以通过crontab非阻塞来实现，考虑删除该部分。
 
 3. 在psutil判断进程名字不是关键字搜索，而是精准匹配，可以改为正则匹配。也可以直接起一个子进程通过pgrep 判断。
+   
 
-# <font face="黑体" color=green size=5>代码更改</font>
+## <font face="黑体" color=green size=5>代码更改</font>
 
 在Call_polling.py 需要修改对 comrisk_model.sh 进程是否存在的判断。 因为进程名包含路径名， comrisk_model.sh 不是完整的进程名，用 pgrep 命令代替 psutil包+正则 更简便，修改代码如下：
 
@@ -95,7 +96,9 @@ def judgeprocess_restart(processname):
 
 ```
 
-# <font face="黑体" color=green size=5>最终方案 </font>
+
+
+## <font face="黑体" color=green size=5>最终方案 </font>
 
 1. 删除Croncheck_comrisk_pid.py 脚本
 2. Crontab  非阻塞调起 Call_polling.py 脚本

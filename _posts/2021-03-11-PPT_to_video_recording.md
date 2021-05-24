@@ -17,7 +17,7 @@ visitor: true
 
 <!--more-->
 
-# <font face="黑体" color=green size=5>步骤</font>
+## <font face="黑体" color=green size=5>步骤</font>
 
 1.  讲稿:  合适的语速在大约  300字/分钟。18分钟的视频共 5500字。
 2.  PPT：只用最朴素的元素动画，PPT录制出来的教学视频看起来就生动了。

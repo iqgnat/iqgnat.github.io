@@ -16,12 +16,13 @@ layout: post
 
 <!--more-->
 
-# <font face="黑体" color=green size=5>线性回归</font>
+## <font face="黑体" color=green size=5>线性回归</font>
 
 1. 线性模型可以看作是一个单层的神经网络（是哦！），有显式解（analytical solution)，（在实际应用中，很难有解析解） 。  
 2. 视频中对 **w*** 的求解结果应该为： inverse((tranpose(X)*X) ✖ tranpose(X)  ✖ y
+   
 
-# <font face="黑体" color=green size=5>基础优化算法</font>
+## <font face="黑体" color=green size=5>基础优化算法</font>
 
 4. 梯度下降和小批量随机梯度下降等相关下降算法，不需要知道显式解，通过不断沿着反梯度方向更新参数，是深度学习的默认求解算法。
 
@@ -129,14 +130,14 @@ layout: post
    print('b的估计误差：', true_b - b)
    ```
 
-   # <font face="黑体" color=blue size=5>Q&A </font>
+   ### <font face="黑体" color=blue size=5>Q&A </font>
 
    1. 为什么用平方损失而不是绝对差值： 主要考虑到平方损失处处可导。
    2. batchsize是否会最终影响模型结果： 理论上来说，随机梯度下降带来了噪音，每一次采样的样本越小，带来的噪音越多，因为和真实的方向差很远。但噪音对神经网络来说不一定是坏事，因为深度神经网络太复杂。 
    3. 为什么机器学习优化算法都采取梯度下降（一阶导算法），而不采用牛顿法（二阶导算法），收敛速度更快： 首先，二阶导很难算，不一定能求出（一阶导是个向量，二阶导是个梯度）且代价高（ 即使有算法可以近似）；其次，收敛不一定快，结果不一定好；再者，收敛速度不是最主要的考虑，机器学习的算法更多考虑是最优解（收敛到哪个地方），真实的损失函数是个复杂的平面，更依赖损失函数和优化算法的定义。收敛速度快不一定模型的泛化性更好。
    4. 使用生成器生成数据的优势：yield不需要把每一个batch生成好，调一次才run一遍。
 
-# <font face="黑体" color=green size=5>Softmax回归</font>
+## <font face="黑体" color=green size=5>Softmax回归</font>
 
 1. softmax回归是一个多类分类模型。与线性回归⼀样，softmax回归也是⼀个单层神经⽹络。由于计算每个输出*o*1、*o*2和*o*3取决于所有输⼊*x*1、*x*2、*x*3和*x*4，所以softmax回归的输出层也是全连接层。
 
@@ -224,14 +225,14 @@ layout: post
    train_ch3(net, train_iter, test_iter, cross_entropy, num_epochs, updater)
    ```
 
-   # <font face="黑体" color=blue size=5>Q&A </font>
+   ### <font face="黑体" color=blue size=5>Q&A </font>
 
    1. softlabel : softmax很难去拟合0，1。 因此，将正确的设定为 0.9，错误的设定为 0.1。
    2. softmax和logistic回归分析的区别： 一个是多分类，一个是二分类。 logistic 是 softmax的 特例。
    3. 为什么用交叉熵，不用相对熵、互信息等其他基于信息量的度量： 交叉熵比较好算。
    4. 最小化损失函数就是最大化似然函数（找到最可能的分布）。
 
-# <font face="黑体" color=green size=5>参考资料</font>
+## <font face="黑体" color=green size=5>参考资料</font>
 
 1.  教材/课程预告官方:
     [https://zh-v2.d2l.ai/](https://www.google.com/url?q=https://zh-v2.d2l.ai/&sa=D&source=calendar&usd=2&usg=AOvVaw3Kh-CordDCnX3_aymBzG3g)

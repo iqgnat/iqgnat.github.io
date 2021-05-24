@@ -22,7 +22,7 @@ layout: post
 
 <!--more-->
 
-# <font face="黑体" color=green size=5>1. EEG 波段</font>
+## <font face="黑体" color=green size=5>1. EEG 波段</font>
 
 EEG的实验中，通常会事先采集受试者的基线，也就是静息状态下的睁眼、闭眼 EEG。
 
@@ -71,11 +71,14 @@ beta1_otmp(i,1)=((sum(Yeopen{i,:}(fo_16:fo_20)))/4)/((sum(Yeopen{i,:}(fo_05:fo_3
 beta2_otmp(i,1)=((sum(Yeopen{i,:}(fo_20:fo_28)))/8)/((sum(Yeopen{i,:}(fo_05:fo_30)))/29.5);%beta2
 ```
 
-# <font face="黑体" color=green size=5>2. 对EEG中眼电的处理</font>
+
+
+## <font face="黑体" color=green size=5>2. 对EEG中眼电的处理</font>
 
 绝对幅度超过75 µV 的采样点常被视为噪声，直接在时域截去会造成相位，latency的改变。眼电对EEG的干扰，可以考虑成分分析算法，通过ICA分离EOG, 其中 Second order blind identification (SOBI) 效果拔群。在 EEGLAB  toolbox 有更多类似方法可以选择。
 
-# <font face="黑体" color=green size=5> 3. EEGLAB toolbox</font>
+
+## <font face="黑体" color=green size=5> 3. EEGLAB toolbox</font>
 
 EEGLAB，囊括了常见的脑电信号处理，并可以可视化完成。比较深入的处理方法， 往往EEGLAB里面也会有plugin 。 但它的GUI界面有时存在一些bug，也不方便批量操作。 
 

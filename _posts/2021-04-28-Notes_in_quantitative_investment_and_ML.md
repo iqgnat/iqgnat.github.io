@@ -25,10 +25,11 @@ layout: post
 5. 目前A股量化不挣钱的原因（高α）：头部集中。
 6. 和脑机接口的关联性：时域、频域分析的通用（moving average, ARMA等， fft, 小波, AFD, cca）。提取因子的方法：fatigue中用到的 AFD 算法、小波。格兰杰因果， leading lagging, 看产品之间的关系。
 
-# <font face="黑体" color=green size=5>相关资料</font>
+## <font face="黑体" color=green size=5>相关资料</font>
 
 2.  收益vs风险指标:
     [https://wenku.baidu.com/view/b8c0168fa21614791611289e.html](https://www.google.com/url?q=https://courses.d2l.ai/zh-v2/&sa=D&source=calendar&usd=2&usg=AOvVaw2fjME29Jd9xf4KAHyFt9uL)
     
 3.  基于VNPY的网页交易系统:
     https://github.com/vnpy/vnpy
+

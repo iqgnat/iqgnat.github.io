@@ -19,7 +19,7 @@ key: Latex
 
  Latex 针对性强的排版工具，适用于速成与严谨地撰稿。这里没有比较不同文字处理系统（如 MiKTeX, TeX Live,  CTeX, cwTex) 或 不同整合开发环境 ( 如Texstudio**,** WinEdt, TeXstudio, TeXmaker) 之间的异同，仅仅选择了 **Miktex** + **Texstudio** 的常用组合 （win10环境中）。 
 
-# <font face="黑体" color=green size=5>**步骤**</font>
+## <font face="黑体" color=green size=5>**步骤**</font>
 
 -  **Step 1:   latex的安装，先MiKTeX，后Texstudio ;**
 -  **Step 2：能否成功安装宏包（packages）**;
@@ -32,13 +32,13 @@ key: Latex
 -  **Step 9:   latex的 .tex 格式转换成word格式** 
 -  **Step 10:   截图的公式，转换成word格式** 
 
-# <font face="黑体" color=green size=5>Step 1:  Windows环境下的安装--latex的, 先MiKTeX [(官网)](https://miktex.org/download) ，后Texstudio[(官网)](https://www.texstudio.org/) </font>
+### <font face="黑体" color=green size=5>Step 1:  Windows环境下的安装--latex的, 先MiKTeX [(官网)](https://miktex.org/download) ，后Texstudio[(官网)](https://www.texstudio.org/) </font>
 
 Texstudio 是编辑器，通过 **mpm** (*MiKTeX* Package Manager) 在线安装包。 安装完Miktex后，可以终端中输入 **mpm** 字符，来查看 MiKtex Console 是否存在并打开。
 
 ![判断MiKTex是否存在](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2019-05-13-Notes_in_Latex_for_Paper_writing/01.jpg)
 
-# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 2：安装包（packages） </font> </font>
+### <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 2：安装包（packages） </font> </font>
 
 安装包时，在开始菜单 (或者通过cmd打开终端) 输入 **mpm**并回车运行。 在打开的 MiKtex Console，点击“Switch to administrator mode” （若弹出"用户账户控制", 选择"允许")， 在左侧边栏选择“Package”, 输入包名 按加号。
 
@@ -50,7 +50,7 @@ Texstudio 是编辑器，通过 **mpm** (*MiKTeX* Package Manager) 在线安装�
 
 
 
-# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 3：设置Texstudio的编译器和默认文献工具 </font> </font>
+### <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 3：设置Texstudio的编译器和默认文献工具 </font> </font>
 
 写IOP期刊论文时用的是IOP template，规定用的编译器是PdfLatex，文献工具是：BibTex。当写毕业论文的时候，学院对字体有要求，用的XeLatex编译器。PdfLatex编译的速度比较快。
 
@@ -58,7 +58,7 @@ Texstudio 是编辑器，通过 **mpm** (*MiKTeX* Package Manager) 在线安装�
 
 
 
-# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 4：.tex template 插入公式, 表格和图片</font> </font>
+### <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 4：.tex template 插入公式, 表格和图片</font> </font>
 
 期刊提供的 Latex template，通过 texstudio打开".tex", 文本中的数学符号 （$...$）、公式、表格 、图片（等， 根据template中的描述（或google），把文章内容替换进去。 IOP 定义了如下命令，分别引用section，figure，table 等，自动加上对应的前缀：
 
@@ -120,7 +120,7 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 
 
 
-# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 5: 参考文献的添加 </font> </font>
+### <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 5: 参考文献的添加 </font> </font>
 
 用 BibTeX 工具，生成参考文献。涉及额外的两个文件：.bst （生成的references的格式） 和 .bib。期刊提供的 .bst 默认已经正确规定好了生成的reference的形态格式。对于 .bib，复制scholar提供的标签和内容，然后在.tex正文中用 \cite{} 引用@article{} 括号中的标签内容。
 
@@ -134,7 +134,7 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 
 
 
-# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 6: 检查 .bib 中的参考文献是否重复添加</font> </font>
+### <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 6: 检查 .bib 中的参考文献是否重复添加</font> </font>
 
 因为涉及的参考文献众多（ 而且google给的bibtex标签不是关键词抓取 ，为了自己更好理解，有时复制bibtex时候会改 @article 后面的标签），这样如果我们重复复制了bibtex并在正文引用，在Bibliography处就会生成两个相同的reference. 因此我们需要 一个自动查验 bibtex中的文章是否重复。已经有stackovernet的网友[Martin](https://tex.stackexchange.com/users/32082/martin)解决了，原创回答请点击[这里](https://tex.stackovernet.com/cn/q/93352)。
 
@@ -158,7 +158,7 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 
 
 
-# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 7: 生成pdf，并保存.tex版本</font> </font>
+### <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 7: 生成pdf，并保存.tex版本</font> </font>
 
 编译，生成并保存pdf文件，保存 .tex 文件（建议根据日期或版本命名）。
 
@@ -166,24 +166,22 @@ SNR=\frac{n \times X(K)}{\sum_{k=1}^{n/2}[X(K+k)+X(K-k)]}
 
 
 
-# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 8: 用 latexdiff 比较 不同 .tex 版本之间的差异，并自动标注</font> </font>
+### <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 8: 用 latexdiff 比较 不同 .tex 版本之间的差异，并自动标注</font> </font>
 
 安装 latexdiff 包。 保证两个版本的 .tex 与其引用文件在同一文件夹下。 powershell 窗口中输入: latexdiff  旧的版本名.tex   新的版本名.tex  >   diff.tex 。
-
-
 
 注意：偶尔会出现生成的diff.tex，没有 .aux 文件对应，此时将 diff.tex的文件内容复制到新建的.tex中并运行，生成pdf即可。
 
 
 
-# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 9: latex的 .tex 格式转换成word格式</font> </font>
+### <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 9: latex的 .tex 格式转换成word格式</font> </font>
 
 [GrindEQ](https://www.grindeq.com/)把.tex文件转换成word，出来的成品马马虎虎可以用，是MS word的官方插件。下载好以后，备份.tex文件，然后用word打开，文件格式选.tex。
 转换出来的bibliography 和公式没问题。只是文中 \Fref, \Tref, \cite 的引用效果都不复存在, 需要再编辑。
 
 
 
-# <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 10: 将截图的公式，转换成word格式</font> </font>
+### <font face="黑体" color=green size=5><font face="黑体" color=green size=5>Step 10: 将截图的公式，转换成word格式</font> </font>
 
 在写毕业论文的时候，经常会引用到公式，往往我们有的都不是 word格式的。**Mathpix snipping tool** 可以将截图里的公式输出 .tex code, 把code 复制到 .tex。用.tex格式当成一个中转。 然后通过安装[GrindEQ](https://www.grindeq.com/) 插件，就在 word 打开 .tex的文档，并且，打开以后，tex的公式都是已word公式显示。
 

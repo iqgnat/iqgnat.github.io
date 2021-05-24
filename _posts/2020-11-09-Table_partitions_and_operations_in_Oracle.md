@@ -16,9 +16,9 @@ layout: post
 
 <!--more-->
 
-# <font face="黑体" color=green size=5>具体步骤</font>
+## <font face="黑体" color=green size=5>具体步骤</font>
 
-1.  创建表 用于保存分区后的数据
+1.  ### 创建表 用于保存分区后的数据
 
      ```sql
    create table iqgnat_table_partitions (
@@ -31,7 +31,7 @@ layout: post
    ) partition by hash (cusid) partitions 512;
     ```
 
-2.  创建日志表
+2.  ### 创建日志表
 
      ```sql
    create table iqgnat_table_hashlog
@@ -42,7 +42,7 @@ layout: post
    log_desc varchar2(200));
     ```
 
-3.  将原表灌入分区表
+3.  ### 将原表灌入分区表
 
      ```sql
    insert into iqgnat_table_partitions as select * from iqgnat_table;
@@ -51,7 +51,7 @@ layout: post
    SELECT COUNT(1) FROM iqgnat_table_partitions;
     ```
 
-4.  根据具体需求 (以下代码以对记录去重为例) ，通过定义匿名包文件 sample_operation.sql 对分区表进行循环操作
+4.  ### 根据具体需求 (以下代码以对记录去重为例) ，通过定义匿名包文件 sample_operation.sql 对分区表进行循环操作
 
      ```sql
    declare
@@ -116,7 +116,7 @@ layout: post
 
    
 
-5.  在终端调起 PL/SQL 语句
+5.  ### 在终端调起 PL/SQL 语句
 
      ```shell
    msg=`
