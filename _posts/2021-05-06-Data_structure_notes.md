@@ -18,10 +18,10 @@ layout: post
 
 > ”Java 替你做了太多事情，那么多动不动还支持范型的容器类，加上垃圾收集，会让你觉得编程很容易。但你有没有想过，那些容器类是怎么来的，以及它存在的意义是什么？最粗浅的，比如 ArrayList 这个类，你想过它的存在是多么大的福利吗——一个可以随机访问、自动增加容量的数组，这种东西 C 是没有的，要自己实现。但是，具体怎么实现呢？如果你对这种问题感兴趣，那数据结构是一定要看的。甚至，面向对象编程范式本身，就是个数据结构问题：怎么才能把数据和操作数据的方法封装到一起，来造出 class / prototype 这种东西？“ 
 
-# <font face="黑体" color=green size=5>思维导图</font>
+## <font face="黑体" color=green size=5>思维导图</font>
 
-[数据结构思维导图下载](https://github.com/iqgnat/iqgnat.github.io/blob/master/assets/images/2021-05-06-Data_structure_notes/data_structure.png)
-概览：
+
+概览（点击下载）：
 
 [![data_structure.png](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-05-06-Data_structure_notes/data_structure.png)](https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2021-05-06-Data_structure_notes/data_structure.png)
 
