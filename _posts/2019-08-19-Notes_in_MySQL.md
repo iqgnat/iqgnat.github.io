@@ -1,7 +1,7 @@
 ---
 title: MySQL 小记
 categories: 开发随笔
-tags: [mysql,sql,database]
+tags: [database]
 description: 
 comments: true
 author: Tang Qi
@@ -30,7 +30,6 @@ Mysql： null 不等同于空字符
 
 2. null 查询用 is null/is not null, 空字符查询用 = ''/<>'' 
 3. IFNULL / IF 函数进行判断。
-   
 
 ## <font face="黑体" color=green size=5>2. Python 接口: mysql 、 pymysql </font>
 
@@ -77,13 +76,12 @@ connection.close()
    c. 在 Authentication Method tab, 选择 Use Legacy Authentication Method“.
 
 3. 在 Excel 的工具栏中，点击 “数据” ->  “MySQL for Excel” (如果没有，则新增组件)。自此，可通过 excel 导数进 MySQL 或者 MySQL 导出数据到 Excel。
-   
 
 ## <font face="黑体" color=green size=5>4. 数据装载</font>
 
 1. 数据泵 LOAD DATA  文本的导入导出：
 
-   ```mysql
+   ```shell
    LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE mytbl (b, c, a);
      -> FIELDS TERMINATED BY ':'
      -> LINES TERMINATED BY '\r\n';
@@ -91,7 +89,7 @@ connection.close()
 
 2. 通过 source 、 mysql 命令, 导入备份数据库:
 
-   ```mysql
+   ```shell
    source /home/abc/abc.sql  ;
    mysql -u用户名    -p密码    <  abc.sql 
    ```
@@ -108,7 +106,7 @@ connection.close()
 
 ## <font face="黑体" color=green size=5>5. 外键定义的可选项（通用）</font>
 
-```mysql
+```shell
 ALTER TABLE Payment ADD CONSTRAINT `payment_fk`   
 FOREIGN KEY(emp_id) REFERENCES Employee (emp_id) ON UPDATE CASCADE;  
 ```
@@ -120,7 +118,6 @@ update 是主键表中被参考字段的值更新，delete是指在主键表中�
 + set null 表示在外键表中将相应字段设置为null；
 + set default 表示设置为默认值；
 + cascade 表示级联操作，就是说，如果为on update cascade，主键表中被参考字段更新，外键表中对应行相应更新；如果为on delete cascade，主键表中的记录被删除，外键表中对应行相应删除。
-  
 
 ## <font face="黑体" color=green size=5>6. exists 和 in 区别</font> 
 
@@ -132,7 +129,7 @@ update 是主键表中被参考字段的值更新，delete是指在主键表中�
   >
   > IN表示范围，指某一字段在某一范围之内，这个范围一般使用子查询来获取，由此可知IN子查询返回的结果应该就是这个范围集。
 
-```mysql
+```shell
 SELECT
 	pa.pname 
 FROM
@@ -171,14 +168,13 @@ IN 是把外表和内表作 hash 连接，而 EXISTS 是对外表作 loop 循环
 
 + 自动消除因表关联出现的重复命令：
 
-```mysql
+```shell
 union all
 intersect all
 except all
 ```
 
 + unique() 、distinct () 函数。
-  
 
 ## <font face="黑体" color=green size=5>8. join ： natural join 、inner join、 join using 区别 </font>
 
@@ -189,7 +185,7 @@ except all
 ​	inner join 表名 on 表1.列1 = 表2.列2
 ​    inner join 表名 using 指定的共同列名
 
-```mysql
+```shell
 select name, title from  (student natural join takes)  join course using (course_id);
 ```
 
@@ -199,7 +195,7 @@ select name, title from  (student natural join takes)  join course using (course
 
 ## <font face="黑体" color=green size=5>9.  触发器 </font>
 
-```mysql
+```shell
 CREATE TRIGGER trigger_name trigger_time trigger_event
 ON table_name
 FOR EACH ROW
@@ -220,7 +216,7 @@ END;
 
 触发行为：
 
-```mysql
+```shell
 after update on, 
 after delete on,
 before insert on, 
@@ -231,7 +227,7 @@ after insert on
 
 触发器以前用的场景比较多，现在数据库提供的一些更好的解决方案和封装来代替触发器，比如物化视图来做统计、其他内建支持，创建方法。
 
-```mysql
+```shell
 DROP TRIGGER IF EXISTS advisory_insert;
 delimiter | 
 CREATE TRIGGER advisory_insert BEFORE insert ON advisory
@@ -267,7 +263,7 @@ WITH 语句添加一个子查询（临时）, 还可以使用深度优先搜索�
 
 递归查询：
 
-```mysql
+```shell
 WITH recursive rec_prereq ( course_id, prereq_id ) AS (
 	SELECT
 		course_id,
@@ -287,24 +283,6 @@ WITH recursive rec_prereq ( course_id, prereq_id ) AS (
 FROM
 	rec_prereq;
 ```
-
-
-
-https://www.cnblogs.com/zejin2008/p/5227698.html
-
-https://blog.csdn.net/see_it/article/details/79578779
-
-https://blog.csdn.net/lszzzz/article/details/50544287
-
-https://zhuanlan.zhihu.com/p/37342986
-
-https://stackoverflow.com/questions/24929/difference-between-exists-and-in-in-sql
-
-https://cloud.tencent.com/developer/article/1144244
-
-https://blog.csdn.net/u011630575/article/details/80300418
-
-https://www.yiibai.com/mysql/create-the-first-trigger-in-mysql.html
 
 
 

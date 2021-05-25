@@ -1,7 +1,7 @@
 ---
 title: Oracle 导数，越过或导入 LOB 字段。
 categories: 开发随笔
-tags: oracle
+tags: database
 description: 
 comments: true
 author: Tang Qi
