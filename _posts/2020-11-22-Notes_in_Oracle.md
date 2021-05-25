@@ -30,7 +30,6 @@ layout: post
 1. 检查监听程序是否正常启动 （lsnrctl status），host 是否在添加到监听列表中；
 2. 实例服务是否正常运行（select status from v$instance;），服务器有没有挂（ping -t -域名，startup pfile 、spfile ）;
 3. 检查注册表（windows：regedit）、 bash_profile (linux: ORACLE_SID) 的实例名是否指向目标数据库实例（ORACLE_SID 必须与instance_name的值一致）。
-   
 
 ## <font face="黑体" color=green size=5>2. 数据库名，实例名，服务名，用户名（schema）的区别。</font>
 
@@ -346,4 +345,88 @@ select a.spid, b.sid,b.serial#,b.username from v$process a, v$session b where a.
 
    
 
-   2.物化视图
+   ## <font face="黑体" color=green size=5>11. 物化视图</font>
+
+>https://blog.csdn.net/joshua_peng1985/article/details/6213593
+>
+>在 SQL 中，视图是基于 SQL 语句的结果集的可视化的表。视图包含行和列，就像一个真实的表。视图中的字段就是来自一个或多个数据库中的真实的表中的字段。我们可以向视图添加 SQL 函数、WHERE 以及 JOIN 语句，我们也可以提交数据，就像这些来自于某个单一的表。
+>
+>数据库的设计和结构不会受到视图中的函数、where 或 join 语句的影响。
+>
+>视图总是显示最近的数据。每当用户查询视图时，数据库引擎通过使用 SQL 语句来重建数据。
+
+```sql
+-- 普通视图的创建：
+CREATE VIEW view_name AS
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+
+
+-- 物化视图的创建： 
+CREATE MATERIALIZED VIEW [ schema_name. ] materialized_view_name
+    WITH (  
+      <distribution_option>
+    )
+    AS <select_statement>
+[;]
+
+   -- 其中：
+<distribution_option> ::=
+    {  DISTRIBUTION = HASH ( distribution_column_name )  | DISTRIBUTION = ROUND_ROBIN   }
+
+<select_statement> ::= SELECT select_criteria
+    
+-- 样例：
+CREATE MATERIALIZED VIEW mv_test2  
+WITH (distribution = hash(i_category_id), FOR_APPEND)  
+AS
+SELECT MAX(i.i_rec_start_date) as max_i_rec_start_date, MIN(i.i_rec_end_date) as min_i_rec_end_date, i.i_item_sk, i.i_item_id, i.i_category_id
+FROM syntheticworkload.item i  
+GROUP BY i.i_item_sk, i.i_item_id, i.i_category_id
+```
+
+
+普通视图和物化视图根本就不是一个东西，说区别都是硬拼到一起的，普通视图是不存储任何数据的，在查询中是转换为对应的定义SQL去查询，而物化视图是将数据转换为一个表，实际存储着数据，这样查询数据，就不用关联一大堆表，如果表很大的话，会在临时表空间内做大量的操作。
+
+> 普通视图的三个特征：
+> 1、是简化设计，清晰编码的东西，他并不是提高性能的，他的存在只会降低性能（如一个视图7个表关联，另一个视图8个表，程序员不知道，觉得很方便，把两个视图关联再做一个视图，那就惨了），他的存在未了在设计上的方便性
+> 2、其次，是安全，在授权给其他用户或者查看角度，多个表关联只允许查看，不允许修改，单表也可以同WITH READ ONLY来控制，当然有些项目基于视图做面向对象的开发，即在视图上去做INSTAND OF触发器，就我个人而言是不站同的，虽然开发上方便，但是未必是好事。
+> 3、从不同的角度看不同的维度，视图可以划分维度和权限，并使多个维度的综合，也就是你要什么就可以从不同的角度看，而表是一个实体的而已，一般维度较少（如：人员表和身份表关联，从人员表可以查看人员的维度统计，从身份看，可以看不同种类的身份有那些人或者多少人），其次另一个如系统视图USER_TABLE、TAB、USER_OBJECTS这些视图，不同的用户下看到的肯定是不一样的，看的是自己的东西。
+>
+> 物化视图:
+>
+> 用于OLAP系统中，当然部分OLTP系统的小部分功能未了提高性能会借鉴一点点，因为表关联的开销很大，所以在开发中很多人就像把这个代价交给定期转存来完成，ORACLE当然也提供了这个功能，就是将视图（或者一个大SQL）的信息转换为物理数据存储，然后提供不同的策略：定时刷还是及时刷、增量刷还是全局刷等等可以根据实际情况进行选择，总之你差的是表，不是视图。
+
+
+
+> 物化视图的类型：ON DEMAND、ON COMMIT
+>    ON DEMAND: 仅在该物化视图“需要”被刷新了，才进行刷新(REFRESH)，即更新物化视图，以保证和基表数据的一致性；
+>    ON COMMIT: 一旦基表有了COMMIT，即事务提交，则立刻刷新，立刻更新物化视图，使得数据和基表一致。
+>
+> 物化视图的特点：
+>    (1) 物化视图在某种意义上说就是一个物理表(而且不仅仅是一个物理表)，这通过其可以被user_tables查询出来，而得到佐证；
+>    (2) 物化视图也是一种段(segment)，所以其有自己的物理存储属性；
+>    (3) 物化视图会占用数据库磁盘空间，这点从user_segment的查询结果，可以得到佐证；
+>    创建语句：create materialized view mv_name as select * from table_name
+>    默认情况下，如果没指定刷新方法和刷新模式，则Oracle默认为FORCE和DEMAND。
+>
+>  ON COMMIT物化视图的创建，和上面创建ON DEMAND的物化视图区别不大。因为ON DEMAND是默认的，所以ON COMMIT物化视图，需要再增加个参数即可。
+>
+>    需要注意的是，无法在定义时仅指定ON COMMIT，还得附带个参数才行。
+>    创建ON COMMIT物化视图：create materialized view mv_name refresh force on commit as select * from table_name
+>    备注：实际创建过程中，基表需要有主键约束，否则会报错（ORA-12014）
+>
+>   刷新的方法有四种：FAST、COMPLETE、FORCE和NEVER。FAST刷新采用增量刷新，只刷新自上次刷新以后进行的修改。COMPLETE刷新对整个物化视图进行完全的刷新。如果选择FORCE方式，则Oracle在刷新时会去判断是否可以进行快速刷新，如果可以则采用FAST方式，否则采用COMPLETE的方式。NEVER指物化视图不进行任何刷新。
+>    对于已经创建好的物化视图，可以修改其刷新方式，比如把物化视图mv_name的刷新方式修改为每天晚上10点刷新一次：
+>
+> ```sql
+> alter materialized view mv_name refresh force on demand start with sysdate next to_date(concat(to_char(sysdate+1,'dd-mm-yyyy'),' 22:00:00'),'dd-mm-yyyy hh24:mi:ss')
+> ```
+>
+> 
+>
+> 5、物化视图具有表一样的特征，所以可以像对表一样，我们可以为它创建索引，创建方法和对表一样。
+>
+> 
+
