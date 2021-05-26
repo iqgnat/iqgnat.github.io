@@ -1,5 +1,5 @@
 ---
-title: Dive into Deep Learning III：多层感知机、模型选择、过拟合和欠拟合、权重衰退、dropout
+title: Dive into Deep Learning IV：数值稳定性、模型初始化和激活函数
 categories: ML和时序分析
 tags: [Pytorch]
 description: 
@@ -12,15 +12,24 @@ aside:
 layout: post
 ---
 
-动手学深度学习 Pytorch 版直播课堂的 学习笔记，第三部分：多层感知机、模型选择、过拟合和欠拟合、权重衰退、丢弃法。
+动手学深度学习 Pytorch 版直播课堂的 学习笔记，第四部分：数值稳定性、模型初始化和激活函数。
 
 <!--more-->
 
-## <font face="黑体" color=green size=5>多层感知机</font>
+## <font face="黑体" color=green size=5>数值稳定性</font>
 
-1. 感知机是线性的二分类模型，只能产生线性分割面，不能拟合XOR函数。
-2. 多层感知机：组合学习多个分类器，增加 隐藏层 和 非线性激活函数。只要有一个隐藏层，实际上就可以拟合任何函数。
-3. 神经网络增加隐藏层的层数而不是神经元的个数的原因：特别容易过拟合，因此深度的好训练一些，
+1. 梯度爆炸造成的问题：
+   值超出值域；
+   对学习率敏感。
+2. 梯度消失造成的问题：
+   梯度值编程0；
+   训练没有进展；
+   对底层尤为严重：梯度反传是从顶开始的，仅仅顶部层训练得较好，底部层跑不动；
+3. 令梯度值在合理范围：
+   让乘法变加法： ResNet， LSTM；
+   归一化：梯度归一化，梯度裁剪；
+   合理得权重初始和激活函数。
+4. 梯度归一化：将每层得输出和梯度都看作随机变量，让它们的均值和方差都保持一致。
 
 实现代码样例：
 
@@ -304,5 +313,4 @@ d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer)
 5. Pytorch论坛:
    [https://discuss.pytorch.org](https://www.google.com/url?q=https://discuss.pytorch.org&sa=D&source=calendar&usd=2&usg=AOvVaw0eS7VBGxeTdoKNb6xLWz5G)
 
-   
    
