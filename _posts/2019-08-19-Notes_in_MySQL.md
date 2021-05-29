@@ -286,3 +286,106 @@ FROM
 
 
 
+## <font face="黑体" color=green size=5>11. 其他 </font>
+
++ where 后面不能跟聚合函数（这种情况，应另加子查询，或者考虑 having）
+
++ select （select ...）from (select ...) where (select ...) 都可以加子查询，但嵌套在select后面每次只能查询出一条记录。
+
++ having 的效率比 where 低，如果可以尽量用 where 解决
+
++ SELECT column_name(s)
+  FROM table_name
+  WHERE condition
+  GROUP BY column_name(s)
+  HAVING condition
+  ORDER BY column_name(s)
+  LIMIT 起始点，长度 ;
+  
++ 非等值连接： on 表1.字段1 between 表2.字段1 and 表2.字段2
+
++ select ename,job from emp where job = 'MANAGER'
+   union 
+  select ename,job from emp where job = 'SALESMAN'
+  的效率比表连接的效率要高，因为每连接一次新表，则匹配的次数满足笛卡尔积，成倍地翻。 
+  
++ 两个字段联合唯一：
+
++ create table tablename(
+  字段1 类型1 
+  字段2 类型2 
+  unique(字段1，字段2) 
+  primary key (字段1，字段2)  )
+  
++ 在mysql中，一个字段同时被not null 和unique 约束的话，该字段自动变成主键字段。（oracle 中不一样）每张表都应该有主键，没有主键表无效。建表时候在列名后面的 PRIMARY KEY 是列级约束，在最后的 primary key （主键名）是表级约束。表级约束主要是给多个字段联合起来添加约束。
+
++ 一张表主键约束只能有一个（联合起来添加一个不算）
+
++ 在实际开发中，更推荐使用自然主键，因为一旦主键和业务挂钩，当业务发生变动时，可能会影响到主键值。（实际开发，还是用客户号情况的比较多）。
+  create table tablename (
+  id int primary key auto_increment)
+  
++ 存储引擎是一个表存储、组织数据的方式（九个存储引擎）：
+  myisam (类似oracle)的索引，compress，分文件放索引，数据等特性；
+  innodb 是重量级的，非常安全，崩溃后自动恢复，行级锁，外键引用的完整性，事务回滚等，不能很好的节省存储空间。
+  memory（heap）存储：将数据存储在内存中（类似redis），一段电数据就消失。表级锁机制，查询效率最高。
+  
++ 事务的实现：在事务的执行过程中，每个DML活动都会记录到事务性活动的日志文件中，提交事务标志着事务的成功结束。回滚事务标志着事务的结束并且是全部失败的结束，清空对应的日志。mysql默认情况下是自动提交的。回滚只能回滚到上一次的提交点。start transaction （将自动提交机制关闭，开启事务）。
+  set global transaction isolation level  xxx 
+  
++ 事务的隔离性：
+  + 读未提交： read uncommitted （最低隔离级别）,问题 脏读现象。
+  + 读已提交： read committed， 问题 不可重复读取。
+  + 可重复读： repeated read。即使事务B的数据已经修改并提交了，事务A 读取的数据还是没有改变。问题： 可能会出现幻影，每次读取到的数据都是幻想，不够真实。
+  + 序列化/串行化： serializable  （最高隔离级别）. 事务是排队的，不能并发，但效率低。线程同步，事务同步。
+  
++ 查看隔离级别:  select @@session.tx_isolation
+
++ mysql 查询方式：1. 全表扫描 2.索引检索（B-树）。
+  主键和unique字段，都会自动添加索引。（数据库优化的重要手段）
+  + 模糊匹配开头使索引失效，
+  + or 连接的两边条件都需要有索引 （因此少用 or 也是sql 优化的一种），
+  + 使用复合索引的时候，没有使用左侧的列查找,
+  + 索引列参加数学计算，或者使用了函数。
+  + ...
+  
++ 对视图进行增删改，都会影响到原表（面向视图更新）
+
++ MySQL DATETIME类型和Timestamp之间的转换：SELECT FROM_UNIXTIME(UNIX_TIMESTAMP(NOW()));
+
++ sql 找近90.30.7天的登录人数：
+   SELECT * FROM 表名 WHERE DATEDIFF(字段,NOW())=-1
+   SELECT * FROM 表名 WHERE TO_DAYS(NOW()) - TO_DAYS(时间字段名) = 1
+
++ 取众数：
+
+   ```shell
+   SELECT salary,COUNT(*) AS cnt
+   FROM salaries
+   GROUP BY salary
+   HAVING count(*) >= ALL(SELECT COUNT(*) FROM salaries GROUP BY salary) 
+   ```
+
+```shell
+select
+    ll.*,
+    if (a.position is not null, 1,
+        if (b.position is not null, 2, 
+        if (c.position is not null, 3, 
+        if (d.position is not null, 4, 0)))
+    ) as quartile
+from
+    luxlog ll
+    left outer join luxlog a on ll.position = a.position and a.lux > (select count(*)*0.00 from luxlog) and a.lux <= (select count(*)*0.25 from luxlog)
+    left outer join luxlog b on ll.position = b.position and b.lux > (select count(*)*0.25 from luxlog) and b.lux <= (select count(*)*0.50 from luxlog)
+    left outer join luxlog c on ll.position = c.position and c.lux > (select count(*)*0.50 from luxlog) and c.lux <= (select count(*)*0.75 from luxlog)
+    left outer join luxlog d on ll.position = d.position and d.lux > (select count(*)*0.75 from luxlog)
+;   
+```
+
+
+
+参考：
+
+​	https://www.bilibili.com/video/BV1Vy4y1z7EX?p=109
+
