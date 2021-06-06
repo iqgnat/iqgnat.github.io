@@ -1,5 +1,5 @@
 ---
-title: Dive into Deep Learning V：LeNet、AlexNet、VGG、NiN、GoogleNet
+title: Dive into Deep Learning VI：LeNet、AlexNet、VGG、NiN、GoogleNet
 categories: ML和时序分析
 tags: [Pytorch]
 description: 
