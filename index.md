@@ -10,6 +10,7 @@ comments: false
 
 这是一个随笔博客，记录学习生活道路上的点滴，也为了更好地展现自己。
 
+## 
 
 ## 教育背景
 
@@ -58,7 +59,7 @@ comments: false
 **一、上海寻梦科技有限公司(拼多多)·数据挖掘工程师**
 	 *上海浦东· 2021 年 06 月 - 2023 年 06 月*
 
-**Temu数据仓库商品域货品域负责人** (2022年11月 - 2023年06月)：
+(1) **Temu数据仓库商品域货品域负责人** (2022年11月 - 2023年06月)：
 
 + 海外站点商品、货品数据模型构建
   + 海外商品域、货品域业务逻辑抽象与数据模型构建；
@@ -66,7 +67,7 @@ comments: false
   + 基线优化，离线告警处理等域日常
 + 配合下游搜推等业务进行dws表、看板创建等域日常
 
-**主站市场部风控广告投放反作弊算法模型与策略开发** (2021年06月 - 2022年11月)：
+(2) **主站市场部风控广告投放反作弊算法模型与策略开发** (2021年06月 - 2022年11月)：
 
 + 信息流与直投广告反作弊算法模型开发
   + 所开发的模型异常请求日拦截量达十位数，连续数月占比总拦截量二分之一以上;
@@ -76,8 +77,6 @@ comments: false
   + 针对异常点击、激活进行拦截策略开发，拦截量曾居头部数月；
   + 策略拦截指标看板创建, 告警处理，与有效期评估等策略优化；
   + 对申请接入的媒体进行投放评估，对已接入但模型报异常的媒体进行异常分析
-
-​	
 
 **二、中国银行软件中心·创新研究中心 · 专业岗位 · 初级工程师**
           *上海浦东· 2019 年 07 月 - 2021 年 03 月*
@@ -114,7 +113,7 @@ comments: false
 **四、澳门大学科技学院 · 教学助理**
       *澳门 · 2016 年 8月 - 2019 年 01 月* 
 
-(1) 以下本科课程(课程代码)教学助理:  习题课、实验课；功课、考试、实验报告批改
+(1) 以下课程(课程代码)教学助理, 具体内容： 习题课、实验课；功课、考试、实验报告批改
 
 + 现代控制系统 (ECEB252 & ECEN3000); 
 + 应用电子 (ECEB310); 
@@ -122,21 +121,26 @@ comments: false
 + 概率统计 (ECEB252 & ECEN2007); 
 + 电力生活 (GEST016)
 
-
  **五、 凤凰网凤凰新闻客户端 · 移动互联网部门 · 实习生** 
        *北京望京 · 2017 年  07 月 - 2017 年  08 月* 
 
-(1) 数据分析与相关脚本开发：同行竞品分析;竞品中自媒体号在新闻池覆盖程度计算的脚本
+(1) 竞品分析， 具体内容： 竞品版式分析，竞品中自媒体号在新闻池覆盖程度计算的脚本
 
 -----
 
 ## 论文
 
 1.  Q.Tang, W.Y. Nan, F. Wan et.al. Neurofeedback Improves SSVEP BCI Performance on Subject with Both 'High' and 'Low' Performance. https://hub.hku.hk/handle/10722/260788
+
 2.  C.M. Wong, Q.Tang, J.N. da Cruz et.al. A Multi-channel SSVEPbased BCI for Computer Games with Analogue Control.https://ieeexplore.ieee.org/document/7158612
+
 3.  Z.Wang, C.M. Wong, W.N. Nan, et.al. Learning Curve of a Short-Time Neurofeedback Training: Reflection of Brain Network Dynamics Based on Phase-Locking Value.https://ieeexplore.ieee.org/document/9606232
+
 4.  X.T. Qu, Q. Tang, L. M. Yang et.al How Mental Strategy Affects Beta/Theta Neurofeedback Training. https://link.springer.com/chapter/10.1007/978-3-319-19387-8_304
-5.  W.Y. Nan, F. Wan, Q.Tang et.al. Eyes-Closed Resting EEG Predicts the Learning of Alpha Down - Regulation in Neurofeedback Training.https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6121215/
+
+5.  W.Y. Nan, F. Wan, Q.Tang et.al. Eyes-Closed Resting EEG Predicts the Learning of Alpha Down - Regulation in Neurofeedback Training.https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6121215
+
+    
 -------
 
 ## 联系我
