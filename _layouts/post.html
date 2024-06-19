@@ -24,11 +24,9 @@ layout: default
 
     {{ content }}
 
-   <!-- Valine 评论框 start -->
-   {% if site.valine.enable %}
-			  {% include valine_comments.html %}
-   {% endif %}
-   <!-- Valine 评论框 end -->
+	<!-- valine 评论插件 -->
+	<h3>评论：</h3>
+	{% include comment.html %}
 		   
   </script>
 
