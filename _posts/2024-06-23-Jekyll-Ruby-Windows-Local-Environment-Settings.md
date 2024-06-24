@@ -12,7 +12,7 @@ aside:
 layout: post
 ---
 
-时隔几年，重回博客更新笔记。然而电脑在离职脱敏时进行过格式化，重新配置本地测试环境的时，遇到了版本冲突问题，在此记录。
+时隔几年，重回博客更新笔记。然而电脑在离职脱敏时进行过格式化，重新配置本地测试环境时，遇到了版本冲突问题，在此记录一下。
 
 <!--more-->
 
@@ -20,7 +20,7 @@ layout: post
 
 1. Windows 环境是否安装了合适版本的 Ruby。
 
-   1. 目前最新的 ruby 版本是 3.3.3， 但这个版本会与 jekyll 4.3.3, jekyll 4.3.2, jekyll 4.2.2 或更早版本不兼容而出现以下报错（如下）。 在更新 jekyll 到最新版本 4.3.3 依然存在这个问题。 尝试issue提到的方案后，只有降级 ruby 从 3.3.3 到 3.2.3 能解决这个问题, 因此建议直接安装 ruby 3.2.3。另外，安装时明确到版本号第四位，也即 3.2.3.1。
+   1. 目前最新的 ruby 版本是 3.3.3， 但这个版本会与 jekyll 4.3.3, jekyll 4.3.2, jekyll 4.2.2 或更早版本不兼容而出现以下报错（如下）。 在更新 jekyll 到最新版本 4.3.3 依然存在这个问题。 尝试issue中的方案，目前只有降级 ruby 从 3.3.3 到 3.2.3 能解决这个问题, 因此建议直接安装 ruby 3.2.3。另外，安装Ruby时需要明确版本号至第四位，例如， 3.2.3.1。
 
       ```
       jekyll 4.2.2 | Error:  undefined method []' for nil
@@ -57,7 +57,7 @@ layout: post
 
 
 
-2. 安装 Ruby 过程中遇到 MSYS2 安装选项， 选 3
+2. 安装 Ruby 过程中遇到 MSYS2 安装选项， 选 3，不然后续执行 jekyll 服务会报缺环境。
 
    ```
    1 - MSYS2 base installation
@@ -69,7 +69,7 @@ layout: post
 
    
 
-3. 重新安装 jekyll, bundle 安装gemfile中的依赖包。由于国内的网络环境访问 RubyGems 官方源可能会比较慢，使用国内镜像源可以显著提升下载速度。 但网上通用的方法： gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/， 并不起作用。最后的解决办法是： bundle config mirror.https://rubygems.org https://gems.ruby-china.com
+3. 重新安装 jekyll, bundle 安装gemfile中的依赖包。由于国内的网络环境访问 RubyGems 官方源可能会比较慢，使用国内镜像源可以显著提升下载速度。 但网上通用的方法： gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/， 并不起作用。最终有效的解决办法是： bundle config mirror.https://rubygems.org https://gems.ruby-china.com 
 
    ```
    gem install bundler
