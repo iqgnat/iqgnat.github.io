@@ -1,6 +1,6 @@
 ---
 title: Java 学习笔记
-categories: 学习笔记
+categories: 开发随笔
 tags: [java]
 description: 
 comments: false
