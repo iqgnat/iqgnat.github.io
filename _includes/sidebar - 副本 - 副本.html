@@ -11,34 +11,22 @@
       {% include social.html %}
     </div>
 	
-	<!--2. category tags-->
-	<ul id="sidebar-tags">
-	  <li class="sidebar-tag active" data-filter="recent">近期文章</li>
-	  {% if site.filter == 'category' %}
-		{% assign custom_order = "开发随笔,科研笔记,算法模型,人间草木" | split: ',' %}
-		{% assign sorted_categories = "" %}
-		{% for order in custom_order %}
-		  {% for category in site.categories %}
-			{% if category[0] == order %}
-			  {% assign sorted_categories = sorted_categories | append: category[0] | append: "," %}
-			{% endif %}
-		  {% endfor %}
-		{% endfor %}
-		{% assign sorted_categories = sorted_categories | split: ',' %}
-		{% for category in sorted_categories %}
-		  {% if category != "" %}
-			<li class="sidebar-tag" data-filter="{{ category }}">{{ category }}</li>
-		  {% endif %}
-		{% endfor %}
-	  {% elsif site.filter == 'tag' %}
-		{% for tag in site.tags %}
-		  <li class="sidebar-tag" data-filter="{{ tag | first }}">{{ tag | first }}</li>
-		{% endfor %}
-	  {% endif %}
-	  <!--3. footer-->
-	  {% include footer.html %}
-	</ul>
-	</div>
+	<!--2. categary tags-->
+    <ul id="sidebar-tags">
+      <li class="sidebar-tag active" data-filter="recent">近期文章</li>
+      {% if site.filter == 'category' %}
+        {% for category in site.categories %}
+            <li class="sidebar-tag" data-filter="{{ category | first }}">{{ category | first }}</li>          
+        {% endfor %}
+      {% elsif site.filter == 'tag' %}
+        {% for tag in site.tags %}
+          <li class="sidebar-tag" data-filter="{{ tag | first }}">{{ tag | first }}</li>
+        {% endfor %}
+      {% endif %}
+      <!--3. footer-->
+      {% include footer.html %}
+    </ul>
+  </div>
 
   <div id="sidebar-right">
   	  <!--4. search box-->
