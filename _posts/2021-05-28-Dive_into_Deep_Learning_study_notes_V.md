@@ -1,6 +1,6 @@
 ---
 title: Dive into Deep Learning V：卷积、池化
-categories: ML和时序分析
+categories: 算法模型
 tags: [Pytorch]
 description: 
 comments: true

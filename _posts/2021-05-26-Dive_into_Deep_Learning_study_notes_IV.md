@@ -1,6 +1,6 @@
 ---
 title: Dive into Deep Learning IV：数值稳定性、模型初始化和激活函数
-categories: ML和时序分析
+categories: 算法模型
 tags: [Pytorch]
 description: 
 comments: true

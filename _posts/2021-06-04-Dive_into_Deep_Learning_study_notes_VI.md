@@ -1,6 +1,6 @@
 ---
 title: Dive into Deep Learning VI：LeNet、AlexNet、VGG、NiN、GoogleNet
-categories: ML和时序分析
+categories: 算法模型
 tags: [Pytorch]
 description: 
 comments: true
@@ -235,7 +235,7 @@ for layer in net:
 
  2.  nvidia-smi查看显存情况。
 
-    
+​    
 
 ## <font face="黑体" color=green size=5> 含并行连接的的网络 （GoogLeNet）</font>
 

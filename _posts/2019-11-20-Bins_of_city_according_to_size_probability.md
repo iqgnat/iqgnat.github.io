@@ -1,6 +1,6 @@
 ---
 title: 对城市进行分箱
-categories: ML和时序分析
+categories: 算法模型
 tags: [ML,python]
 description: 
 comments: true

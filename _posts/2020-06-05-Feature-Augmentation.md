@@ -1,6 +1,6 @@
 ---
 title:  特征衍生、特征筛选
-categories: ML和时序分析
+categories: 算法模型
 tags: 建模
 description: 
 comments: true

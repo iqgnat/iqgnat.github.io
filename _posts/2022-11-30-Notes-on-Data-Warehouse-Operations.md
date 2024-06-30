@@ -1,5 +1,5 @@
 ---
-title: 数据仓库工作笔记
+title: 数据仓库笔记
 categories: 开发随笔
 tags: [建模]
 description: 

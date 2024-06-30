@@ -79,10 +79,10 @@ layout: post
    bundle install (提示gemfile中缺哪些依赖包，就在gemfile中添加上，再重新执行 bundle install)
    bundle exec jekyll serve --trace
    ```
+   
+   ![image-20240623195811103](https://raw.githubusercontent.com/iqgnat/iqgnat.github.io/master/assets/images/2024-06-23-Jekyll-Ruby-Windows-Local-Environment-Settings/01.png)
 
-![image-20240623195811103](https://raw.githubusercontent.com/iqgnat/iqgnat.github.io/master/assets/images/2024-06-23-Jekyll-Ruby-Windows-Local-Environment-Settings/01.png)
-
-
+​	
 
 4. 在http://127.0.0.1:4000/打开
 

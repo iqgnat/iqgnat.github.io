@@ -1,6 +1,6 @@
 ---
 title: MapReduce - I
-categories: 开发随笔
+categories: 算法模型
 tags: [mapreduce,java]
 description: 
 comments: true

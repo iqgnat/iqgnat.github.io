@@ -1,6 +1,6 @@
 ---
 title: Dive into Deep Learning III：多层感知机、模型选择、过拟合和欠拟合、权重衰退、dropout
-categories: ML和时序分析
+categories: 算法模型
 tags: [Pytorch]
 description: 
 comments: true
@@ -304,5 +304,4 @@ d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer)
 5. Pytorch论坛:
    [https://discuss.pytorch.org](https://www.google.com/url?q=https://discuss.pytorch.org&sa=D&source=calendar&usd=2&usg=AOvVaw0eS7VBGxeTdoKNb6xLWz5G)
 
-   
    

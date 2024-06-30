@@ -1,6 +1,6 @@
 ---
 title: Dive into Deep Learning -I：P1-P14
-categories: ML和时序分析
+categories: 算法模型
 tags: [pytorch,ML,python]
 description: 
 comments: true

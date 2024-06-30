@@ -1,6 +1,6 @@
 ---
 title: 大餐计数 Count Good Meals 小记
-categories: 开发随笔
+categories: 算法模型
 tags: [leetcode,python]
 description: 
 comments: true

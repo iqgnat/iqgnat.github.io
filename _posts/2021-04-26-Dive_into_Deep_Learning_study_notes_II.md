@@ -1,6 +1,6 @@
 ---
 title: Dive into Deep Learning II：线性回归和基础优化算法，Softmax回归和损失函数 
-categories: ML和时序分析
+categories: 算法模型
 tags: [Pytorch]
 description: 
 comments: true

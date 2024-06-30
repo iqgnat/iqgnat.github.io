@@ -1,6 +1,6 @@
 ---
 title: 《应用时间序列分析》
-categories: ML和时序分析
+categories: 算法模型
 tags: 时序分析
 description: 
 comments: true
