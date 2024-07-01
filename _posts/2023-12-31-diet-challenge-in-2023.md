@@ -30,7 +30,7 @@ Despite maintaining the dietary adjustments mentioned above, my weight did not c
 
 
 
-<img src="https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2023-12-31-diet-challenge-in-2023/weight_01.jpg" width="200" id="beginning"><img src="https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2023-12-31-diet-challenge-in-2023/weight_00.jpg" width="200" id="beginning">
+<img src="https://github.com/iqgnat/iqgnat.github.io/raw/master/assets/images/2023-12-31-diet-challenge-in-2023/weight_00.jpg" width="200" id="beginning">
 
 
 
