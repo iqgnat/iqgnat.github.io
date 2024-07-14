@@ -1,5 +1,5 @@
 ---
-title: Machine Learning Specialization 关键点总结
+title: Machine Learning 专项总结
 categories: 算法模型
 tags: [算法]
 description: 
