@@ -1,7 +1,7 @@
 ---
 title: 交换腿跳绳
-categories: 人间草木
-tags: [工具]
+categories: 算法模型
+tags: 
 description: 
 comments: false
 author: Tang Qi
