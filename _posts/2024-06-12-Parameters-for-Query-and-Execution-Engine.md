@@ -38,48 +38,42 @@ Hive 引擎在执行过程中会生成 Map 输出文件，这些文件通常是 
 + ### 全局参数
 
 1. 设置动态分区（最常用在回刷数据） 
-
-   set **hive.exec.dynamic.partition**=true：允许Hive在插入数据时自动创建必要的分区 set **hive.exec.dynamic.partition.mode**=nonstrict：允许所有的分区字段都可以使用动态分区，而不要求必须指定至少一个静态分区。默认模式为strict，至少需要一个静态分区 set hive.exec.dynamic.partitions.pernode=10000：限制每个节点上动态分区的数量，以防止资源消耗过大。该参数通常用于控制每个任务节点的资源使用情况 set hive.exec.dynamic.partitions=10000; -- 限制整个作业可以创建的动态分区的数量，以防止作业生成过多的分区，消耗大量的元数据存储和管理资源
+   set **hive.exec.dynamic.partition**=true：允许Hive在插入数据时自动创建必要的分区 
+   set **hive.exec.dynamic.partition.mode**=nonstrict：允许所有的分区字段都可以使用动态分区，而不要求必须指定至少一个静态分区。默认模式为strict，至少需要一个静态分区；
+   set hive.exec.dynamic.partitions.pernode=10000：限制每个节点上动态分区的数量，以防止资源消耗过大。该参数通常用于控制每个任务节点的资源使用情况;
+   set hive.exec.dynamic.partitions=10000; -- 限制整个作业可以创建的动态分区的数量，以防止作业生成过多的分区，消耗大量的元数据存储和管理资源;
 
 2. 普通 JOIN 转换为 Map-side JOIN
-
-   SET **hive.auto.convert.join** = true： Hive 会判断输入表的大小，并在合适的情况下将普通 JOIN 转换为 Map-side JOIN，避免了 Reduce 阶段，可以减少数据传输和节省资源。这对于小表和大表 JOIN 场景特别有效。从 Hive 0.11.0 版本开始，`hive.auto.convert.join` 默认是开启的。(Reducing Shuffles)
-
+   set **hive.auto.convert.join** = true： Hive 会判断输入表的大小，并在合适的情况下将普通 JOIN 转换为 Map-side JOIN，避免了 Reduce 阶段，可以减少数据传输和节省资源。这对于小表和大表 JOIN 场景特别有效。从 Hive 0.11.0 版本开始，hive.auto.convert.join 默认是开启的。(Reducing Shuffles)
+   
 3. 临时表存储：优化查询执行计划，减少计算量和数据传输量，加快查询速度
-
    set **hive.auto.convert.temporary.table**=true：自动将某些中间结果存储为临时表。适用于复杂的 HiveQL 查询，包括多个子查询、连接和聚合操作的场景在这些情况下，自动转换临时表可以显著提高查询效率
-
+   
 4.  GROUP BY 阶段
-
-   **hive.optimize.skewjoin**：默认false。控制是否启用对数据倾斜的 Join 操作优化。通过将倾斜的 join 操作分割为多个较小的任务来实现。
-
+**hive.optimize.skewjoin**：默认false。控制是否启用对数据倾斜的 Join 操作优化。通过将倾斜的 join 操作分割为多个较小的任务来实现。
    **hive.groupby.skewindata**： 默认false。当设置为 true 时，Hive 会检测并处理数据倾斜，避免某些节点处理过多数据导致性能瓶颈。这通过将倾斜的键值分配到多个 reduce 任务来实现。
-
-   **hive.exec.parallel** ：默认false。同一个 SQL 查询中的不同作业（jobs）是否可以同时运行。默认 Hive 在同一 SQL 查询中的作业是串行执行的。启用后，通过 hive.exec.parallel.thread.number 参数来控制并行执行的线程数。默认 Hive 使用 10 个线程来执行查询。
-
+**hive.exec.parallel** ：默认false。同一个 SQL 查询中的不同作业（jobs）是否可以同时运行。默认 Hive 在同一 SQL 查询中的作业是串行执行的。启用后，通过 hive.exec.parallel.thread.number 参数来控制并行执行的线程数。默认 Hive 使用 10 个线程来执行查询。
    **hive.groupby.mapaggr**：默认false。控制是否在 GROUP BY 操作中使用 Map Aggregation。当设置为 true 时，Hive 会在 Map 阶段进行部分聚合，从而减少 Shuffle 数据量。这有助于降低网络传输和磁盘 I/O 负担。
-
-   **hive.groupby.mapaggr.checkinterval**：默认0（即禁用负载均衡）。设置在数据倾斜时进行负载均衡的频率。当设置为一个非零值时，Hive 会在指定的间隔内检查并进行负载均衡，以确保不会出现严重的倾斜现象。
-
+**hive.groupby.mapaggr.checkinterval**：默认0（即禁用负载均衡）。设置在数据倾斜时进行负载均衡的频率。当设置为一个非零值时，Hive 会在指定的间隔内检查并进行负载均衡，以确保不会出现严重的倾斜现象。
    **hive.query.results.cache.enabled**：默认false。控制是否启用查询结果缓存。当设置为 true 时，Hive 会缓存查询结果以提高后续相同查询的执行速度。这对于频繁执行相同查询的场景非常有用。
 
 5. 合并小文件，以减少HDFS NameNode 的开销。
-   **hive.merge.smallfiles.maxsize**：小文件合并的最大大小，当小文件的总大小达到或超过此值时，Hive 将不再合并小文件。默认为 256MB。用于防止合并过大的小文件。
-
-   set **hive.merge.mapfiles**=true : 控制是否在作业输出目录中合并 Map 输出文件。默认为 true。合并小文件可以减少 NameNode 的负载，并提高查询性能 
-   set **hive.merge.mapredfiles**=true ：同时影响hive引擎和mapreduce引擎的文件合并策略。在Map-Reduce的任务结束时合并小文件。对于hive引擎，该参数可以控制是否在查询执行前合并小文件，以优化查询性能。对于mapreduce引擎，控制是否在作业输出目录中合并 Reducer 输出文件。默认为 false。 
-   set **hive.merge.size.per.task**= 256*1000*1000：每个任务（Task）中的输出文件大小阈值。当一个任务输出文件大小小于该阈值时，会尝试进行文件合并操作。默认为 256MB。用于控制单个任务中输出文件的大小 set **hive.merge.smallfiles.avgsize**=16000000 ：当输出文件的平均大小小于该值时，Hive 会尝试合并小文件, 启动一个独立的map-reduce任务进行文件merge。默认为 16MB。通过控制平均小文件的大小来决定合并策略
+   **hive.merge.smallfiles.maxsize**：小文件合并的最大大小，当小文件的总大小达到或超过此值时，Hive 将不再合并小文件。默认为 256MB。用于防止合并过大的小文件;
+   set **hive.merge.mapfiles**=true : 控制是否在作业输出目录中合并 Map 输出文件。默认为 true。合并小文件可以减少 NameNode 的负载，并提高查询性能;
+   set **hive.merge.mapredfiles**=true ：同时影响hive引擎和mapreduce引擎的文件合并策略。在Map-Reduce的任务结束时合并小文件。对于hive引擎，该参数可以控制是否在查询执行前合并小文件，以优化查询性能。对于mapreduce引擎，控制是否在作业输出目录中合并 Reducer 输出文件。默认为 false;
+   set **hive.merge.size.per.task**= 256*1000*1000：每个任务（Task）中的输出文件大小阈值。当一个任务输出文件大小小于该阈值时，会尝试进行文件合并操作。默认为 256MB。用于控制单个任务中输出文件的大小;
+   set **hive.merge.smallfiles.avgsize**=16000000 ：当输出文件的平均大小小于该值时，Hive 会尝试合并小文件, 启动一个独立的map-reduce任务进行文件merge。默认为 16MB。通过控制平均小文件的大小来决定合并策略;
 
 6. 存储压缩（压缩中间结果，使用压缩技术减少存储和I/O开销）
    **hive.exec.orc.default.compress**： 控制使用 ORC 格式存储时的默认压缩方式。ORC 是一种列式存储格式，压缩可以显著减少存储空间占用和数据传输成本。常用的有ZSTD和ZLIB。ZSTD 适合于需要高性能和良好压缩率的场景， 在较低压缩级别时可以非常快速，甚至比 ZLIB 的某些设置更快，同时仍保持较高的压缩率
 
 7. 谓词下推
-   **hive.vectorized.execution.enabled**: 启用矢量化执行，可以提升包括谓词下推在内的多种优化**hive.optimize.ppd**: 在执行查询时，设置`hive.optimize.ppd=true`可以将SQL查询中的谓词（如`WHERE`条件）推到数据源处进行过滤，以减少传输的数据量并提高查询效率
+   **hive.vectorized.execution.enabled**: 启用矢量化执行，可以提升包括谓词下推在内的多种优化**hive.optimize.ppd**: 在执行查询时，设置hive.optimize.ppd=true 可以将SQL查询中的谓词（如 WHERE 条件）推到数据源处进行过滤，以减少传输的数据量并提高查询效率
    **hive.cbo.enable**: 启用基于成本的优化（CBO），这可以进一步优化查询计划，包括谓词下推
 
 
 
-+ ### hint 参数
++ ### Hint 参数
 
   **MAPJOIN**: 指示Hive在执行JOIN操作时使用Map端连接，将小表加载到Mapper的内存中，以减少Shuffle操作和提高性能。适用于一个参与JOIN的表很小（通常小于25MB）的情况，避免将其分发到Reducer节点。
 
@@ -118,7 +112,7 @@ Tez AM负责整个Tez应用的生命周期管理，包括资源分配、任务�
 
 
 
-+ ### hint参数
++ ### Hint参数
 
   **tez.grouping.min-size**：指定数据分组的最小大小，用于在执行分组操作时优化性能。
 
@@ -160,7 +154,7 @@ Tez AM负责整个Tez应用的生命周期管理，包括资源分配、任务�
 
 
 
-+ ### hint参数
++ ### Hint参数
 
 ​	**Broadcast Hint**: 用于指定在执行 Join 操作时广播表的大小阈值，可以显著优化小表与大表的 Join 操作
 
@@ -208,7 +202,7 @@ Tez AM负责整个Tez应用的生命周期管理，包括资源分配、任务�
 
       
 
-+ ### hint 参数
++ ### Hint 参数
 
   **Map Join Hints**（`/*+ MAPJOIN(table_name) */` ）: 指示Map端的Join操作，将小表加载到内存中，提高Join操作的效率。
 

@@ -125,19 +125,17 @@ SET mapred.reduce.tasks=50000;
 
 3. 参数： 使用 `set hive.optimize.skewjoin=true;`或者SkewJoin Hint 来启用 Skew Join 特性。或者以下hint（不常用）：
 
-​	1. 大表Join小表: /*+ mapjoin(small_table)*/, 在map阶段将指定小表的数据全部加载在内存中; （已经是自动	了）；
-
-​	2. 大表Join中表: /*+distmapjoin(<table_name>(shard_count=<n>,replica_count=<m>))*/, 加强版mapjoin， 通	过将中型表通过分片将数据更高效地加载到内存中。并发度=shard_count * replica_count。
-
-​	3. 小表Join大表: /*+ STREAMTABLE(big_table) */，显式提醒hive哪一个是大表。 将大表以流式方式处理，	从而避免将其加载到内存中。
+   1. 大表 join 小表: /*+ mapjoin(small_table)*/, 在map阶段将指定小表的数据全部加载在内存中; （已经是自动了）；
+   2. 大表 join 中表: /*+distmapjoin(<table_name>(shard_count=<n>,replica_count=<m>))*/, 加强版mapjoin， 通过将中型表通过分片将数据更高效地加载到内存中。并发度=shard_count * replica_count;
+   3. 小表 join 大表: /*+ STREAMTABLE(big_table) */，显式提醒hive哪一个是大表。 将大表以流式方式处理，	从而避免将其加载到内存中。
 
 
 
 + #### GROUP BY 
 
-  1. 设置Group By防倾斜的参数
+  1. 设置Group By防倾斜的参数;
 
-  2. 添加随机数,把引起长尾的Key进行拆分
+  2. 添加随机数,把引起长尾的Key进行拆分:
 
      ```sql
      --假设长尾的Key已经找到是KEY001
@@ -154,7 +152,7 @@ SET mapred.reduce.tasks=50000;
      GROUP BY a.Key;
      ```
 
-  3. 创建滚存表。对于线上任务而言，每次都要读取`T-1`至`T-365`的所有分区其实是对资源的很大浪费，创建滚存表可以减少分区的读取。
+  3. 创建滚存表。对于线上任务而言，每次都要读取`T-1`至`T-365`的所有分区其实是对资源的很大浪费，创建滚存表可以减少分区的读取:
 
      ```sql
      --创建滚存表
@@ -213,9 +211,9 @@ SET mapred.reduce.tasks=50000;
 
 + #### COUNT 
 
-1. 参数设置调优
+1. 参数设置调优;
 
-2. 通用两阶段聚合,拼接随机数
+2. 通用两阶段聚合,拼接随机数:
 
    ```sql
    --方式1：拼接随机数 CONCAT(ROUND(RAND(),1)*10,'_', ds) AS rand_ds
@@ -241,7 +239,7 @@ SET mapred.reduce.tasks=50000;
    GROUP BY ds;
    ```
 
-3. 借助另一个均匀字段。如果GroupBy与Distinct的字段数据都均匀，先GroupBy两分组字段（ds和shop_id）再使用`count(distinct)`命令。
+3. 借助另一个均匀字段。如果GroupBy与Distinct的字段数据都均匀，先GroupBy两分组字段（ds和shop_id）再使用 count(distinct) 命令。
 
    ```sql
    SELECT  ds
@@ -256,8 +254,7 @@ SET mapred.reduce.tasks=50000;
 
 + #### ROW_NUMBER（TopN）
 
-1. 增加随机列或拼接随机数，将其作为分区（Partition）中一参数。进行两次row_number
-   
+​	增加随机列或拼接随机数，将其作为分区（Partition）中一参数。进行两次row_number
 
 + #### 动态分区
 
@@ -268,9 +265,7 @@ SET mapred.reduce.tasks=50000;
 
 ### 2. 语法踩坑
 
-1. LATERAL VIEW explode：当explode函数的输入值为空时或者explode后的数据为空(解析不出来)， lateral view不会生成任何输出行，导致数据丢失。
-
-   加 outer (lateral view outer explode) 只针对 null 扩展，同样不能解析空字符串。
+1. LATERAL VIEW explode：当explode函数的输入值为空时或者explode后的数据为空(解析不出来)， lateral view不会生成任何输出行，导致数据丢失。加 outer (lateral view outer explode) 只针对 null 扩展，同样不能解析空字符串。
 
    ```sql
    SELECT ip,req_cnt,req_refuse_cnt,req_refuse_rate,collect_set(did) as did_list
@@ -314,13 +309,13 @@ SET mapred.reduce.tasks=50000;
 
 4. 报错：distinct on different columns not supported with skew in data。当数据倾斜（即某些键值的出现频率远高于其他键值）存在时，Hive 的 distinct 操作可能会失败。特别对多个列应用distinct时，数据倾斜会更加明显，因为计算可能无法均匀分布在所有节点上。当  hive.groupby.skewindata 设置为 true 时，Hive 尝试处理数据倾斜问题，但对于对多个列执行 distinct 操作时，可能不支持这种操作。 解决方法: 
 
-   1.  禁用数据倾斜优化 2. 使用不同的方法进行去重, 比如通过子查询或临时表先进行去重 3. 确保数据在进行 distinct 操作之前均匀分布
+   a. 禁用数据倾斜优化; b. 使用不同的方法进行去重, 比如通过子查询或临时表先进行去重; c. 确保数据在进行 distinct 操作之前均匀分布
 
       
 
 ### 3. 常用语法
 
-1. GROUPING__ID 的计算方法：在 Hive 3.1+ 中，不需要进行倒叙，二进制计算参与聚合的为 0，不参与的为 1，然后计算十进制结果。 （Hive 进行过更新，在旧版本中（如1.2）的计算方法和新版本的（hive 2.3.0之后）的结果，两者是不一致的。而 spark、presto 则和 hive 新版本的结果一致。）
+1. GROUPING__ID 的计算方法：在 Hive 3.1+ 中，不需要进行倒叙，二进制计算参与聚合的为 0，不参与的为 1，然后计算十进制结果。 （Hive 进行过更新，在旧版本中（如1.2）的计算方法和新版本的（hive 2.3.0之后）的结果，两者是不一致的。而 spark、presto 则和 hive 新版本的结果一致）:
 
    GROUPING_ID(col1, col2, col3) = GROUPING(col1) * pow(2,2) + GROUPING(col2) * pow(2,1) + GROUPING(col3) * pow(2,0)
 
@@ -363,17 +358,13 @@ SET mapred.reduce.tasks=50000;
    tablesample(BUCKET 1 OUT OF 10 ON rand());
    ```
 
-3. 滑窗函数: preceding / following： 
+3. 滑窗函数: preceding / following
+   range是逻辑窗口，它基于当前行的排序值来定义范围。RANGE BETWEEN INTERVAL 5 MINUTE PRECEDING AND CURRENT ROW 指定了当前行的时间值向前推5分钟的范围。
+   rows是物理窗口，即根据order by 子句排序后，取的前N行及后N行的数据计算（与当前行的值无关，只与排序后的行号相关）
 
    ```sql
-       avg(pay_ordr_rate_7d_toctl) over (order by pt rows between 30 preceding and current row) as all_hit_mov_avg 
+   avg(pay_ordr_rate_7d_toctl) over (order by pt rows between 30 preceding and current row) as all_hit_mov_avg 
    ```
-
-​	range 和 rows 区别: 
-
-​	range是逻辑窗口，它基于当前行的排序值来定义范围。`RANGE BETWEEN INTERVAL 5 MINUTE PRECEDING AND CURRENT ROW` 指定了当前行的时间值向前推5分钟的范围。
-
-​	rows是物理窗口，即根据order by 子句排序后，取的前N行及后N行的数据计算（与当前行的值无关，只与排序后的行号相关）
 
 4. row_number 窗口函数去重, 通过PARTITION BY子句定义分组标准，通过ORDER BY子句定义排序规则，精确地保留特定记录。 with as 增加hive 可读性。
 
@@ -446,20 +437,20 @@ SET mapred.reduce.tasks=50000;
 
 8. group by 后 map 格式返回。 对源表进行group by之后对另外两个字段变成key-value存成一个map：
 
-   ```
+   ```sql
    str_to_map(concat_ws(",",collect_set(concat_ws(':', mobilegid, cast(value as string)) ))) as gids
    ```
 
 9. 取 IP 二段： SELECT regexp_extract('255.255.255.255', '\\d+\\.\\d+', 0) AS ip_seg
 
+10. 在SQL中调用自写脚本UDF： TRANSFORM 关键字。
 
-8. 在SQL中调用自写脚本UDF： TRANSFORM 关键字。
-   1. 继承org.apache.hadoop.hive.ql.exec.UDF类实现evaluate
-   2. 添加jar包: add jar /root/NUDF.jar;
-   3. 创建临时函数:create temporary function getNation as 'cn.itcast.hive.udf.NationUDF';
-   4. 调用: select id, name, getNation(nation) from beauty;
+1. 继承org.apache.hadoop.hive.ql.exec.UDF类实现evaluate
+2. 添加jar包: add jar /root/NUDF.jar;
+3. 创建临时函数:create temporary function getNation as 'cn.itcast.hive.udf.NationUDF';
+4. 调用: select id, name, getNation(nation) from beauty;
 
-10. transform: 在日常数据任务中调用AI模型(可以使用任何支持的脚本语言)
+11. transform: 在日常数据任务中调用AI模型(可以使用任何支持的脚本语言)
 
     ```sql
     create TABLE u_data_new as
@@ -470,7 +461,7 @@ SET mapred.reduce.tasks=50000;
     -- transform_script.py 是一个 Python 脚本，它会接收 user_id 和 user_name 作为输入，进行处理，然后输出处理后的结果。
     ```
 
-11. 一些DDL操作：
+12. 一些DDL操作：
 
     ```sql
     -- alter table table_name1 to table_name2; （在实际生产中禁用）
@@ -491,28 +482,17 @@ SET mapred.reduce.tasks=50000;
 
 ### 4. 查询手册
 
-1. 官方文档
-   1.用户手册
-   [https://cwiki.apache.org/confluence/display/Hive/Home#Home-UserDocumentation](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/Home%23Home-UserDocumentation&sa=D&source=calendar&usd=2&usg=AOvVaw076tYMtfIXk6lYVzWsqoBk)
-   2.管理员手册
-   [https://cwiki.apache.org/confluence/display/Hive/Home#Home-AdministrationDocumentation](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/Home%23Home-AdministrationDocumentation&sa=D&source=calendar&usd=2&usg=AOvVaw1Rnte_Vg4pqaCvuBtb_1Yt)
-   3.DDL操作：
-   [https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BDDL&sa=D&source=calendar&usd=2&usg=AOvVaw0oJThnvCTghlmhrZLguSt9)
-   4.DML操作：
-   [https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BDML&sa=D&source=calendar&usd=2&usg=AOvVaw3Yd4PME5qkTKOe4XrDeaf3)
-   5.数据查询
-   [https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BSelect&sa=D&source=calendar&usd=2&usg=AOvVaw3mpAh6py0qhpokZtz1J8I4)
-   6.函数清单
-   [https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BUDF&sa=D&source=calendar&usd=2&usg=AOvVaw22O0plMcn7wfW1F_cxzsiv)
+1.用户手册
+[https://cwiki.apache.org/confluence/display/Hive/Home#Home-UserDocumentation](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/Home%23Home-UserDocumentation&sa=D&source=calendar&usd=2&usg=AOvVaw076tYMtfIXk6lYVzWsqoBk)
+2.管理员手册
+[https://cwiki.apache.org/confluence/display/Hive/Home#Home-AdministrationDocumentation](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/Home%23Home-AdministrationDocumentation&sa=D&source=calendar&usd=2&usg=AOvVaw1Rnte_Vg4pqaCvuBtb_1Yt)
+3.DDL操作：
+[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BDDL&sa=D&source=calendar&usd=2&usg=AOvVaw0oJThnvCTghlmhrZLguSt9)
+4.DML操作：
+[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BDML&sa=D&source=calendar&usd=2&usg=AOvVaw3Yd4PME5qkTKOe4XrDeaf3)
+5.数据查询
+[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BSelect&sa=D&source=calendar&usd=2&usg=AOvVaw3mpAh6py0qhpokZtz1J8I4)
+6.函数清单
+[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BUDF&sa=D&source=calendar&usd=2&usg=AOvVaw22O0plMcn7wfW1F_cxzsiv)
 
-https://developer.jdcloud.com/article/3514
-
-https://www.51cto.com/article/630671.html
-
-https://help.aliyun.com/zh/maxcompute/use-cases/data-skew-tuning
-
-踩坑合集：[
-https://www.jianshu.com/p/e8ab9c185383](https://www.google.com/url?q=https://www.jianshu.com/p/e8ab9c185383&sa=D&source=calendar&usd=2&usg=AOvVaw1ibSTpNEg4VPY3q8T3t2Ah)
-[https://ytluck.github.io/big-data/my-bigdata-post-56.html](https://www.google.com/url?q=https://ytluck.github.io/big-data/my-bigdata-post-56.html&sa=D&source=calendar&usd=2&usg=AOvVaw3n6-iDBPx5GYX8qekKp-3k)
-
-[https://www.jianshu.com/p/cd997449dc46](https://www.google.com/url?q=https://www.jianshu.com/p/cd997449dc46&sa=D&source=calendar&usd=2&usg=AOvVaw1h_k1mETVbNkSsvVHhE8cA)
+7.相似类型产品参考类比：https://help.aliyun.com/zh/maxcompute/?spm=a2c4g.11186623.0.0.48022691zziT0B
