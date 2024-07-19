@@ -1,5 +1,5 @@
 ---
-title: 计算引擎常用参数记录
+title: 计算引擎常用参数笔记
 categories: 开发随笔
 tags: [建模]
 description: 

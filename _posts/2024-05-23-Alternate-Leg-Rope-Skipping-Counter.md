@@ -1,5 +1,5 @@
 ---
-title: 交换腿跳绳
+title: 基于OpenCV+Mediapipe的跳绳计数
 categories: 算法模型
 tags: 
 description: 

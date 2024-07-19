@@ -1,5 +1,5 @@
 ---
-title: Machine Learning 专项与经验总结
+title: Machine Learning 专项与经验笔记
 categories: 算法模型
 tags: [算法]
 description: 

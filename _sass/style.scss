@@ -129,3 +129,11 @@ background: #83BF73;
 }
 
 
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    flex-grow: 1;
+}

@@ -31,9 +31,12 @@
   <div id="sidebar-right">
   	  <!--4. search box-->
     <div id="search-box">
-      <form method="get" action="//www.google.com/search" target="_blank">
+      <!-- <form method="get" action="//www.google.com/search" target="_blank">
         <input id="search-input" name="q" type="text" placeholder="Search" />
-        <input type="hidden" name="sitesearch" value="{{ site.url }}">
+        <input type="hidden" name="sitesearch" value="{{ site.url }}"> -->
+        <form id="search-form">
+          <input id="search-input" name="q" type="text" placeholder="Search" />
+          <button type="submit">搜索</button>
       </form>
     </div>
 

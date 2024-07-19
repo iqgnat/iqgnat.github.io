@@ -42,12 +42,23 @@
 
   <div id="sidebar-right">
   	  <!--4. search box-->
-    <div id="search-box">
-      <form method="get" action="//www.google.com/search" target="_blank">
-        <input id="search-input" name="q" type="text" placeholder="Search" />
-        <input type="hidden" name="sitesearch" value="{{ site.url }}">
-      </form>
+      <div id="search-box">
+        <form id="search-form">
+            <!-- <div class="search-container">
+                <input id="search-input" name="q" type="text" placeholder="Search" />
+                <button type="submit">搜索</button> -->
+                <div class="search-container" style="position: relative;">
+                  <input id="search-input" name="q" type="text" placeholder="请输入关键字搜索..." style="padding-right: 40px; height: 40px; line-height: 40px;box-sizing: border-box;" />
+                  <button type="submit" id="search-button" style="position: absolute; right: 0; top: 0; height: 100%;">搜索</button>                
+            </div>
+        </form>
     </div>
+
+    <script>
+      document.getElementById('search-button').addEventListener('click', function() {
+        this.classList.add('button-clicked');
+      });
+    </script>
 
     <!--5.articles on each categories-->
     <nav id="toc">
