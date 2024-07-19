@@ -1,5 +1,5 @@
 ---
-title: 离线数据任务开发笔记(持续更新)
+title: 离线数据任务开发笔记
 categories: 开发随笔
 tags: [建模]
 description: 
@@ -22,7 +22,7 @@ layout: post
 
   日志文件=>Flume(Kafka生产者，日志采集)=>Kafka(缓存)=>Flume(Kafka消费者)=>hdfs
 
-  ```mysql
+  ```sql
   -- 数据源
   CREATE TABLE t_dim_goods (
       goods_id BIGINT NOT NULL COMMENT '商品ID',
@@ -42,7 +42,7 @@ layout: post
 
   ​	在ods层基本只储存原始的业务实时操作数据，不做清洗和转换，需要保留数据的即时性和完整性，数据来源多样化。在不同数据来源间配置数据对账。由于时间格式等一致性问题，一般不对下游业务开放。保留较短的时间，一般为几个月至一年。
 
-  ```hive
+  ```sql
   CREATE EXTERNAL TABLE IF NOT EXISTS ods_auction_goods (
       item_id INT,
       item_name STRING,
@@ -137,84 +137,16 @@ layout: post
 
 
 
-## 4. 查询/计算优化
+## 4. 接口、切片加工
 
-1. 热key(数据倾斜优化):
-
-   1. 设置更多的Reduce任务数：SET mapreduce.job.reduces=多倍数；
-      reduce太多，生成的小文件越多，对hdfs造成压力；reduce数量太少，每个reduce要处理很多数据，容易拖慢运行时间或者造成OOM
-
-   2. ```hive
-      --哈希处理：使用内置函数进行哈希分区
-      SELECT hash(column) % num_buckets AS hashed_key, SUM(value)
-      FROM (
-          SELECT column, value
-          FROM table_name
-          CLUSTER BY column  --等价于distribute by column sort by column
-      ) t
-      GROUP BY hashed_key;
-      ```
-
-   3. ```hive
-      -- 随机前缀（随机函数不在数仓使用，因为回刷或迁库会造成对账问题）
-      SET hivevar:random_num = FLOOR(rand() * 10);
-      
-      SELECT
-          CASE WHEN key = 'hotkey' THEN concat(${hivevar:random_num}, '_', key) ELSE key END AS hashed_key,
-          value
-      FROM
-          table_name
-      DISTRIBUTE BY ${hivevar:random_num};
-      ```
-
-2. 大key处理
-
-   1. 数据分桶
-
-      ```
-      CREATE TABLE target_table (
-          key_column STRING,
-          value_column STRING
-      )
-      CLUSTERED BY (key_column) INTO <num_buckets> BUCKETS;
-      ```
-
-3. 快速数据抽样：
-
-   ```hive
-   -- ad-hoc查询中，除法抽样最快。比如1/1000抽样：
-   create table *** as
-   SELECT *
-   FROM 
-   (SELECT *,
-           floor(rand(年月日分区作为种子保持一致)*10000) as random
-   FROM ***
-   ) t 
-   where random between 1 and 10;
-   ```
-
-   ```hive
-   -- 块抽样，随机
-   SELECT *
-   FROM iteblog1
-   tablesample(BUCKET 1 OUT OF 10 ON rand());
-   ```
-
-   
-
-## 5. 接口、切片加工
-
-我印象最深的加工过的几个接口/切片
+常用的几个接口/切片
 
 1. "历史最低价" 商品标签
 2. 商品库存、价格接口
 3. 各商品类目实验下的转化切片
 4. 不同商品实验名下的转换切片
 5. DSP/RTA拦截策略切片。渠道、点位、资源位、组合切片
-
-
-
-涉及后端：
+   
 
 a. 数据流处理
 
@@ -232,75 +164,4 @@ b. 数据存储：Druid适合处理和分析数据，Redis适合快速读写操�
 + Druid(分布式分析数据库)：看板、切片、或加工业务分析需要调用的接口。支持实时数据摄取和快速查询，擅长处理和分析大量时间序列数据。分析用户行为数据，实时计算和展示各种统计指标，如每日销售额、用户活跃度等
 + Redis(内存数据结构存储)： 高性能、低延迟，支持多种数据结构（如字符串、列表、集合等），适用于快速读写操作。适用于需要快速响应和高并发读写操作的场景，常用作缓存层来加速数据库访问或存储实时数据。数仓中的某些频繁访问的统计结果（但对更新需求可能只是分钟级，不会快速大面积更新）可以将结果缓存到Redis中，提高查询响应速度，减轻数据仓库的负载。
 + Kafka(分布式流处理平台)： 用于构建数据管道，将实时数据流传输到数据仓库进行存储和分析。构建实时数据管道和流应用, 适用于数据流的实时处理和传输，如日志收集、监控数据聚合和流式数据处理。
-
-
-
-
-
-## 6. 常用的计算引擎参数(MR&Tez)
-
-1. 内存配置
-   mapreduce.map.memory.mb = 4096;
-   mapreduce.reduce.memory.mb = 8192;
-
-   mapred.reduce.tasks
-
-   mapreduce.job.reduces
-
-2. SET hive.exec.orc.default.compress=ZSTD; set tez.grouping.min-size=00; set tez.grouping.max-size=00;
-
-3. 谓词下推：set hive.auto.convert.temporary.table=false;
-
-4. hive map 慢优化 ： 表关联键字段类型一致
-
-5. 使用MapJoin优化小表与大表的JOIN操作。SET hive.auto.convert.join = true; (已经是自动了)
-
-6. 并行执行，启用并行执行，提高查询效率。SET hive.exec.parallel = true;
-
-7. 合并小文件，以减少HDFS NameNode的开销。
-
-   SET hive.merge.smallfiles.avgsize = 256000000;
-   SET hive.merge.mapfiles = true;
-
-8. 数据倾斜处理，处理数据倾斜，避免某些节点负载过重。SET hive.groupby.skewindata = true;
-
-1. **Reducing Shuffles**: 连接方式选择，选择合适的连接方式以优化查询性能。尽量减少数据在节点之间的传输。SET hive.auto.convert.join = true;
-2. **Compression**: 压缩中间结果，使用压缩技术减少存储和I/O开销。SET hive.exec.compress.output = true;
-3. **Map Side Aggregation**: 在map阶段进行聚合，减少数据传输。SET hive.groupby.mapaggr = true;
-4. **Reduce Number of Map/Reduce Tasks**: 适当调整任务数量，避免过多的任务开销。SET  = 50000;
-5. **Skew Join Optimization**: 使用skew join优化处理数据倾斜。SET hive.optimize.skewjoin = true;
-6. **Parallel Execution**: 启用并行执行，提升性能。SET hive.exec.parallel = true;
-7. **Increase JVM Heap Size**: 增加JVM堆大小，避免内存不足。SET mapreduce.map.memory.mb = 4096;
-8. **Caching**: 在内存中缓存中间结果。SET hive.query.results.cache.enabled = true;
-9. 启用向量化查询执行。SET hive.vectorized.execution.enabled = true;
-10. set hive.auto.convert.join=true;set hive.mapjoin.smalltable.filesize = 3000000000;
-
-
-
-7. ## 官方手册
-
-Hive配置属性手册：https://www.docs4dev.com/docs/zh/apache-hive/3.1.1/reference/Configuration_Properties.html
-
-hive 编程指南 
-
-消息队列，kafka版： https://cloud.tencent.com/document/product/597/32544
-
-[
-https://blog.csdn.net/SunWuKong_Hadoop/article/details/81326385](https://www.google.com/url?q=https://blog.csdn.net/SunWuKong_Hadoop/article/details/81326385&sa=D&source=calendar&usd=2&usg=AOvVaw3WRdmo1xWQn0q1SYorH_kq)
-参考书籍：《Hive编程指南》
-Hive--官方参考文档：
-1.用户手册
-[https://cwiki.apache.org/confluence/display/Hive/Home#Home-UserDocumentation](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/Home%23Home-UserDocumentation&sa=D&source=calendar&usd=2&usg=AOvVaw076tYMtfIXk6lYVzWsqoBk)
-2.管理员手册
-[https://cwiki.apache.org/confluence/display/Hive/Home#Home-AdministrationDocumentation](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/Home%23Home-AdministrationDocumentation&sa=D&source=calendar&usd=2&usg=AOvVaw1Rnte_Vg4pqaCvuBtb_1Yt)
-3.DDL操作：
-[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BDDL&sa=D&source=calendar&usd=2&usg=AOvVaw0oJThnvCTghlmhrZLguSt9)
-4.DML操作：
-[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BDML&sa=D&source=calendar&usd=2&usg=AOvVaw3Yd4PME5qkTKOe4XrDeaf3)
-5.数据查询
-[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BSelect&sa=D&source=calendar&usd=2&usg=AOvVaw3mpAh6py0qhpokZtz1J8I4)
-6.函数清单
-[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BUDF&sa=D&source=calendar&usd=2&usg=AOvVaw22O0plMcn7wfW1F_cxzsiv)
-
-
 
