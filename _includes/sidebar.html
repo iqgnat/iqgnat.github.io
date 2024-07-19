@@ -15,7 +15,7 @@
 	<ul id="sidebar-tags">
 	  <li class="sidebar-tag active" data-filter="recent">近期文章</li>
 	  {% if site.filter == 'category' %}
-		{% assign custom_order = "开发随笔,科研笔记,算法模型,人间草木" | split: ',' %}
+		{% assign custom_order = "开发随笔,算法模型,科研笔记,人间草木" | split: ',' %}
 		{% assign sorted_categories = "" %}
 		{% for order in custom_order %}
 		  {% for category in site.categories %}
