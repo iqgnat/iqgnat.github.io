@@ -192,7 +192,7 @@ layout: post
 
 **PageRank**
 
-在洗钱团伙挖掘中，效果显著。PageRank算法通过分析网页之间的链接数量和质量来判断网页的可信度。作弊网站往往通过创建大量垃圾链接来提升自己的排名，而PageRank可以通过识别这些异常的链接模式来降低这些网站的权重。
+在洗钱团伙挖掘中，效果显著。PageRank算法通过分析网页之间的链接数量和质量来判断网页的可信度。作弊网站往往通过创建大量垃圾链接来提升自己的排名，而PageRank可以通过识别这些异常的链接模式来降低这些网站的权重。而这个特性也适用于AML。
 
 ![15](https://raw.githubusercontent.com/iqgnat/iqgnat.github.io/master/assets/images/2024-07-12-Machine-Learning-Specialization-Review/15.png)
 
