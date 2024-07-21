@@ -12,7 +12,7 @@ aside:
 layout: post
 ---
 
-记录日常数据任务加工踩坑合集与行之有效的技巧。
+记录日常数据任务加工踩坑合集与行之有效的技巧。阿里的 MaxCompute, 经常提供的通用的解决方案。
 
 <!--more-->
 
@@ -20,9 +20,9 @@ layout: post
 
 小倾斜的临时治理：调整并行度。增加Reduce任务的数量，以分散数据处理压力。数据倾斜会导致部分Reduce任务负载过重，而其他任务负载较轻，通过增加Reduce任务的数量和调整并行度，可以更均匀地分配负载，从而缓解数据倾斜问题。（reduce太多，生成的小文件越多，对hdfs造成压力；reduce数量太少，每个reduce要处理很多数据，容易拖慢运行时间或者造成OOM）:
 
-MR引擎：SET mapred.reduce.tasks = <number_of_reducers>;
+MR引擎：SET mapred.reduce.tasks = number_of_reducers;
 Tez引擎：SET hive.tez.auto.reducer.parallelism = true;
-Spark引擎：SET spark.sql.shuffle.partitions = <number_of_partitions>;
+Spark引擎：SET spark.sql.shuffle.partitions = number_of_partitions;
 
 ```sql
 -- 比如 tez
@@ -42,7 +42,7 @@ SET mapred.reduce.tasks=50000;
 
 2. 存在热key：
 
-   1. 手动切分热值。将热点值分析出来后，从主表中过滤出热点值记录，先进行MapJoin，再将剩余非热点值记录进行join，最后union all 两部分的Join结果.
+   1. 手动切分热值。将热点值分析出来后，从主表中过滤出热点值记录，先进行mapJoin，再将剩余非热点值记录进行join，最后union all 两部分的Join结果.
 
    2. 哈希函数。哈希函数令不同的输入尽可能均匀地分布在整个输出空间中，减少哈希冲突的概率，每个分区的负载更加均衡 。通过哈希运算，也可以将热键值打散，使得相同的键值分布在不同的分区中。
 
@@ -123,7 +123,7 @@ SET mapred.reduce.tasks=50000;
       AND mod(t1.<value_col>,10)+1 = t2.number; -- 原先只按照用户ID分发导致的数据倾斜就会由于加入了number关联条件而减少为原先的1/N。但是这样做也会导致数据膨胀N倍。
       ```
 
-3. 参数： 使用 `set hive.optimize.skewjoin=true;`或者SkewJoin Hint 来启用 Skew Join 特性。或者以下hint（不常用）：
+3. 参数： 使用  set hive.optimize.skewjoin=true; 或者skewJoin Hint 来启用 skew join 特性。或者以下hint（不常用）：
 
    1. 大表 join 小表: /*+ mapjoin(small_table)*/, 在map阶段将指定小表的数据全部加载在内存中; （已经是自动了）；
    2. 大表 join 中表: /*+distmapjoin(<table_name>(shard_count=<n>,replica_count=<m>))*/, 加强版mapjoin， 通过将中型表通过分片将数据更高效地加载到内存中。并发度=shard_count * replica_count;
@@ -482,17 +482,10 @@ SET mapred.reduce.tasks=50000;
 
 ### 4. 查询手册
 
-1.用户手册
-[https://cwiki.apache.org/confluence/display/Hive/Home#Home-UserDocumentation](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/Home%23Home-UserDocumentation&sa=D&source=calendar&usd=2&usg=AOvVaw076tYMtfIXk6lYVzWsqoBk)
-2.管理员手册
-[https://cwiki.apache.org/confluence/display/Hive/Home#Home-AdministrationDocumentation](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/Home%23Home-AdministrationDocumentation&sa=D&source=calendar&usd=2&usg=AOvVaw1Rnte_Vg4pqaCvuBtb_1Yt)
-3.DDL操作：
-[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BDDL&sa=D&source=calendar&usd=2&usg=AOvVaw0oJThnvCTghlmhrZLguSt9)
-4.DML操作：
-[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BDML&sa=D&source=calendar&usd=2&usg=AOvVaw3Yd4PME5qkTKOe4XrDeaf3)
-5.数据查询
-[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BSelect&sa=D&source=calendar&usd=2&usg=AOvVaw3mpAh6py0qhpokZtz1J8I4)
-6.函数清单
-[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BUDF&sa=D&source=calendar&usd=2&usg=AOvVaw22O0plMcn7wfW1F_cxzsiv)
-
-7.相似类型产品参考类比：https://help.aliyun.com/zh/maxcompute/?spm=a2c4g.11186623.0.0.48022691zziT0B
+1. 用户手册: [https://cwiki.apache.org/confluence/display/Hive/Home#Home-UserDocumentation](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/Home%23Home-UserDocumentation&sa=D&source=calendar&usd=2&usg=AOvVaw076tYMtfIXk6lYVzWsqoBk)
+2. 管理员手册: [https://cwiki.apache.org/confluence/display/Hive/Home#Home-AdministrationDocumentation](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/Home%23Home-AdministrationDocumentation&sa=D&source=calendar&usd=2&usg=AOvVaw1Rnte_Vg4pqaCvuBtb_1Yt)
+3. DDL操作：[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BDDL&sa=D&source=calendar&usd=2&usg=AOvVaw0oJThnvCTghlmhrZLguSt9)
+4. DML操作：[https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BDML&sa=D&source=calendar&usd=2&usg=AOvVaw3Yd4PME5qkTKOe4XrDeaf3)
+5. 数据查询: [https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BSelect&sa=D&source=calendar&usd=2&usg=AOvVaw3mpAh6py0qhpokZtz1J8I4)
+6. 函数清单: [https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF](https://www.google.com/url?q=https://cwiki.apache.org/confluence/display/Hive/LanguageManual%2BUDF&sa=D&source=calendar&usd=2&usg=AOvVaw22O0plMcn7wfW1F_cxzsiv)
+7. 相似类型产品参考类比：https://help.aliyun.com/zh/maxcompute/?spm=a2c4g.11186623.0.0.48022691zziT0B

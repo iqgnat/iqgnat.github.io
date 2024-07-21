@@ -1,5 +1,5 @@
 ---
-title: Machine Learning 专项与经验笔记
+title: Machine Learning 经验与笔记
 categories: 算法模型
 tags: [算法]
 description: 
@@ -12,7 +12,7 @@ aside:
 layout: post
 ---
 
-从2008年的CS229课程，到2014年在Coursera上线，再到最近复习时发现2022年推出了最新版Specialization课程，课程内容顺序根据最新的发展和实践经验进行了更新，实验和测验也更有侧重点更容易通过了。同时，实验部分从Octave转为了Python + TensorFlow集成Keras的框架。这篇笔记结合过去的工作经验对课程中的知识体系做总结、补充。
+这篇笔记结合过去的工作经验对AI模型的知识体系做总结。
 
 <!--more-->
 
@@ -190,17 +190,17 @@ layout: post
 
 ![11](https://raw.githubusercontent.com/iqgnat/iqgnat.github.io/master/assets/images/2024-07-12-Machine-Learning-Specialization-Review/11.png)
 
+**PageRank**
 
+在洗钱团伙挖掘中，效果显著。PageRank算法通过分析网页之间的链接数量和质量来判断网页的可信度。作弊网站往往通过创建大量垃圾链接来提升自己的排名，而PageRank可以通过识别这些异常的链接模式来降低这些网站的权重。
 
-图卷积网络（Graph Convolutional Networks, GCNs）
-
-​	GCNs 利用图结构进行学习，将客户及其交易的关系建模，通过图的拓扑结构和节点特征进行联合学习。
+![15](https://raw.githubusercontent.com/iqgnat/iqgnat.github.io/master/assets/images/2024-07-12-Machine-Learning-Specialization-Review/15.png)
 
 
 
 ##     4. 半监督学习
 
-**PU learning**
+**PU learning**：在反洗钱工作中尝试过，效果输于孤立森林。
 
 ​	只有正样本和未标记数据，没有明确的负样本。其核心思想是从未标记数据中识别潜在的负样本，最终实现二分类任务。目的是从未标记数据中识别出负样本。通过初始分类器对未标记数据进行分类，从而训练出更准确的模型来区分正样本和未标记样本。可用于正样本很少的、或新手段的反洗钱、反作弊业务。（PU learning 主要处理包含正样本和未标记样本的数据集，旨在从未标记样本中识别出正样本。DBSCAN 则用于将未标记的数据进行聚类，识别密度较高的区域，并将密度较低的点视为噪声）
 
