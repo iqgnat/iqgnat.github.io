@@ -1,6 +1,6 @@
 ---
 title: 大额可疑交易监控模型心得
-categories: 开发随笔
+categories: [开发随笔,算法模型]
 tags: [建模]
 description: 
 comments: false
